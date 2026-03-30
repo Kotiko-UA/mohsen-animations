@@ -73,6 +73,10 @@ section {
   transition: transform 0.6s ease-in-out, height 0.6s ease-in-out;
 }
 
+.zoomed .feature-img-wrapper {
+  pointer-events: none;
+}
+
 /* позиції та розміри */
 .feature-img-wrapper.crypto {
   width: 375px;
