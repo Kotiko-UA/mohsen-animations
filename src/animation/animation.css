@@ -49,21 +49,50 @@ section {
 
 
 /* тільки точка масштабування */
+.main-img.crypto-mode {
+  transform-origin: 0% 100%;
+}
+
+.main-img-wrap.crypto-mode .crypto-img-wrapper {
+
+  transform-origin: -84% 100%;
+}
+
 .main-img.forex-mode {
   transform-origin: 50% 100%;
 }
 
-.main-img.crypto-mode {
-  transform-origin: 0% 100%;
+.main-img-wrap.forex-mode .forex-img-wrapper {
+
+  transform-origin: 50% 100%;
 }
+
 
 .main-img.stocks-mode {
   transform-origin: 100% 100%;
 }
 
+.main-img-wrap.stocks-mode .stocks-img-wrapper {
+
+  transform-origin: 226% 100%;
+}
+
 /* тільки масштаб */
 .main-img.zoomed {
   transform: scale(1.7);
+}
+
+.main-img-wrap.zoomed .crypto-img-wrapper {
+  height: 440px;
+  transform: scale(1.6);
+}
+
+.main-img-wrap.zoomed .forex-img-wrapper {
+  transform: scale(1.6);
+}
+
+.main-img-wrap.zoomed .stocks-img-wrapper {
+  transform: scale(1.6);
 }
 
 
@@ -75,6 +104,10 @@ section {
   bottom: -33px;
   cursor: pointer;
   z-index: 2;
+
+  object-position: center;
+  transform: scale(1);
+  transition: transform 0.6s ease-in-out, height 0.6s ease-in-out;
 }
 
 .forex-img-wrapper {
@@ -85,6 +118,10 @@ section {
   bottom: -48px;
   cursor: pointer;
   z-index: 4;
+
+  object-position: center;
+  transform: scale(1);
+  transition: transform 0.6s ease-in-out;
 }
 
 .stocks-img-wrapper {
@@ -95,6 +132,10 @@ section {
   bottom: -24px;
   cursor: pointer;
   z-index: 3;
+
+  object-position: center;
+  transform: scale(1);
+  transition: transform 0.6s ease-in-out;
 }
 
 .crypto-img-hover,
@@ -127,7 +168,7 @@ section {
   opacity: 1;
 }
 
-.crypto-img-wrapper.active .crypto-img-hover {
+.crypto-img-wrapper.active .crypto-img-active {
   opacity: 0;
 }
 
@@ -144,7 +185,7 @@ section {
   opacity: 1;
 }
 
-.forex-img-wrapper:active .forex-img-hover {
+.forex-img-wrapper.active .forex-img-active {
   opacity: 0;
 }
 
@@ -164,7 +205,7 @@ section {
   opacity: 1;
 }
 
-.stocks-img-wrapper:active .stocks-img-hover {
+.stocks-img-wrapper.active .stocks-img-active {
   opacity: 0;
 }
 
@@ -177,7 +218,7 @@ section {
 .cool-text {
   width: 745px;
   height: 694px;
-  background-color: chartreuse;
+  background-color: rgba(127, 255, 0, 30%);
   position: absolute;
   bottom: 0;
   right: 0;

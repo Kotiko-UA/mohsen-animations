@@ -38,7 +38,8 @@ export const Animation = () => {
 
 	return (
 		<div className='main-container'>
-			<div className='main-img-wrap'>
+			<div
+				className={`main-img-wrap ${mode === 'forex' ? 'forex-mode' : ''} ${mode === 'crypto' ? 'crypto-mode' : ''} ${mode === 'stocks' ? 'stocks-mode' : ''} ${isZoomed ? 'zoomed' : ''}`}>
 				<button
 					type='button'
 					className={`back-button ${mode ? 'visible' : ''}`}
