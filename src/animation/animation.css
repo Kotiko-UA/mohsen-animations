@@ -47,6 +47,7 @@ section {
   transition: transform 0.6s ease-in-out;
 }
 
+
 /* тільки точка масштабування */
 .main-img.forex-mode {
   transform-origin: 50% 100%;
@@ -56,44 +57,122 @@ section {
   transform-origin: 0% 100%;
 }
 
+.main-img.stocks-mode {
+  transform-origin: 100% 100%;
+}
+
 /* тільки масштаб */
 .main-img.zoomed {
   transform: scale(1.7);
 }
 
-.forex-img {
+
+.crypto-img-wrapper {
   position: absolute;
-  width: 243px;
-  height: 472px;
+  width: 375px;
+  height: 432px;
+  left: 287px;
+  bottom: -33px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.forex-img-wrapper {
+  position: absolute;
+  width: 221px;
+  height: 483px;
+  left: 604px;
+  bottom: -48px;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.stocks-img-wrapper {
+  position: absolute;
+  width: 383px;
+  height: 418px;
+  left: 690px;
   bottom: -24px;
-  left: 593px;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
 }
 
-.crypto-img {
+.crypto-img-hover,
+.forex-img-hover,
+.stocks-img-hover {
   position: absolute;
-  width: 360px;
-  height: 411px;
-  bottom: -3px;
-  left: 300px;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
-  cursor: pointer;
-  z-index: 2;
+
 }
 
-.forex-img.active,
-.crypto-img.active {
+.crypto-img-active,
+.forex-img-active,
+.stocks-img-active {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* ---------- crypto ---------- */
+.crypto-img-wrapper:active .crypto-img-active {
   opacity: 1;
 }
 
-.forex-img:hover,
-.crypto-img:hover {
+.crypto-img-wrapper:hover .crypto-img-hover {
   opacity: 1;
 }
+
+.crypto-img-wrapper.active .crypto-img-hover {
+  opacity: 0;
+}
+
+.crypto-img-wrapper.active .crypto-img-hover {
+  opacity: 1;
+}
+
+/*------------ forex ------------ */
+.forex-img-wrapper:active .forex-img-active {
+  opacity: 1;
+}
+
+.forex-img-wrapper:hover .forex-img-hover {
+  opacity: 1;
+}
+
+.forex-img-wrapper:active .forex-img-hover {
+  opacity: 0;
+}
+
+.forex-img-wrapper.active .forex-img-hover {
+  opacity: 1;
+}
+
+/* ----------- stocks ----------- */
+
+
+
+.stocks-img-wrapper:active .stocks-img-active {
+  opacity: 1;
+}
+
+.stocks-img-wrapper:hover .stocks-img-hover {
+  opacity: 1;
+}
+
+.stocks-img-wrapper:active .stocks-img-hover {
+  opacity: 0;
+}
+
+
+.stocks-img-wrapper.active .stocks-img-hover {
+  opacity: 1;
+}
+
 
 .cool-text {
   width: 745px;

@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import './animation.css'
 import MainImg from '../assets/main.png'
-import Forex from '../assets/forex.png'
-import Crypto from '../assets/crypto.png'
+import CryptoHover from '../assets/river-1-hover.avif'
+import CryptoActive from '../assets/river-1-click.avif'
+import ForexHover from '../assets/river-2-hover.avif'
+import ForexActive from '../assets/river-2-click.avif'
+import StocksHover from '../assets/river-3-hover.avif'
+import StocksActive from '../assets/river-3-click.avif'
 
 export const Animation = () => {
 	const [mode, setMode] = useState(null) // 'forex' | 'crypto' | null
@@ -15,6 +19,10 @@ export const Animation = () => {
 
 	const handleOpenCrypto = () => {
 		setMode('crypto')
+		requestAnimationFrame(() => setIsZoomed(true))
+	}
+	const handleOpenStocks = () => {
+		setMode('stocks')
 		requestAnimationFrame(() => setIsZoomed(true))
 	}
 
@@ -39,25 +47,29 @@ export const Animation = () => {
 				</button>
 
 				<img
-					className={`main-img ${mode === 'forex' ? 'forex-mode' : ''} ${mode === 'crypto' ? 'crypto-mode' : ''} ${isZoomed ? 'zoomed' : ''}`}
+					className={`main-img ${mode === 'forex' ? 'forex-mode' : ''} ${mode === 'crypto' ? 'crypto-mode' : ''} ${mode === 'stocks' ? 'stocks-mode' : ''} ${isZoomed ? 'zoomed' : ''}`}
 					src={MainImg}
 					alt='Main'
 					onTransitionEnd={handleTransitionEnd}
 				/>
-
-				<img
-					className={`forex-img ${mode === 'forex' ? 'active' : ''}`}
-					src={Forex}
-					alt='Forex'
-					onClick={handleOpenForex}
-				/>
-
-				<img
-					className={`crypto-img ${mode === 'crypto' ? 'active' : ''}`}
-					src={Crypto}
-					alt='Crypto'
-					onClick={handleOpenCrypto}
-				/>
+				<div
+					className={`crypto-img-wrapper ${mode === 'crypto' ? 'active' : ''}`}
+					onClick={handleOpenCrypto}>
+					<img className='crypto-img-hover' src={CryptoHover} alt='Crypto' />
+					<img className='crypto-img-active' src={CryptoActive} alt='Crypto' />
+				</div>
+				<div
+					className={`forex-img-wrapper ${mode === 'forex' ? 'active' : ''}`}
+					onClick={handleOpenForex}>
+					<img className='forex-img-hover' src={ForexHover} alt='Forex' />
+					<img className='forex-img-active' src={ForexActive} alt='Forex' />
+				</div>
+				<div
+					className={`stocks-img-wrapper ${mode === 'stocks' ? 'active' : ''}`}
+					onClick={handleOpenStocks}>
+					<img className='stocks-img-hover' src={StocksHover} alt='Stocks' />
+					<img className='stocks-img-active' src={StocksActive} alt='Stocks' />
+				</div>
 
 				<div className={`cool-text ${mode ? 'active' : ''}`}></div>
 			</div>
