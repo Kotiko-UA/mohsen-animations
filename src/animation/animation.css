@@ -158,21 +158,23 @@ section {
   opacity: 1;
 }
 
+/* -------eclipse --------- */
 .eclipse-image.crypto {
-  top: 54%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 32%;
+  transform: scale(0.75);
 }
 
 .eclipse-image.forex {
-  top: 54%;
-  left: 0;
-  transform: translateY(-50%);
+  top: 29%;
+  left: -18%;
+  transform: scale(0.75);
 }
 
 .eclipse-image.stocks {
-  top: 7%;
-  left: 32%;
+  top: 22%;
+  left: 9%;
+  transform: scale(0.75);
 }
 
 .cool-text {
