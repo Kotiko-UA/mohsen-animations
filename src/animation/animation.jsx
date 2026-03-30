@@ -9,6 +9,8 @@ import ForexActive from '../assets/river-2-click.avif'
 import StocksHover from '../assets/river-3-hover.avif'
 import StocksActive from '../assets/river-3-click.avif'
 
+import Eclipse from '../components/Eclipse/Eclipse'
+
 const ITEMS = [
 	{
 		key: 'crypto',
@@ -74,6 +76,7 @@ export const Animation = () => {
 						key={item.key}
 						className={`feature-img-wrapper ${item.key} ${mode === item.key ? 'active' : ''}`}
 						onClick={() => handleOpen(item.key)}>
+						<Eclipse className={`eclipse-image ${item.key}`} text={item.alt} />
 						<img
 							className='feature-img-hover'
 							src={item.hoverSrc}

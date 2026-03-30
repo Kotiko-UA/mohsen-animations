@@ -1,17 +1,12 @@
 .wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 212px;
-  height: 212px;
-  border-radius: 999px;
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
-.imageTopWrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
 
 .imageEclipse {
   position: absolute;
@@ -21,52 +16,39 @@
 
 }
 
-.eclipseGIF {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 170px;
-  height: 170px;
-  overflow: hidden;
-  border-radius: 999px;
-  z-index: 1;
-}
-
-.imageWrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-  width: 394px;
-  aspect-ratio: 4/3;
-  border-radius: 999px;
-
-}
-
-
-
-.imageEclipseGradient {
-  position: absolute;
-  width: 100%;
-  aspect-ratio: 4/3;
-  z-index: 2;
-
-}
-
 .image {
   position: absolute;
-  width: 100%;
-  aspect-ratio: 4/3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 210px;
+  height: 210px;
   z-index: 1;
 }
 
-.textWrapper {}
+.textWrapper {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 
-.icon {}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-.text {}
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.text {
+  font-family: Inter;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}

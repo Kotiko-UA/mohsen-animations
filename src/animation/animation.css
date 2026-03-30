@@ -153,6 +153,28 @@ section {
   opacity: 0;
 }
 
+.feature-img-wrapper:hover .eclipse-image,
+.active .eclipse-image {
+  opacity: 1;
+}
+
+.eclipse-image.crypto {
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.eclipse-image.forex {
+  top: 54%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.eclipse-image.stocks {
+  top: 7%;
+  left: 32%;
+}
+
 .cool-text {
   width: 745px;
   height: 694px;
