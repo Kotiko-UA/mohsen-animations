@@ -51,6 +51,9 @@ export const Animation = () => {
 	const [mode, setMode] = useState(null)
 	const [isZoomed, setIsZoomed] = useState(false)
 	const [scale, setScale] = useState(1)
+	const [hoveredKey, setHoveredKey] = useState(null)
+	const [pressedKey, setPressedKey] = useState(null)
+
 	const containerRef = useRef(null)
 
 	useEffect(() => {
@@ -81,12 +84,18 @@ export const Animation = () => {
 
 	const handleOpen = nextMode => {
 		if (nextMode === 'synthetics') return
+
+		setHoveredKey(null)
+		setPressedKey(null)
 		setMode(nextMode)
+
 		requestAnimationFrame(() => setIsZoomed(true))
 	}
 
 	const handleClose = () => {
 		setIsZoomed(false)
+		setHoveredKey(null)
+		setPressedKey(null)
 	}
 
 	const handleTransitionEnd = () => {
@@ -95,8 +104,44 @@ export const Animation = () => {
 		}
 	}
 
+	const handlePointerEnter = key => {
+		if (mode) return
+		setHoveredKey(key)
+	}
+
+	const handlePointerLeave = key => {
+		if (hoveredKey === key) setHoveredKey(null)
+		if (pressedKey === key) setPressedKey(null)
+	}
+
+	const handlePointerDown = key => {
+		if (mode) return
+		setPressedKey(key)
+	}
+
+	const handlePointerUp = key => {
+		if (pressedKey === key) setPressedKey(null)
+	}
+
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
+
+	const getFeatureClasses = item =>
+		[
+			'feature-img-wrapper',
+			item.key,
+			mode === item.key && 'active',
+			hoveredKey === item.key && 'hovered',
+			pressedKey === item.key && 'pressed',
+			item.type === 'locked' && 'locked',
+		]
+			.filter(Boolean)
+			.join(' ')
+
+	const getHitAreaClasses = item =>
+		['hit-area', item.key, item.type === 'locked' && 'locked']
+			.filter(Boolean)
+			.join(' ')
 
 	return (
 		<div className='main-container' ref={containerRef}>
@@ -105,7 +150,8 @@ export const Animation = () => {
 					<button
 						type='button'
 						className={`back-button ${mode ? 'visible' : ''}`}
-						onClick={handleClose}>
+						onClick={handleClose}
+						aria-label='Back'>
 						<ArrowBack />
 					</button>
 
@@ -117,12 +163,7 @@ export const Animation = () => {
 					/>
 
 					{ITEMS.map(item => (
-						<div
-							key={item.key}
-							className={`feature-img-wrapper ${item.key} ${
-								mode === item.key ? 'active' : ''
-							}`}
-							onClick={() => handleOpen(item.key)}>
+						<div key={item.key} className={getFeatureClasses(item)}>
 							<Eclipse
 								className={`eclipse-image ${item.key}`}
 								text={item.alt}
@@ -140,6 +181,26 @@ export const Animation = () => {
 							/>
 						</div>
 					))}
+
+					<div className={`hit-areas-layer ${mode ? 'disabled' : ''}`}>
+						{ITEMS.map(item => (
+							<button
+								key={item.key}
+								type='button'
+								className={getHitAreaClasses(item)}
+								onPointerEnter={() => handlePointerEnter(item.key)}
+								onPointerLeave={() => handlePointerLeave(item.key)}
+								onPointerDown={() => handlePointerDown(item.key)}
+								onPointerUp={() => handlePointerUp(item.key)}
+								onPointerCancel={() => handlePointerLeave(item.key)}
+								onClick={() => handleOpen(item.key)}
+								aria-label={
+									item.type === 'locked' ? `${item.alt} locked` : item.alt
+								}
+								aria-pressed={mode === item.key}
+							/>
+						))}
+					</div>
 
 					<div className={`cool-text ${mode ? 'active' : ''}`}></div>
 				</div>
