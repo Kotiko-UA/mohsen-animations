@@ -14,6 +14,7 @@ import ArrowBack from '../assets/arrow-left.svg?react'
 import Eclipse from '../components/Eclipse/Eclipse'
 import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'
+import Commitments from '../components/Commitments/Commitments'
 
 const BASE_WIDTH = 1440
 const BASE_HEIGHT = 820
@@ -157,6 +158,7 @@ export const Animation = () => {
 						<ArrowBack />
 					</button>
 					<ClickBanner hidden={mode} />
+					<Commitments hidden={mode} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
 					<img
 						className={`main-img ${stateClass}`}

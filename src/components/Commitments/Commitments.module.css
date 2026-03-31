@@ -1,0 +1,72 @@
+.wrapper {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+
+  width: 326px;
+  display: flex;
+  padding: 40px;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+
+  border: 1px solid #434343;
+  background: rgba(40, 40, 40, 0.40);
+
+  z-index: 11;
+}
+
+.hidden {
+  opacity: 0;
+
+}
+
+.closeByButton {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+
+.closeByButton svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.comWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.noTime {
+  opacity: 0.25;
+}
+
+.itemText {
+  color: #FFF;
+
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 126%;
+}
+
+.itemText span {
+  font-weight: 700;
+}
