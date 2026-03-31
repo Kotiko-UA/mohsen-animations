@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './animation.css'
 
 import MainImg from '../assets/main.png'
@@ -13,6 +13,9 @@ import SyntheticsActive from '../assets/river-4-click.avif'
 import ArrowBack from '../assets/arrow-left.svg?react'
 
 import Eclipse from '../components/Eclipse/Eclipse'
+
+const BASE_WIDTH = 1440
+const BASE_HEIGHT = 820
 
 const ITEMS = [
 	{
@@ -48,11 +51,37 @@ const ITEMS = [
 export const Animation = () => {
 	const [mode, setMode] = useState(null)
 	const [isZoomed, setIsZoomed] = useState(false)
+	const [scale, setScale] = useState(1)
+	const containerRef = useRef(null)
+
+	useEffect(() => {
+		const element = containerRef.current
+		if (!element) return
+
+		const updateScale = () => {
+			const rect = element.getBoundingClientRect()
+			const nextScale = Math.min(
+				rect.width / BASE_WIDTH,
+				rect.height / BASE_HEIGHT,
+			)
+			setScale(nextScale)
+		}
+
+		updateScale()
+
+		const resizeObserver = new ResizeObserver(() => {
+			updateScale()
+		})
+
+		resizeObserver.observe(element)
+
+		return () => {
+			resizeObserver.disconnect()
+		}
+	}, [])
 
 	const handleOpen = nextMode => {
-		if (nextMode === 'synthetics') {
-			return
-		}
+		if (nextMode === 'synthetics') return
 		setMode(nextMode)
 		requestAnimationFrame(() => setIsZoomed(true))
 	}
@@ -71,46 +100,50 @@ export const Animation = () => {
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
 	return (
-		<div className='main-container'>
-			<div className={`main-img-wrap ${stateClass}`}>
-				<button
-					type='button'
-					className={`back-button ${mode ? 'visible' : ''}`}
-					onClick={handleClose}>
-					<ArrowBack />
-				</button>
+		<div className='main-container' ref={containerRef}>
+			<div className='scene-stage' style={{ transform: `scale(${scale})` }}>
+				<div className={`main-img-wrap ${stateClass}`}>
+					<button
+						type='button'
+						className={`back-button ${mode ? 'visible' : ''}`}
+						onClick={handleClose}>
+						<ArrowBack />
+					</button>
 
-				<img
-					className={`main-img ${stateClass}`}
-					src={MainImg}
-					alt='Main'
-					onTransitionEnd={handleTransitionEnd}
-				/>
+					<img
+						className={`main-img ${stateClass}`}
+						src={MainImg}
+						alt='Main'
+						onTransitionEnd={handleTransitionEnd}
+					/>
 
-				{ITEMS.map(item => (
-					<div
-						key={item.key}
-						className={`feature-img-wrapper ${item.key} ${mode === item.key ? 'active' : ''}`}
-						onClick={() => handleOpen(item.key)}>
-						<Eclipse
-							className={`eclipse-image ${item.key}`}
-							text={item.alt}
-							type={item.type}
-						/>
-						<img
-							className='feature-img-hover'
-							src={item.hoverSrc}
-							alt={item.alt}
-						/>
-						<img
-							className='feature-img-active'
-							src={item.activeSrc}
-							alt={item.alt}
-						/>
-					</div>
-				))}
+					{ITEMS.map(item => (
+						<div
+							key={item.key}
+							className={`feature-img-wrapper ${item.key} ${
+								mode === item.key ? 'active' : ''
+							}`}
+							onClick={() => handleOpen(item.key)}>
+							<Eclipse
+								className={`eclipse-image ${item.key}`}
+								text={item.alt}
+								type={item.type}
+							/>
+							<img
+								className='feature-img-hover'
+								src={item.hoverSrc}
+								alt={item.alt}
+							/>
+							<img
+								className='feature-img-active'
+								src={item.activeSrc}
+								alt={item.alt}
+							/>
+						</div>
+					))}
 
-				<div className={`cool-text ${mode ? 'active' : ''}`}></div>
+					<div className={`cool-text ${mode ? 'active' : ''}`}></div>
+				</div>
 			</div>
 		</div>
 	)

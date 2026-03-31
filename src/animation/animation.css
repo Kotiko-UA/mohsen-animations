@@ -5,10 +5,29 @@ section {
 }
 
 .main-container {
+  position: relative;
+  width: min(100vw, 1440px);
+  aspect-ratio: 1440 / 820;
   overflow: hidden;
+  margin-inline: auto;
+}
+
+.scene-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 1440px;
   height: 820px;
-  position: relative;
+  transform-origin: top left;
+}
+
+.main-img-wrap {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  width: 1440px;
+  height: 820px;
+  z-index: 1;
 }
 
 .main-img-wrap {
