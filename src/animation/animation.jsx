@@ -157,7 +157,7 @@ export const Animation = () => {
 						<ArrowBack />
 					</button>
 					<ClickBanner hidden={mode} />
-					<Timer targetDate='01.05.2026' />
+					<Timer targetDate='01.05.2026' hidden={mode} />
 					<img
 						className={`main-img ${stateClass}`}
 						src={MainImg}

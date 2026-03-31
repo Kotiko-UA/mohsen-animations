@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import styles from './Timer.module.css'
 import TimerIcon from '../../assets/timer.svg?react'
+import TimerDot from '../../assets/timer-dot.avif'
 
 function parseDateString(dateString) {
 	const [day, month, year] = dateString.split('.').map(Number)
@@ -37,7 +38,7 @@ function getTimeLeft(targetDate) {
 	}
 }
 
-export default function Timer({ targetDate = '01.05.2026' }) {
+export default function Timer({ targetDate = '01.05.2026', hidden }) {
 	const parsedTargetDate = useMemo(
 		() => parseDateString(targetDate),
 		[targetDate],
@@ -70,13 +71,14 @@ export default function Timer({ targetDate = '01.05.2026' }) {
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={`${styles.wrapper} ${hidden ? styles.hidden : ''}`}>
 			<div className={styles.timerWrapper}>
 				<TimerIcon className={styles.timerSVG} />
 				<div className={styles.timerText}>
 					{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
 				</div>
 			</div>
+			<img src={TimerDot} alt='timer dot' className={styles.timerDot} />
 			<div className={styles.timeText}>
 				<div className={styles.textHeader}>Wes League</div>
 				<div className={styles.textParagraph}>start on 1st of May, 2026.</div>

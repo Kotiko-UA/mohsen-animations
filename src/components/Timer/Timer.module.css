@@ -7,6 +7,12 @@
   width: 150px;
   height: 100px;
   z-index: 11;
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
 }
 
 .timerWrapper {
@@ -16,7 +22,7 @@
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
   width: 150px;
   padding: 7px 12px;
@@ -42,11 +48,48 @@
   font-weight: 500;
 }
 
+.timerDot {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  animation: dotAnimation 2s ease-in-out infinite;
+}
+
+@keyframes dotAnimation {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  33% {
+    transform: translateX(-50%) scale(0.5);
+  }
+
+  66% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.wrapper:hover .timerDot {
+  opacity: 0;
+  transform: translate(-50%);
+}
+
 .timeText {
   position: absolute;
   top: 28px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 30%);
 
   padding: 16px 24px 12px 24px;
   display: flex;
@@ -60,6 +103,13 @@
   border: 1px solid transparent;
 
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.wrapper:hover .timeText {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .textHeader {
