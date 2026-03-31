@@ -1,0 +1,61 @@
+.wrapper {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+
+  display: flex;
+  padding: 40px 60px;
+  flex-direction: column;
+  gap: 12px;
+
+  border: 1px solid #434343;
+  background: rgba(40, 40, 40, 0.40);
+  backdrop-filter: blur(30px);
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: 5;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.logoWrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.logoWrap svg {
+  width: 109px;
+  height: 52px;
+}
+
+.logoWrap div {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 124%;
+}
+
+.textWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.textWrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.textWrap div {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 126%;
+}

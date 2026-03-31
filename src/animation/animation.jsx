@@ -12,6 +12,7 @@ import SyntheticsHover from '../assets/river-4-hover.avif'
 import ArrowBack from '../assets/arrow-left.svg?react'
 
 import Eclipse from '../components/Eclipse/Eclipse'
+import ClickBanner from '../components/Click-banner/ClickBanner'
 
 const BASE_WIDTH = 1440
 const BASE_HEIGHT = 820
@@ -154,7 +155,7 @@ export const Animation = () => {
 						aria-label='Back'>
 						<ArrowBack />
 					</button>
-
+					<ClickBanner hidden={mode} />
 					<img
 						className={`main-img ${stateClass}`}
 						src={MainImg}
