@@ -39,7 +39,7 @@ const ITEMS = [
 	{
 		key: 'synthetics',
 		hoverSrc: SyntheticsHover,
-		activeSrc: SyntheticsActive,
+		activeSrc: SyntheticsHover,
 		alt: 'Synthetics',
 		type: 'locked',
 	},
