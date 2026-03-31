@@ -8,6 +8,8 @@ import ForexHover from '../assets/river-2-hover.avif'
 import ForexActive from '../assets/river-2-click.avif'
 import StocksHover from '../assets/river-3-hover.avif'
 import StocksActive from '../assets/river-3-click.avif'
+import SyntheticsHover from '../assets/river-4-hover.avif'
+import SyntheticsActive from '../assets/river-4-click.avif'
 
 import Eclipse from '../components/Eclipse/Eclipse'
 
@@ -17,18 +19,28 @@ const ITEMS = [
 		hoverSrc: CryptoHover,
 		activeSrc: CryptoActive,
 		alt: 'Crypto',
+		type: 'normal',
 	},
 	{
 		key: 'forex',
 		hoverSrc: ForexHover,
 		activeSrc: ForexActive,
 		alt: 'Forex',
+		type: 'normal',
 	},
 	{
 		key: 'stocks',
 		hoverSrc: StocksHover,
 		activeSrc: StocksActive,
 		alt: 'Stocks',
+		type: 'normal',
+	},
+	{
+		key: 'synthetics',
+		hoverSrc: SyntheticsHover,
+		activeSrc: SyntheticsActive,
+		alt: 'Synthetics',
+		type: 'locked',
 	},
 ]
 
@@ -37,6 +49,9 @@ export const Animation = () => {
 	const [isZoomed, setIsZoomed] = useState(false)
 
 	const handleOpen = nextMode => {
+		if (nextMode === 'locked') {
+			return
+		}
 		setMode(nextMode)
 		requestAnimationFrame(() => setIsZoomed(true))
 	}
@@ -76,7 +91,11 @@ export const Animation = () => {
 						key={item.key}
 						className={`feature-img-wrapper ${item.key} ${mode === item.key ? 'active' : ''}`}
 						onClick={() => handleOpen(item.key)}>
-						<Eclipse className={`eclipse-image ${item.key}`} text={item.alt} />
+						<Eclipse
+							className={`eclipse-image ${item.key}`}
+							text={item.alt}
+							type={item.type}
+						/>
 						<img
 							className='feature-img-hover'
 							src={item.hoverSrc}
