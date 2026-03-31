@@ -1,20 +1,31 @@
-.timerWrapper {
-
+.wrapper {
   position: absolute;
   top: 289px;
   left: 50%;
   transform: translateX(-50%);
+
+  width: 150px;
+  height: 100px;
+  z-index: 11;
+}
+
+.timerWrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  width: 150px;
   padding: 7px 12px;
 
   background: linear-gradient(#240F66, #240F66) padding-box, linear-gradient(180deg, #F7BA59 0%, #E849F0 27.4%, #8463FB 60.58%, #3588FD 79.33%, #04D4F9 100%) border-box;
   border-radius: 999px;
   border: 1px solid transparent;
-  background-color: #240F66;
 
-  z-index: 5;
+  z-index: 2;
 }
 
 .timerSVG {
@@ -29,4 +40,42 @@
   font-family: Inter;
   font-size: 18px;
   font-weight: 500;
+}
+
+.timeText {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 16px 24px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  background: linear-gradient(#240F66, #240F66) padding-box, linear-gradient(180deg, #F7BA59 0%, #E849F0 27.4%, #8463FB 60.58%, #3588FD 79.33%, #04D4F9 100%) border-box;
+  border-radius: 999px;
+  border: 1px solid transparent;
+
+  z-index: 1;
+}
+
+.textHeader {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.textParagraph {
+  color: #FFF;
+
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 126%;
+  white-space: nowrap;
 }

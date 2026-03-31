@@ -70,10 +70,16 @@ export default function Timer({ targetDate = '01.05.2026' }) {
 	}
 
 	return (
-		<div className={styles.timerWrapper}>
-			<TimerIcon className={styles.timerSVG} />
-			<div className={styles.timerText}>
-				{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
+		<div className={styles.wrapper}>
+			<div className={styles.timerWrapper}>
+				<TimerIcon className={styles.timerSVG} />
+				<div className={styles.timerText}>
+					{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
+				</div>
+			</div>
+			<div className={styles.timeText}>
+				<div className={styles.textHeader}>Wes League</div>
+				<div className={styles.textParagraph}>start on 1st of May, 2026.</div>
 			</div>
 		</div>
 	)
