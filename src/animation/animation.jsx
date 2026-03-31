@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './animation.css'
 
-import MainImg from '../assets/main.png'
+import MainImg from '../assets/main.jpg'
 import CryptoHover from '../assets/river-1-hover.avif'
 import CryptoActive from '../assets/river-1-click.avif'
 import ForexHover from '../assets/river-2-hover.avif'
