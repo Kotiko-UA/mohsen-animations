@@ -1,0 +1,32 @@
+.timerWrapper {
+
+  position: absolute;
+  top: 289px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+
+  background: linear-gradient(#240F66, #240F66) padding-box, linear-gradient(180deg, #F7BA59 0%, #E849F0 27.4%, #8463FB 60.58%, #3588FD 79.33%, #04D4F9 100%) border-box;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-color: #240F66;
+
+  z-index: 5;
+}
+
+.timerSVG {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.timerText {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+}
