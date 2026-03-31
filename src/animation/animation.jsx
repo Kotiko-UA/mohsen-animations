@@ -10,6 +10,7 @@ import StocksHover from '../assets/river-3-hover.avif'
 import StocksActive from '../assets/river-3-click.avif'
 import SyntheticsHover from '../assets/river-4-hover.avif'
 import SyntheticsActive from '../assets/river-4-click.avif'
+import ArrowBack from '../assets/arrow-left.svg?react'
 
 import Eclipse from '../components/Eclipse/Eclipse'
 
@@ -49,7 +50,7 @@ export const Animation = () => {
 	const [isZoomed, setIsZoomed] = useState(false)
 
 	const handleOpen = nextMode => {
-		if (nextMode === 'locked') {
+		if (nextMode === 'synthetics') {
 			return
 		}
 		setMode(nextMode)
@@ -76,7 +77,7 @@ export const Animation = () => {
 					type='button'
 					className={`back-button ${mode ? 'visible' : ''}`}
 					onClick={handleClose}>
-					Back
+					<ArrowBack />
 				</button>
 
 				<img
