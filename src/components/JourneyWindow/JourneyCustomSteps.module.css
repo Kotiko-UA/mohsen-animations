@@ -1,0 +1,420 @@
+.windowContent {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.titleLg {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.titleMd {
+  margin: 0 0 14px;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.titleMdCenter {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-align: center;
+  flex: 1;
+}
+
+.leadText {
+  margin: 18px 0 28px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 560px;
+}
+
+.sectionHeading {
+  margin: 0 0 14px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ratingBlock {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stars {
+  font-size: 18px;
+  line-height: 1;
+  color: #f7c948;
+  letter-spacing: 2px;
+}
+
+.ratingText {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.choiceButton {
+  height: 46px;
+  padding: 10px 14px;
+  border: 1px solid #754cf0;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.choiceButton:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.choiceButtonActive {
+  background: #754cf0;
+  border-color: #754cf0;
+  font-weight: 700;
+}
+
+.bottomActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.commitmentNote {
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.microLabel {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.inlineActionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.textTitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bodyText {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.topMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.metaLabel {
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.checkItem input {
+  margin-top: 2px;
+  accent-color: #754cf0;
+}
+
+.discordLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 18px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.discordContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.discordButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.discordHints {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.discordPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #1f1f1f 0%, #111 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .optionGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inlineActionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .discordLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .discordPreview {
+    width: 100%;
+    height: 160px;
+  }
+}
+
+.windowContent {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.titleMd {
+  margin: 0 0 14px;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.titleMdCenter {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-align: center;
+  flex: 1;
+}
+
+.microLabel {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.inlineActionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.textTitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bodyText {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.bottomActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.topMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.metaLabel {
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.checkItem input {
+  margin-top: 2px;
+  accent-color: #754cf0;
+}
+
+.discordLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 18px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.discordContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.discordButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.discordHints {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.discordPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #1f1f1f 0%, #111 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.imageCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 170px;
+  margin: 18px 0 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  text-align: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .inlineActionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .discordLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .discordPreview {
+    width: 100%;
+    height: 160px;
+  }
+}

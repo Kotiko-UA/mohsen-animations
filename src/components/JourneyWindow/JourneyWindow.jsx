@@ -137,6 +137,8 @@ export default function JourneyWindow({
 		meta: currentStep?.meta ?? null,
 	}
 
+	const StepComponent = currentStep?.component ?? null
+
 	if (!flow || !currentStep) {
 		return (
 			<div className={`${styles.window} ${className}`}>
@@ -163,62 +165,13 @@ export default function JourneyWindow({
 				)}
 
 				<div className={styles.body}>
-					{typeof currentStep.render === 'function' ? (
-						currentStep.render(api)
+					{StepComponent ? (
+						<StepComponent {...api} />
 					) : (
-						<DefaultStep
-							step={currentStep}
-							onAction={action => handleAction(action, api)}
-						/>
+						<div className={styles.empty}>Step component is missing</div>
 					)}
 				</div>
 			</div>
 		</div>
-	)
-}
-
-function handleAction(action, api) {
-	if (!action) return
-
-	if (action.type === 'next' || action.type === 'goTo') {
-		api.goTo(action.nextStepId)
-		return
-	}
-
-	if (action.type === 'replace') {
-		api.replace(action.nextStepId)
-		return
-	}
-
-	if (action.type === 'link') {
-		api.openLink(action)
-	}
-}
-
-function DefaultStep({ step, onAction }) {
-	return (
-		<>
-			{step.title ? <h3>{step.title}</h3> : null}
-			{step.description ? <p>{step.description}</p> : null}
-
-			{step.media ? (
-				<div>
-					<img src={step.media.src} alt={step.media.alt || ''} />
-				</div>
-			) : null}
-
-			<div>
-				{step.actions?.map(action => (
-					<button
-						key={action.id || action.label}
-						type='button'
-						onClick={() => onAction(action)}>
-						{action.label}
-					</button>
-				))}
-			</div>
-
-			{step.caption ? <div>{step.caption}</div> : null}
-		</>
 	)
 }
