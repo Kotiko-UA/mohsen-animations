@@ -86,11 +86,15 @@ section {
 }
 
 .main-img.stocks-mode {
-  transform-origin: 120% 71%;
+  transform-origin: 100% 71%;
 }
 
 .main-img.zoomed {
   transform: scale(1.7);
+}
+
+.main-img.stocks-mode.zoomed {
+  transform: scale(2.15);
 }
 
 /* ---------- feature visuals ---------- */
@@ -144,15 +148,23 @@ section {
 }
 
 .main-img-wrap.stocks-mode .feature-img-wrapper.stocks {
-  transform-origin: 318% 30%;
+  transform-origin: 193% 39%;
 }
 
 .main-img-wrap.zoomed .feature-img-wrapper {
   transform: scale(1.6);
 }
 
-.main-img-wrap.zoomed .feature-img-wrapper.crypto {
-  height: 440px;
+.main-img-wrap.zoomed .feature-img-wrapper.stocks {
+  transform: scale(2.15);
+}
+
+.main-img-wrap.zoomed .feature-img-wrapper.stocks {
+  transform: scale(2.15);
+}
+
+.main-img-wrap.zoomed .feature-img-wrapper.stocks .eclipse-image {
+  transform: scale(0.5);
 }
 
 /* ---------- internal feature images ---------- */
