@@ -76,6 +76,7 @@ section {
   transition: transform 0.6s ease-in-out;
 }
 
+
 .main-img.crypto-mode {
   transform-origin: 38% 100%;
 }
@@ -253,12 +254,6 @@ section {
   cursor: default;
 }
 
-/*
-  Це головні зони кліку.
-  Якщо захочеш ще точніше підганяти під макет —
-  рухай саме ці left / bottom / width / height.
-*/
-
 .hit-area.crypto {
   width: 299px;
   height: 401px;
@@ -288,6 +283,16 @@ section {
 }
 
 /* ---------- extra decorative block ---------- */
+.wow-power {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 238px;
+  height: 298px;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
 .can-click-image {
   position: absolute;
   top: 390px;
@@ -297,21 +302,28 @@ section {
   z-index: 5;
 }
 
-.cool-text {
-  width: 745px;
-  height: 694px;
-  background-color: rgba(127, 255, 0, 0.3);
+/* ----Journey --------- */
+.journey-window-wrap {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  transform-origin: right top;
-  transform: rotate(-45deg);
-  z-index: 3;
+  top: 50%;
+  right: 40px;
+  width: 745px;
+  max-height: 740px;
+  overflow-y: auto;
+  z-index: 20;
+  pointer-events: auto;
+  transform: translateY(-50%);
 }
 
-.cool-text.active {
-  opacity: 1;
-  transform: rotate(0deg);
+/* приклад, якщо хочеш зовнішньо реагувати на step */
+.cool-text.road-step-1 {}
+
+.cool-text.road-step-2 {}
+
+.cool-text.road-step-3 {}
+
+.cool-text.road-step-4 {}
+
+.eclipse-image.journey-active {
+  filter: drop-shadow(0 0 14px rgba(160, 90, 255, 0.95));
 }

@@ -11,11 +11,14 @@ import StocksActive from '../assets/river-3-click.avif'
 import SyntheticsHover from '../assets/river-4-hover.avif'
 import ArrowBack from '../assets/arrow-left.svg?react'
 import CanClick from '../assets/can-click.avif'
+import WoWPower from '../assets/wow_powers.webp'
 
 import Eclipse from '../components/Eclipse/Eclipse'
 import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'
 import Commitments from '../components/Commitments/Commitments'
+import JourneyWindow from '../components/JourneyWindow/JourneyWindow'
+import { journeyFlows } from '../components/JourneyWindow/journeyFlows'
 
 const BASE_WIDTH = 1440
 const BASE_HEIGHT = 820
@@ -58,6 +61,9 @@ export const Animation = () => {
 	const [hoveredKey, setHoveredKey] = useState(null)
 	const [pressedKey, setPressedKey] = useState(null)
 
+	// новий стан для внутрішнього journey-вікна
+	const [activeJourneyState, setActiveJourneyState] = useState(null)
+
 	const containerRef = useRef(null)
 
 	useEffect(() => {
@@ -91,6 +97,7 @@ export const Animation = () => {
 
 		setHoveredKey(null)
 		setPressedKey(null)
+		setActiveJourneyState(null)
 		setMode(nextMode)
 
 		requestAnimationFrame(() => setIsZoomed(true))
@@ -100,6 +107,7 @@ export const Animation = () => {
 		setIsZoomed(false)
 		setHoveredKey(null)
 		setPressedKey(null)
+		setActiveJourneyState(null)
 	}
 
 	const handleTransitionEnd = () => {
@@ -127,8 +135,21 @@ export const Animation = () => {
 		if (pressedKey === key) setPressedKey(null)
 	}
 
+	const handleJourneyStepChange = payload => {
+		setActiveJourneyState(payload)
+	}
+
+	const handleJourneyFlowExit = () => {
+		// це back усередині чорного вікна на першому кроці
+		// тут можна або нічого не робити,
+		// або синхронізувати якусь анімацію
+	}
+
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
+
+	const activeSceneNode = activeJourneyState?.step?.meta?.sceneNode || null
+	const activeRoadStep = activeJourneyState?.step?.meta?.roadStep || null
 
 	const getFeatureClasses = item =>
 		[
@@ -158,12 +179,17 @@ export const Animation = () => {
 						aria-label='Back'>
 						<ArrowBack />
 					</button>
+
 					<ClickBanner hidden={mode} />
 					<Commitments hidden={mode} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
+
 					{!mode && (
 						<img className='can-click-image' src={CanClick} alt='Can click' />
 					)}
+
+					<img className='wow-power' src={WoWPower} alt='WoWPower' />
+
 					<img
 						className={`main-img ${stateClass}`}
 						src={MainImg}
@@ -174,7 +200,9 @@ export const Animation = () => {
 					{ITEMS.map(item => (
 						<div key={item.key} className={getFeatureClasses(item)}>
 							<Eclipse
-								className={`eclipse-image ${item.key}`}
+								className={`eclipse-image ${item.key} ${
+									activeSceneNode === item.key ? 'journey-active' : ''
+								}`}
 								text={item.alt}
 								type={item.type}
 							/>
@@ -211,7 +239,22 @@ export const Animation = () => {
 						))}
 					</div>
 
-					<div className={`cool-text ${mode ? 'active' : ''}`}></div>
+					{/* праве чорне вікно */}
+					{mode && (
+						<div className='journey-window-wrap'>
+							<JourneyWindow
+								pathKey={mode}
+								flows={journeyFlows}
+								onStepChange={handleJourneyStepChange}
+								onFlowExit={handleJourneyFlowExit}
+							/>
+						</div>
+					)}
+
+					<div
+						className={`cool-text ${mode ? 'active' : ''} ${
+							activeRoadStep ? `road-step-${activeRoadStep}` : ''
+						}`}></div>
 				</div>
 			</div>
 		</div>
