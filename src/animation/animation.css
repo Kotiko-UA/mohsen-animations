@@ -288,6 +288,14 @@ section {
 }
 
 /* ---------- extra decorative block ---------- */
+.can-click-image {
+  position: absolute;
+  top: 390px;
+  left: 860px;
+  width: 69px;
+  height: 69px;
+  z-index: 5;
+}
 
 .cool-text {
   width: 745px;

@@ -10,6 +10,7 @@ import StocksHover from '../assets/river-3-hover.avif'
 import StocksActive from '../assets/river-3-click.avif'
 import SyntheticsHover from '../assets/river-4-hover.avif'
 import ArrowBack from '../assets/arrow-left.svg?react'
+import CanClick from '../assets/can-click.avif'
 
 import Eclipse from '../components/Eclipse/Eclipse'
 import ClickBanner from '../components/Click-banner/ClickBanner'
@@ -160,6 +161,9 @@ export const Animation = () => {
 					<ClickBanner hidden={mode} />
 					<Commitments hidden={mode} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
+					{!mode && (
+						<img className='can-click-image' src={CanClick} alt='Can click' />
+					)}
 					<img
 						className={`main-img ${stateClass}`}
 						src={MainImg}
