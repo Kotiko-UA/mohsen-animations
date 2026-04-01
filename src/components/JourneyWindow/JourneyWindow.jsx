@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from './JourneyWindow.module.css'
 import ArrowBack from '../../assets/arrow-left.svg?react'
 
@@ -15,76 +15,85 @@ export default function JourneyWindow({
 		return pathKey ? (flows?.[pathKey] ?? null) : null
 	}, [flows, pathKey])
 
-	const [history, setHistory] = useState([])
-	const [currentStepId, setCurrentStepId] = useState(null)
+	const initialStepId = flow?.initialStepId ?? null
+
+	const [stepStack, setStepStack] = useState(() =>
+		initialStepId ? [initialStepId] : [],
+	)
+
+	const lastReportedSignatureRef = useRef('')
+
+	const currentStepId =
+		stepStack.length > 0 ? stepStack[stepStack.length - 1] : null
+
+	const currentStep = currentStepId
+		? (flow?.steps?.[currentStepId] ?? null)
+		: null
+	const canGoBack = stepStack.length > 1
+	const historyLength = Math.max(0, stepStack.length - 1)
 
 	useEffect(() => {
-		if (!flow) {
-			setHistory([])
-			setCurrentStepId(null)
-			return
-		}
-
-		setHistory([])
-		setCurrentStepId(flow.initialStepId)
+		if (!pathKey || !initialStepId) return
 
 		onFlowStart?.({
 			pathKey,
-			flow,
-			initialStepId: flow.initialStepId,
+			initialStepId,
 		})
-	}, [flow, pathKey, onFlowStart])
-
-	const currentStep = flow?.steps?.[currentStepId] ?? null
-	const canGoBack = history.length > 0
+	}, [pathKey, initialStepId, onFlowStart])
 
 	useEffect(() => {
 		if (!flow || !currentStep || !currentStepId) return
+
+		const reportSignature = [
+			pathKey ?? 'null',
+			currentStepId,
+			canGoBack ? '1' : '0',
+			historyLength,
+		].join('::')
+
+		if (lastReportedSignatureRef.current === reportSignature) return
+		lastReportedSignatureRef.current = reportSignature
 
 		onStepChange?.({
 			pathKey,
 			stepId: currentStepId,
 			step: currentStep,
-			flow,
-			history,
 			canGoBack,
+			historyLength,
+			meta: currentStep.meta ?? null,
 		})
 	}, [
 		pathKey,
 		currentStepId,
 		currentStep,
-		flow,
-		history,
 		canGoBack,
+		historyLength,
+		flow,
 		onStepChange,
 	])
 
 	const goToStep = nextStepId => {
 		if (!flow?.steps?.[nextStepId]) return
 
-		setHistory(prev => [...prev, currentStepId])
-		setCurrentStepId(nextStepId)
+		setStepStack(prev => {
+			if (prev[prev.length - 1] === nextStepId) return prev
+			return [...prev, nextStepId]
+		})
 	}
 
 	const handleBack = () => {
 		if (!flow || !currentStepId) return
 
-		if (history.length === 0) {
+		if (stepStack.length <= 1) {
 			onFlowExit?.({
 				pathKey,
 				stepId: currentStepId,
 				step: currentStep,
-				flow,
 			})
 			return
 		}
 
-		setHistory(prev => {
-			const nextHistory = [...prev]
-			const previousStepId = nextHistory.pop()
-			setCurrentStepId(previousStepId)
-			return nextHistory
-		})
+		setStepStack(prev => prev.slice(0, -1))
 	}
 
 	const handleActionClick = action => {
@@ -101,7 +110,6 @@ export default function JourneyWindow({
 			if (action.href) {
 				window.open(action.href, '_blank', 'noopener,noreferrer')
 			}
-			return
 		}
 	}
 

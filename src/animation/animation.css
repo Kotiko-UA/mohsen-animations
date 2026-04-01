@@ -309,9 +309,6 @@ section {
   right: 40px;
   width: 745px;
   max-height: 740px;
-  overflow-y: auto;
-  z-index: 20;
-  pointer-events: auto;
   transform: translateY(-50%);
 }
 
