@@ -322,6 +322,7 @@ section {
   width: 745px;
   max-height: 740px;
   transform: translateY(-50%);
+  z-index: 20;
 }
 
 /* приклад, якщо хочеш зовнішньо реагувати на step */

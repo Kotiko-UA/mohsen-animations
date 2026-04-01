@@ -29,6 +29,7 @@ export default function JourneyWindow({
 	const currentStep = currentStepId
 		? (flow?.steps?.[currentStepId] ?? null)
 		: null
+
 	const canGoBack = stepStack.length > 1
 	const historyLength = Math.max(0, stepStack.length - 1)
 
@@ -81,7 +82,17 @@ export default function JourneyWindow({
 		})
 	}
 
-	const handleBack = () => {
+	const replaceStep = nextStepId => {
+		if (!flow?.steps?.[nextStepId]) return
+
+		setStepStack(prev => {
+			if (!prev.length) return [nextStepId]
+			if (prev[prev.length - 1] === nextStepId) return prev
+			return [...prev.slice(0, -1), nextStepId]
+		})
+	}
+
+	const goBack = () => {
 		if (!flow || !currentStepId) return
 
 		if (stepStack.length <= 1) {
@@ -96,21 +107,34 @@ export default function JourneyWindow({
 		setStepStack(prev => prev.slice(0, -1))
 	}
 
-	const handleActionClick = action => {
-		if (!action) return
+	const openLink = actionOrHref => {
+		if (!actionOrHref) return
 
-		if (action.type === 'next') {
-			goToStep(action.nextStepId)
+		if (typeof actionOrHref === 'string') {
+			window.open(actionOrHref, '_blank', 'noopener,noreferrer')
 			return
 		}
 
-		if (action.type === 'link') {
-			onLinkOpen?.(action, currentStep, flow)
+		onLinkOpen?.(actionOrHref, currentStep, flow)
 
-			if (action.href) {
-				window.open(action.href, '_blank', 'noopener,noreferrer')
-			}
+		if (actionOrHref.href) {
+			window.open(actionOrHref.href, '_blank', 'noopener,noreferrer')
 		}
+	}
+
+	const api = {
+		pathKey,
+		flow,
+		step: currentStep,
+		stepId: currentStepId,
+		canGoBack,
+		historyLength,
+		next: goToStep,
+		goTo: goToStep,
+		replace: replaceStep,
+		back: goBack,
+		openLink,
+		meta: currentStep?.meta ?? null,
 	}
 
 	if (!flow || !currentStep) {
@@ -126,56 +150,75 @@ export default function JourneyWindow({
 	return (
 		<div className={`${styles.window} ${className}`}>
 			<div className={styles.inner}>
-				<div className={styles.header}>
-					<button
-						type='button'
-						className={styles.backButton}
-						onClick={handleBack}
-						aria-label='Back step'>
-						<ArrowBack className={styles.backIcon} />
-					</button>
-				</div>
+				{canGoBack && (
+					<div className={styles.header}>
+						<button
+							type='button'
+							className={styles.backButton}
+							onClick={goBack}
+							aria-label='Back step'>
+							<ArrowBack className={styles.backIcon} />
+						</button>
+					</div>
+				)}
 
 				<div className={styles.body}>
-					{currentStep.title ? (
-						<h3 className={styles.title}>{currentStep.title}</h3>
-					) : null}
-
-					{currentStep.description ? (
-						<p className={styles.description}>{currentStep.description}</p>
-					) : null}
-
-					{currentStep.media ? (
-						<div className={styles.mediaWrap}>
-							<img
-								className={styles.media}
-								src={currentStep.media.src}
-								alt={currentStep.media.alt || ''}
-							/>
-						</div>
-					) : null}
+					{typeof currentStep.render === 'function' ? (
+						currentStep.render(api)
+					) : (
+						<DefaultStep
+							step={currentStep}
+							onAction={action => handleAction(action, api)}
+						/>
+					)}
 				</div>
-
-				<div className={styles.actions}>
-					{currentStep.actions?.map(action => (
-						<button
-							key={action.id || action.label}
-							type='button'
-							className={
-								action.variant === 'secondary'
-									? styles.secondaryButton
-									: styles.primaryButton
-							}
-							onClick={() => handleActionClick(action)}>
-							{action.label}
-						</button>
-					))}
-				</div>
-
-				{currentStep.caption ? (
-					<div className={styles.caption}>{currentStep.caption}</div>
-				) : null}
 			</div>
 		</div>
+	)
+}
+
+function handleAction(action, api) {
+	if (!action) return
+
+	if (action.type === 'next' || action.type === 'goTo') {
+		api.goTo(action.nextStepId)
+		return
+	}
+
+	if (action.type === 'replace') {
+		api.replace(action.nextStepId)
+		return
+	}
+
+	if (action.type === 'link') {
+		api.openLink(action)
+	}
+}
+
+function DefaultStep({ step, onAction }) {
+	return (
+		<>
+			{step.title ? <h3>{step.title}</h3> : null}
+			{step.description ? <p>{step.description}</p> : null}
+
+			{step.media ? (
+				<div>
+					<img src={step.media.src} alt={step.media.alt || ''} />
+				</div>
+			) : null}
+
+			<div>
+				{step.actions?.map(action => (
+					<button
+						key={action.id || action.label}
+						type='button'
+						onClick={() => onAction(action)}>
+						{action.label}
+					</button>
+				))}
+			</div>
+
+			{step.caption ? <div>{step.caption}</div> : null}
+		</>
 	)
 }
