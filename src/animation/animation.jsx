@@ -18,7 +18,6 @@ import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'
 import Commitments from '../components/Commitments/Commitments'
 import JourneyWindow from '../components/JourneyWindow/JourneyWindow'
-import { journeyFlows } from '../components/JourneyWindow/journeyFlows'
 
 const BASE_WIDTH = 1440
 const BASE_HEIGHT = 820
@@ -134,32 +133,6 @@ export const Animation = () => {
 		if (pressedKey === key) setPressedKey(null)
 	}
 
-	const handleJourneyStepChange = useCallback(payload => {
-		setActiveJourneyState(prev => {
-			if (
-				prev?.pathKey === payload.pathKey &&
-				prev?.stepId === payload.stepId &&
-				prev?.canGoBack === payload.canGoBack &&
-				prev?.historyLength === payload.historyLength
-			) {
-				return prev
-			}
-
-			return payload
-		})
-	}, [])
-
-	const handleJourneyFlowStart = useCallback(payload => {
-		// optional
-	}, [])
-
-	const handleJourneyFlowExit = useCallback(payload => {
-		// optional
-	}, [])
-
-	const handleJourneyLinkOpen = useCallback((action, step, flow) => {
-		// optional
-	}, [])
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
@@ -253,20 +226,7 @@ export const Animation = () => {
 						))}
 					</div>
 
-					{/* праве чорне вікно */}
-					{mode && (
-						<div className='journey-window-wrap'>
-							<JourneyWindow
-								key={mode}
-								pathKey={mode}
-								flows={journeyFlows}
-								onStepChange={handleJourneyStepChange}
-								onFlowStart={handleJourneyFlowStart}
-								onFlowExit={handleJourneyFlowExit}
-								onLinkOpen={handleJourneyLinkOpen}
-							/>
-						</div>
-					)}
+					{mode && <div className='journey-window-wrap'></div>}
 
 					<div
 						className={`cool-text ${mode ? 'active' : ''} ${

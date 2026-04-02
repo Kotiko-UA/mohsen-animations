@@ -324,16 +324,3 @@ section {
   transform: translateY(-50%);
   z-index: 20;
 }
-
-/* приклад, якщо хочеш зовнішньо реагувати на step */
-.cool-text.road-step-1 {}
-
-.cool-text.road-step-2 {}
-
-.cool-text.road-step-3 {}
-
-.cool-text.road-step-4 {}
-
-.eclipse-image.journey-active {
-  filter: drop-shadow(0 0 14px rgba(160, 90, 255, 0.95));
-}
