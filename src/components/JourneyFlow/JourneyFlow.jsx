@@ -80,24 +80,15 @@ export default function JourneyFlow({
 	onProgressChange,
 	onStateChange,
 }) {
+	const firstPointId = journey?.points?.[0]?.id ?? null
+
 	const safeProgress = useMemo(
 		() => normalizeProgress(progress ?? createEmptyProgress()),
 		[progress],
 	)
 
-	const [activePointId, setActivePointId] = useState(
-		journey?.points?.[0]?.id ?? null,
-	)
+	const [activePointId, setActivePointId] = useState(firstPointId)
 	const [activeStepIndex, setActiveStepIndex] = useState(0)
-
-	useEffect(() => {
-		setActivePointId(journey?.points?.[0]?.id ?? null)
-		setActiveStepIndex(0)
-
-		if (!progress) {
-			onProgressChange?.(createEmptyProgress())
-		}
-	}, [journeyKey])
 
 	const activePoint = useMemo(() => {
 		if (!journey) return null
@@ -114,9 +105,27 @@ export default function JourneyFlow({
 	const isLastStep = activeStepIndex === (activePoint?.steps?.length ?? 1) - 1
 	const nextPoint = journey?.points?.[activePointIndex + 1] ?? null
 
-	const saveProgress = updater => {
-		const draft = cloneProgress(safeProgress)
-		const nextProgress = updater(draft)
+	useEffect(() => {
+		if (!activePoint || !activeStep) return
+
+		const nextProgress = cloneProgress(safeProgress)
+
+		const viewedIndexes =
+			nextProgress.viewedStepIndexesByPointId[activePoint.id] ?? []
+
+		if (!viewedIndexes.includes(activeStepIndex)) {
+			nextProgress.viewedStepIndexesByPointId[activePoint.id] = [
+				...viewedIndexes,
+				activeStepIndex,
+			]
+		}
+
+		if (
+			activeStepIndex === activePoint.steps.length - 1 &&
+			!nextProgress.completedPointIds.includes(activePoint.id)
+		) {
+			nextProgress.completedPointIds.push(activePoint.id)
+		}
 
 		const prevJson = JSON.stringify(safeProgress)
 		const nextJson = JSON.stringify(nextProgress)
@@ -124,33 +133,7 @@ export default function JourneyFlow({
 		if (prevJson !== nextJson) {
 			onProgressChange?.(nextProgress)
 		}
-	}
-
-	useEffect(() => {
-		if (!activePoint || !activeStep) return
-
-		saveProgress(currentProgress => {
-			const viewedIndexes =
-				currentProgress.viewedStepIndexesByPointId[activePoint.id] ?? []
-
-			if (!viewedIndexes.includes(activeStepIndex)) {
-				currentProgress.viewedStepIndexesByPointId[activePoint.id] = [
-					...viewedIndexes,
-					activeStepIndex,
-				]
-			}
-
-			// Наступна точка відкривається, коли користувач дійшов до останнього кроку поточної точки
-			if (
-				activeStepIndex === activePoint.steps.length - 1 &&
-				!currentProgress.completedPointIds.includes(activePoint.id)
-			) {
-				currentProgress.completedPointIds.push(activePoint.id)
-			}
-
-			return currentProgress
-		})
-	}, [activePointId, activeStepIndex, activePoint, activeStep])
+	}, [activePoint, activeStep, activeStepIndex, safeProgress, onProgressChange])
 
 	useEffect(() => {
 		if (!activePoint || !activeStep) return
@@ -170,6 +153,7 @@ export default function JourneyFlow({
 		activeStep,
 		activeStepIndex,
 		safeProgress,
+		onStateChange,
 	])
 
 	const openPoint = pointId => {

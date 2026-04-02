@@ -230,6 +230,7 @@ export const Animation = () => {
 					{mode && (
 						<div className='journey-window-wrap'>
 							<JourneyFlow
+								key={mode}
 								journeyKey={mode}
 								journey={JOURNEYS[mode]}
 								progress={journeyProgress[mode]}
