@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './animation.css'
 
 import MainImg from '../assets/main.jpg'
@@ -17,7 +17,9 @@ import Eclipse from '../components/Eclipse/Eclipse'
 import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'
 import Commitments from '../components/Commitments/Commitments'
-import JourneyWindow from '../components/JourneyWindow/JourneyWindow'
+
+import JourneyFlow from '../components/JourneyFlow/JourneyFlow'
+import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 
 const BASE_WIDTH = 1440
 const BASE_HEIGHT = 820
@@ -59,7 +61,7 @@ export const Animation = () => {
 	const [scale, setScale] = useState(1)
 	const [hoveredKey, setHoveredKey] = useState(null)
 	const [pressedKey, setPressedKey] = useState(null)
-
+	const [journeyProgress, setJourneyProgress] = useState({})
 	const [activeJourneyState, setActiveJourneyState] = useState(null)
 
 	const containerRef = useRef(null)
@@ -137,7 +139,6 @@ export const Animation = () => {
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
 	const activeSceneNode = activeJourneyState?.step?.meta?.sceneNode || null
-	const activeRoadStep = activeJourneyState?.step?.meta?.roadStep || null
 
 	const getFeatureClasses = item =>
 		[
@@ -226,12 +227,22 @@ export const Animation = () => {
 						))}
 					</div>
 
-					{mode && <div className='journey-window-wrap'></div>}
-
-					<div
-						className={`cool-text ${mode ? 'active' : ''} ${
-							activeRoadStep ? `road-step-${activeRoadStep}` : ''
-						}`}></div>
+					{mode && (
+						<div className='journey-window-wrap'>
+							<JourneyFlow
+								journeyKey={mode}
+								journey={JOURNEYS[mode]}
+								progress={journeyProgress[mode]}
+								onProgressChange={nextProgress =>
+									setJourneyProgress(prev => ({
+										...prev,
+										[mode]: nextProgress,
+									}))
+								}
+								onStateChange={setActiveJourneyState}
+							/>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
