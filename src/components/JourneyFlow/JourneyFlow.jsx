@@ -234,35 +234,37 @@ export default function JourneyFlow({
 		isLastStep,
 		nextPoint,
 	}
-
+	const shouldShowPoints = activePointIndex > 0 || activeStepIndex >= 2
 	return (
 		<div className={`journey-flow ${journey.id}`}>
-			<div className='journey-points'>
-				{journey.points.map((point, pointIndex) => {
-					const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
-					const completed = isPointCompleted(safeProgress, point.id)
-					const isActive = point.id === activePoint?.id
+			{shouldShowPoints && (
+				<div className='journey-points'>
+					{journey.points.map((point, pointIndex) => {
+						const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
+						const completed = isPointCompleted(safeProgress, point.id)
+						const isActive = point.id === activePoint?.id
 
-					return (
-						<button
-							key={point.id}
-							type='button'
-							className={[
-								'journey-point-button',
-								isActive ? 'active' : '',
-								unlocked ? 'unlocked' : 'locked',
-								completed ? 'completed' : '',
-								point.id,
-							]
-								.filter(Boolean)
-								.join(' ')}
-							onClick={() => openPoint(point.id)}
-							disabled={!unlocked}>
-							{point.title}
-						</button>
-					)
-				})}
-			</div>
+						return (
+							<button
+								key={point.id}
+								type='button'
+								className={[
+									'journey-point-button',
+									isActive ? 'active' : '',
+									unlocked ? 'unlocked' : 'locked',
+									completed ? 'completed' : '',
+									point.id,
+								]
+									.filter(Boolean)
+									.join(' ')}
+								onClick={() => openPoint(point.id)}
+								disabled={!unlocked}>
+								{point.title}
+							</button>
+						)
+					})}
+				</div>
+			)}
 
 			<div className='journey-step-view'>
 				<div className='journey-step-content'>
