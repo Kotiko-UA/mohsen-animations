@@ -106,3 +106,36 @@ export const JourneyLinkButton = ({
 		</button>
 	)
 }
+export const JourneyGoToStepButton = ({
+	stepNumber,
+	children,
+	disabled,
+	onClick,
+	...props
+}) => {
+	const { actions, state } = useJourneyStep()
+
+	const stepIndex = stepNumber - 1
+
+	const isInvalidStep =
+		typeof stepNumber !== 'number' ||
+		stepIndex < 0 ||
+		stepIndex > state.activePoint.steps.length - 1
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented || isInvalidStep) return
+
+		actions.goToStep(stepIndex)
+	}
+
+	return (
+		<button
+			type='button'
+			onClick={handleClick}
+			disabled={disabled ?? isInvalidStep}
+			{...props}>
+			{children ?? `Go to step ${stepNumber}`}
+		</button>
+	)
+}
