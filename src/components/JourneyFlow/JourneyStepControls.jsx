@@ -12,10 +12,10 @@ export const JourneyStepProvider = ({ value, children }) => {
 
 const getDefaultNextLabel = state => {
 	if (state.isLastStep) {
-		return state.nextPoint ? 'Відкрити наступну точку' : 'Завершено'
+		return state.nextPoint ? 'Next point' : 'Complete'
 	}
 
-	return 'Наступний крок'
+	return 'Next step'
 }
 
 export const JourneyPrevButton = ({
@@ -87,10 +87,7 @@ export const JourneyLinkButton = ({
 	const finalLink = link ?? state.activeStep?.link
 	const finalTarget = linkTarget ?? state.activeStep?.linkTarget ?? '_blank'
 	const finalLabel =
-		children ??
-		linkLabel ??
-		state.activeStep?.linkLabel ??
-		'Перейти за посиланням'
+		children ?? linkLabel ?? state.activeStep?.linkLabel ?? 'go to link'
 
 	if (!finalLink) {
 		return fallback

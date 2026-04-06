@@ -1,12 +1,14 @@
-import CryptoLaunchpadStep1 from './journey-steps/crypto/CryptoLaunchpadStep1'
 import CryptoLaunchpadStep2 from './journey-steps/crypto/CryptoLaunchpadStep2'
 import CryptoOnboardingStep1 from './journey-steps/crypto/CryptoOnboardingStep1'
 import CryptoOnboardingStep2 from './journey-steps/crypto/CryptoOnboardingStep2'
 import CryptoExchangeDiscoveryStep1 from './journey-steps/crypto/CryptoExchangeDiscoveryStep1'
-
-import ForexIntroStep1 from './journey-steps/forex/ForexIntroStep1'
 import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
 import CryptoStartStep from './journey-steps/crypto/CryptoStartStep'
+import ForexStartStep from './journey-steps/forex/ForexStartStep'
+import StocksStartStep from './journey-steps/stocks/StocksStartStep'
+import HowMuchTimeCrypto from './journey-steps/crypto/HowMuchTime'
+import HowMuchTimeForex from './journey-steps/forex/HowMuchTime'
+import HowMuchTimeStocks from './journey-steps/stocks/HowMuchTime'
 
 export const JOURNEYS = {
 	crypto: {
@@ -27,7 +29,7 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'crypto-point-1-step-2',
-						component: CryptoLaunchpadStep2,
+						component: HowMuchTimeCrypto,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 1,
@@ -84,7 +86,15 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'forex-point-1-step-1',
-						component: ForexIntroStep1,
+						component: ForexStartStep,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'forex-point-1-step-2',
+						component: HowMuchTimeForex,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
@@ -105,7 +115,15 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'stocks-point-1-step-1',
-						component: StocksIntroStep1,
+						component: StocksStartStep,
+						meta: {
+							sceneNode: 'stocks',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'stocks-point-1-step-2',
+						component: HowMuchTimeStocks,
 						meta: {
 							sceneNode: 'stocks',
 							roadStep: 1,
