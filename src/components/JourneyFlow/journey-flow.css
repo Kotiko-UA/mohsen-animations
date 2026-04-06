@@ -24,6 +24,11 @@
 
 .journey-point-button {
   position: absolute;
+  width: 183px;
+  height: 114px;
+
+  border: none;
+  background-color: transparent;
 
   z-index: 2;
 }
@@ -39,17 +44,21 @@
 }
 
 .journey-prev-button {
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  width: 32px;
-  height: 32px;
   flex-shrink: 0;
+
 }
 
 .journey-prev-button svg {
-  width: 100%;
-  height: 100%;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .journey-modal-main-button,
@@ -278,3 +287,18 @@
   display: flex;
   gap: 12px;
 }
+
+.journey-launchpad-w1 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.journey-launchpad-w2 {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ------------Crypto------------ */

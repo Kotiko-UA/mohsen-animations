@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { JourneyStepProvider } from './JourneyStepControls'
 import './journey-flow.css'
+import GateClose from '../../assets/step-closed.avif'
+import GateActive from '../../assets/step-active.avif'
+import GateCompleted from '../../assets/step-completed.avif'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -259,7 +262,18 @@ export default function JourneyFlow({
 									.join(' ')}
 								onClick={() => openPoint(point.id)}
 								disabled={!unlocked}>
-								{point.title}
+								<div>
+									{unlocked && isActive && (
+										<img src={GateActive} alt='active gate' />
+									)}
+									{unlocked && completed && (
+										<img src={GateCompleted} alt='completed gate' />
+									)}
+									{!unlocked && <img src={GateClose} alt='closed gate' />}
+								</div>
+								<div></div>
+								{(unlocked && isActive && point.title) ||
+									(unlocked && completed && 'done')}
 							</button>
 						)
 					})}

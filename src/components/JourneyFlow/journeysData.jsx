@@ -9,6 +9,7 @@ import StocksStartStep from './journey-steps/stocks/StocksStartStep'
 import HowMuchTimeCrypto from './journey-steps/crypto/HowMuchTime'
 import HowMuchTimeForex from './journey-steps/forex/HowMuchTime'
 import HowMuchTimeStocks from './journey-steps/stocks/HowMuchTime'
+import CryptoLaunchpadStep1 from './journey-steps/crypto/CryptoLaunchpadStep1'
 
 export const JOURNEYS = {
 	crypto: {
@@ -30,6 +31,14 @@ export const JOURNEYS = {
 					{
 						id: 'crypto-point-1-step-2',
 						component: HowMuchTimeCrypto,
+						meta: {
+							sceneNode: 'crypto',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'crypto-point-1-step-3',
+						component: CryptoLaunchpadStep1,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 1,
