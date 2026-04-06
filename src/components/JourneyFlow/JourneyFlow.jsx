@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { JourneyStepProvider } from './JourneyStepControls'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -45,7 +46,7 @@ const getStepView = ({
 	actions,
 	state,
 }) => {
-	if (typeof step.render === 'function') {
+	if (typeof step?.render === 'function') {
 		return step.render({
 			step,
 			point,
@@ -56,8 +57,9 @@ const getStepView = ({
 		})
 	}
 
-	if (step.component) {
+	if (step?.component) {
 		const StepComponent = step.component
+
 		return (
 			<StepComponent
 				step={step}
@@ -70,7 +72,13 @@ const getStepView = ({
 		)
 	}
 
-	return step.content ?? null
+	return step?.content ?? null
+}
+
+const openLink = (link, target = '_blank') => {
+	if (!link) return
+
+	window.open(link, target, 'noopener,noreferrer')
 }
 
 export default function JourneyFlow({
@@ -169,8 +177,15 @@ export default function JourneyFlow({
 		setActiveStepIndex(0)
 	}
 
+	const goToStep = stepIndex => {
+		if (!activePoint) return
+		if (stepIndex < 0 || stepIndex > activePoint.steps.length - 1) return
+
+		setActiveStepIndex(stepIndex)
+	}
+
 	const goToPrevStep = () => {
-		if (activeStepIndex === 0) return
+		if (isFirstStep) return
 		setActiveStepIndex(prev => prev - 1)
 	}
 
@@ -189,11 +204,7 @@ export default function JourneyFlow({
 
 	const openCurrentStepLink = () => {
 		if (!activeStep?.link) return
-		window.open(
-			activeStep.link,
-			activeStep.linkTarget ?? '_blank',
-			'noopener,noreferrer',
-		)
+		openLink(activeStep.link, activeStep.linkTarget ?? '_blank')
 	}
 
 	if (!journey || !journey.points?.length) {
@@ -202,11 +213,13 @@ export default function JourneyFlow({
 
 	const actions = {
 		openPoint,
+		goToStep,
 		goToPrevStep,
 		goToNextStep,
+		openLink,
 		openCurrentStepLink,
-		setActiveStepIndex,
 		setActivePointId,
+		setActiveStepIndex,
 	}
 
 	const state = {
@@ -251,34 +264,16 @@ export default function JourneyFlow({
 
 			<div className='journey-step-view'>
 				<div className='journey-step-content'>
-					{getStepView({
-						step: activeStep,
-						point: activePoint,
-						pointIndex: activePointIndex,
-						stepIndex: activeStepIndex,
-						actions,
-						state,
-					})}
-				</div>
-
-				<div className='journey-step-actions'>
-					<button type='button' onClick={goToPrevStep} disabled={isFirstStep}>
-						Крок назад
-					</button>
-
-					{activeStep?.link && (
-						<button type='button' onClick={openCurrentStepLink}>
-							{activeStep.linkLabel ?? 'Перейти за посиланням'}
-						</button>
-					)}
-
-					<button type='button' onClick={goToNextStep}>
-						{isLastStep
-							? nextPoint
-								? 'Відкрити наступну точку'
-								: 'Завершено'
-							: 'Наступний крок'}
-					</button>
+					<JourneyStepProvider value={{ actions, state }}>
+						{getStepView({
+							step: activeStep,
+							point: activePoint,
+							pointIndex: activePointIndex,
+							stepIndex: activeStepIndex,
+							actions,
+							state,
+						})}
+					</JourneyStepProvider>
 				</div>
 			</div>
 		</div>

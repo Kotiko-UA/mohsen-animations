@@ -1,0 +1,109 @@
+import { JourneyStepContext } from './JourneyStepContext'
+import { useJourneyStep } from './useJourneyStep'
+
+export const JourneyStepProvider = ({ value, children }) => {
+	return (
+		<JourneyStepContext.Provider value={value}>
+			{children}
+		</JourneyStepContext.Provider>
+	)
+}
+
+const getDefaultNextLabel = state => {
+	if (state.isLastStep) {
+		return state.nextPoint ? 'Відкрити наступну точку' : 'Завершено'
+	}
+
+	return 'Наступний крок'
+}
+
+export const JourneyPrevButton = ({
+	children,
+	disabled,
+	onClick,
+	...props
+}) => {
+	const { actions, state } = useJourneyStep()
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented) return
+
+		actions.goToPrevStep()
+	}
+
+	return (
+		<button
+			type='button'
+			onClick={handleClick}
+			disabled={disabled ?? state.isFirstStep}
+			{...props}>
+			{children ?? 'Крок назад'}
+		</button>
+	)
+}
+
+export const JourneyNextButton = ({
+	children,
+	disabled,
+	onClick,
+	...props
+}) => {
+	const { actions, state } = useJourneyStep()
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented) return
+
+		actions.goToNextStep()
+	}
+
+	const isCompleted = state.isLastStep && !state.nextPoint
+
+	return (
+		<button
+			type='button'
+			onClick={handleClick}
+			disabled={disabled ?? isCompleted}
+			{...props}>
+			{children ?? getDefaultNextLabel(state)}
+		</button>
+	)
+}
+
+export const JourneyLinkButton = ({
+	children,
+	link,
+	linkTarget,
+	linkLabel,
+	fallback = null,
+	onClick,
+	...props
+}) => {
+	const { actions, state } = useJourneyStep()
+
+	const finalLink = link ?? state.activeStep?.link
+	const finalTarget = linkTarget ?? state.activeStep?.linkTarget ?? '_blank'
+	const finalLabel =
+		children ??
+		linkLabel ??
+		state.activeStep?.linkLabel ??
+		'Перейти за посиланням'
+
+	if (!finalLink) {
+		return fallback
+	}
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented) return
+
+		actions.openLink(finalLink, finalTarget)
+	}
+
+	return (
+		<button type='button' onClick={handleClick} {...props}>
+			{finalLabel}
+		</button>
+	)
+}
