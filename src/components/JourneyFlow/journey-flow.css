@@ -140,6 +140,7 @@
   font-family: Inter;
   font-size: 32px;
   font-weight: 700;
+  line-height: normal;
 }
 
 .journey-modal-stars {
@@ -153,6 +154,7 @@
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
+  line-height: normal;
 }
 
 .journey-modal-text span {
@@ -167,4 +169,89 @@
 
 .journey-first-step-bw p {
   text-align: center;
+}
+
+.journey-modal-fs-subblock {
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #3E3E3E;
+  background: #282828;
+
+}
+
+.journey-modal-fs-you-get {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.journey-modal-fs-sb-w {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.journey-modal-fs-sb-1 {
+
+  display: flex;
+  padding-right: 12px;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  border-right: 1px solid #FFF;
+
+}
+
+.journey-modal-fs-sb-1-top {
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.journey-modal-fs-sb-1-top span {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.journey-modal-fs-sb-1-top p {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.journey-modal-fs-sb-1-bottom {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.journey-modal-fs-sb-2 {
+  width: 100%;
+  max-width: 301px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: disc;
+}
+
+.journey-modal-fs-sb-2 li {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
 }
