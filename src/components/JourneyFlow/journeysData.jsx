@@ -6,6 +6,7 @@ import CryptoExchangeDiscoveryStep1 from './journey-steps/crypto/CryptoExchangeD
 
 import ForexIntroStep1 from './journey-steps/forex/ForexIntroStep1'
 import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
+import CryptoStartStep from './journey-steps/crypto/CryptoStartStep'
 
 export const JOURNEYS = {
 	crypto: {
@@ -18,13 +19,11 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'crypto-point-1-step-1',
-						component: CryptoLaunchpadStep1,
+						component: CryptoStartStep,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 1,
 						},
-						link: 'https://example.com/launchpad',
-						linkLabel: 'Перейти за посиланням',
 					},
 					{
 						id: 'crypto-point-1-step-2',
@@ -55,8 +54,6 @@ export const JOURNEYS = {
 							sceneNode: 'crypto',
 							roadStep: 2,
 						},
-						link: 'https://example.com/onboarding',
-						linkLabel: 'Перейти за посиланням',
 					},
 				],
 			},

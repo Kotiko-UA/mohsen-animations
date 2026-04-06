@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { JourneyStepProvider } from './JourneyStepControls'
+import './journey-flow.css'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -235,7 +236,7 @@ export default function JourneyFlow({
 	}
 
 	return (
-		<div className='journey-flow'>
+		<div className={`journey-flow ${journey.id}`}>
 			<div className='journey-points'>
 				{journey.points.map((point, pointIndex) => {
 					const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
@@ -251,6 +252,7 @@ export default function JourneyFlow({
 								isActive ? 'active' : '',
 								unlocked ? 'unlocked' : 'locked',
 								completed ? 'completed' : '',
+								point.id,
 							]
 								.filter(Boolean)
 								.join(' ')}

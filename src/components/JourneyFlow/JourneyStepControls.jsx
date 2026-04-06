@@ -1,5 +1,6 @@
 import { JourneyStepContext } from './JourneyStepContext'
 import { useJourneyStep } from './useJourneyStep'
+import ArrowBack from '../../assets/arrow-left.svg?react'
 
 export const JourneyStepProvider = ({ value, children }) => {
 	return (
@@ -34,11 +35,12 @@ export const JourneyPrevButton = ({
 
 	return (
 		<button
+			className='journey-prev-button'
 			type='button'
 			onClick={handleClick}
 			disabled={disabled ?? state.isFirstStep}
 			{...props}>
-			{children ?? 'Крок назад'}
+			{children ?? <ArrowBack />}
 		</button>
 	)
 }

@@ -1,0 +1,170 @@
+.journey-flow {
+  width: 200%;
+  height: 100%;
+}
+
+.journey-step-view {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  width: 745px;
+  max-height: 708px;
+  overflow-y: auto;
+}
+
+
+.crypto .journey-points {
+  position: absolute;
+  width: 542px;
+  height: 690px;
+  left: 77px;
+  bottom: 0px;
+}
+
+.journey-point-button {
+  position: absolute;
+
+  z-index: 2;
+}
+
+.journey-modal-wrap {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border: 1px solid #2E2F31;
+  background: #282828;
+
+}
+
+.journey-prev-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.journey-prev-button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.journey-modal-main-button,
+.journey-modal-assent-button {
+  height: 46px;
+  display: flex;
+  width: 100%;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 4px;
+
+  box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
+
+
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 122%;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.journey-modal-main-button.h40,
+.journey-modal-assent-button.h40 {
+  height: 40px;
+  padding: 8px 24px;
+  font-size: 16px;
+}
+
+.journey-modal-main-button.h33,
+.journey-modal-assent-button.h33 {
+  height: 33px;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.journey-modal-main-button {
+  background-color: #754CF0;
+}
+
+.journey-modal-main-button:hover {
+  background-color: #795BF8;
+}
+
+.journey-modal-main-button:active {
+  background-color: #5827DA;
+  box-shadow: none;
+}
+
+.journey-modal-main-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+
+}
+
+.journey-modal-assent-button {
+  border: 1px solid #754CF0;
+}
+
+.journey-modal-assent-button:hover {
+  border: 1px solid #795BF8;
+}
+
+.journey-modal-assent-button:active {
+  border: 1px solid #5827DA;
+  box-shadow: none;
+}
+
+.journey-modal-assent-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+
+}
+
+.journey-modal-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.journey-modal-title {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.journey-modal-stars {
+  width: 80px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.journey-modal-text {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.journey-modal-text span {
+  font-weight: 700;
+}
+
+.journey-first-step-bw {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.journey-first-step-bw p {
+  text-align: center;
+}
