@@ -1,3 +1,12 @@
+import CryptoLaunchpadStep1 from './journey-steps/crypto/CryptoLaunchpadStep1'
+import CryptoLaunchpadStep2 from './journey-steps/crypto/CryptoLaunchpadStep2'
+import CryptoOnboardingStep1 from './journey-steps/crypto/CryptoOnboardingStep1'
+import CryptoOnboardingStep2 from './journey-steps/crypto/CryptoOnboardingStep2'
+import CryptoExchangeDiscoveryStep1 from './journey-steps/crypto/CryptoExchangeDiscoveryStep1'
+
+import ForexIntroStep1 from './journey-steps/forex/ForexIntroStep1'
+import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
+
 export const JOURNEYS = {
 	crypto: {
 		id: 'crypto',
@@ -9,31 +18,21 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'crypto-point-1-step-1',
+						component: CryptoLaunchpadStep1,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 1,
 						},
 						link: 'https://example.com/launchpad',
 						linkLabel: 'Перейти за посиланням',
-						content: (
-							<div>
-								<h3>Launchpad / Крок 1</h3>
-								<p>Тут твоя власна верстка.</p>
-							</div>
-						),
 					},
 					{
 						id: 'crypto-point-1-step-2',
+						component: CryptoLaunchpadStep2,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 1,
 						},
-						content: (
-							<div>
-								<h3>Launchpad / Крок 2</h3>
-								<p>Тут може бути інший JSX, інша картка, інша розмітка.</p>
-							</div>
-						),
 					},
 				],
 			},
@@ -43,33 +42,21 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'crypto-point-2-step-1',
+						component: CryptoOnboardingStep1,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 2,
 						},
-						content: (
-							<div>
-								<h3>Onboarding / Крок 1</h3>
-								<p>
-									Друга точка. Вона буде закрита, поки не дійдеш до кінця
-									першої.
-								</p>
-							</div>
-						),
 					},
 					{
 						id: 'crypto-point-2-step-2',
+						component: CryptoOnboardingStep2,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 2,
 						},
 						link: 'https://example.com/onboarding',
-						content: (
-							<div>
-								<h3>Onboarding / Крок 2</h3>
-								<p>Тут теж можна зробити будь-яку власну картку.</p>
-							</div>
-						),
+						linkLabel: 'Перейти за посиланням',
 					},
 				],
 			},
@@ -79,16 +66,11 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'crypto-point-3-step-1',
+						component: CryptoExchangeDiscoveryStep1,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 3,
 						},
-						content: (
-							<div>
-								<h3>Exchange Discovery / Крок 1</h3>
-								<p>Третя точка.</p>
-							</div>
-						),
 					},
 				],
 			},
@@ -105,11 +87,11 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'forex-point-1-step-1',
+						component: ForexIntroStep1,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
 						},
-						content: <div>Forex / точка 1 / крок 1</div>,
 					},
 				],
 			},
@@ -126,11 +108,11 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'stocks-point-1-step-1',
+						component: StocksIntroStep1,
 						meta: {
 							sceneNode: 'stocks',
 							roadStep: 1,
 						},
-						content: <div>Stocks / точка 1 / крок 1</div>,
 					},
 				],
 			},
