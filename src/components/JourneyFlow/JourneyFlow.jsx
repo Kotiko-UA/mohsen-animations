@@ -4,6 +4,7 @@ import './journey-flow.css'
 import GateClose from '../../assets/step-closed.avif'
 import GateActive from '../../assets/step-active.avif'
 import GateCompleted from '../../assets/step-completed.avif'
+import WhiteDot from '../../assets/white-dot.svg?react'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -247,6 +248,20 @@ export default function JourneyFlow({
 						const completed = isPointCompleted(safeProgress, point.id)
 						const isActive = point.id === activePoint?.id
 
+						const pointImage = isActive
+							? GateActive
+							: completed
+								? GateCompleted
+								: GateClose
+
+						const pointAlt = isActive
+							? 'active gate'
+							: completed
+								? 'completed gate'
+								: 'closed gate'
+
+						const pointLabel = isActive ? point.title : completed ? 'done' : ''
+
 						return (
 							<button
 								key={point.id}
@@ -262,18 +277,16 @@ export default function JourneyFlow({
 									.join(' ')}
 								onClick={() => openPoint(point.id)}
 								disabled={!unlocked}>
-								<div>
-									{unlocked && isActive && (
-										<img src={GateActive} alt='active gate' />
-									)}
-									{unlocked && completed && (
-										<img src={GateCompleted} alt='completed gate' />
-									)}
-									{!unlocked && <img src={GateClose} alt='closed gate' />}
+								<div className='journey-point-image-wrap'>
+									<img src={pointImage} alt={pointAlt} />
 								</div>
-								<div></div>
-								{(unlocked && isActive && point.title) ||
-									(unlocked && completed && 'done')}
+
+								{pointLabel && (
+									<div className='journey-point-label'>
+										{isActive && <WhiteDot />}
+										{pointLabel}
+									</div>
+								)}
 							</button>
 						)
 					})}

@@ -48,7 +48,7 @@ export const JOURNEYS = {
 			},
 			{
 				id: 'crypto-point-2',
-				title: 'Onboarding',
+				title: 'WES Crypto Basics',
 				steps: [
 					{
 						id: 'crypto-point-2-step-1',
