@@ -91,7 +91,7 @@
 }
 
 .journey-modal-wrap {
-  padding: 60px;
+  padding: 40px 60px 60px 60px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -120,7 +120,7 @@
 
 .journey-modal-main-button,
 .journey-modal-assent-button {
-  height: 46px;
+  height: 48px;
   display: flex;
   width: 100%;
   padding: 12px 24px;
@@ -356,6 +356,26 @@
   gap: 12px;
   justify-content: space-between;
   align-items: center;
+}
+
+.text-h-16 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 126%;
+}
+
+.flex-col-12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flex-col-24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 /* ------------Crypto------------ */

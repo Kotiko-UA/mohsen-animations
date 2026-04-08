@@ -1,15 +1,16 @@
-import CryptoLaunchpadStep2 from './journey-steps/crypto/CryptoLaunchpadStep2'
+import CryptoStartStep from './journey-steps/crypto/CryptoStartStep'
+import HowMuchTimeCrypto from './journey-steps/crypto/HowMuchTime'
+import CryptoLaunchpadStep1 from './journey-steps/crypto/CryptoLaunchpadStep1'
+import CryptoLaunchpadOnboarding from './journey-steps/crypto/CryptoLaunchpadOnboarding'
+import CryptoLaunchpadBroker1 from './journey-steps/crypto/CryptoLaunchpadBroker1'
 import CryptoOnboardingStep1 from './journey-steps/crypto/CryptoOnboardingStep1'
 import CryptoOnboardingStep2 from './journey-steps/crypto/CryptoOnboardingStep2'
 import CryptoExchangeDiscoveryStep1 from './journey-steps/crypto/CryptoExchangeDiscoveryStep1'
 import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
-import CryptoStartStep from './journey-steps/crypto/CryptoStartStep'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
 import StocksStartStep from './journey-steps/stocks/StocksStartStep'
-import HowMuchTimeCrypto from './journey-steps/crypto/HowMuchTime'
 import HowMuchTimeForex from './journey-steps/forex/HowMuchTime'
 import HowMuchTimeStocks from './journey-steps/stocks/HowMuchTime'
-import CryptoLaunchpadStep1 from './journey-steps/crypto/CryptoLaunchpadStep1'
 
 export const JOURNEYS = {
 	crypto: {
@@ -39,6 +40,22 @@ export const JOURNEYS = {
 					{
 						id: 'crypto-point-1-step-3',
 						component: CryptoLaunchpadStep1,
+						meta: {
+							sceneNode: 'crypto',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'crypto-point-1-step-4',
+						component: CryptoLaunchpadOnboarding,
+						meta: {
+							sceneNode: 'crypto',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'crypto-point-1-step-5',
+						component: CryptoLaunchpadBroker1,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 1,
