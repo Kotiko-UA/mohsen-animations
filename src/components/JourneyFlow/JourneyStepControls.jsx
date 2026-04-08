@@ -108,6 +108,7 @@ export const JourneyLinkButton = ({
 }
 export const JourneyGoToStepButton = ({
 	stepNumber,
+	back = false,
 	children,
 	disabled,
 	onClick,
@@ -129,7 +130,16 @@ export const JourneyGoToStepButton = ({
 		actions.goToStep(stepIndex)
 	}
 
-	return (
+	return back ? (
+		<button
+			className='journey-prev-button'
+			type='button'
+			onClick={handleClick}
+			disabled={disabled ?? isInvalidStep}
+			{...props}>
+			{children ?? <ArrowBack />}
+		</button>
+	) : (
 		<button
 			type='button'
 			onClick={handleClick}

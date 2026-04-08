@@ -1,14 +1,14 @@
 import {
 	JourneyLinkButton,
-	JourneyPrevButton,
 	JourneyNextButton,
+	JourneyGoToStepButton,
 } from '../../JourneyStepControls'
 
 export default function CryptoLaunchpadBroker1() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
-				<JourneyPrevButton />
+				<JourneyGoToStepButton back={true} stepNumber={3} />
 				<h2 className='text-h-32-700'>Exchange Discovery</h2>
 			</div>
 			<div className='flex-col-24'>

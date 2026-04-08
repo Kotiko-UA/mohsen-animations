@@ -29,7 +29,7 @@ export default function CryptoLaunchpadStep1() {
 					</JourneyGoToStepButton>
 					<JourneyGoToStepButton
 						className='journey-modal-assent-button'
-						stepNumber={1}>
+						stepNumber={7}>
 						Discord
 					</JourneyGoToStepButton>
 				</div>
