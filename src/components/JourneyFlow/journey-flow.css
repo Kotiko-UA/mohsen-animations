@@ -10,9 +10,25 @@
   transform: translateY(-50%);
   width: 745px;
   max-height: 800px;
-  overflow-y: auto;
+  padding: 40px 0 60px 0;
+  background: #282828;
+  border: 1px solid #2E2F31;
 }
 
+.journey-step-content {
+  padding: 0 60px;
+  max-height: 700px;
+  overflow-y: auto;
+
+}
+
+.journey-modal-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+
+}
 
 .crypto .journey-points {
   position: absolute;
@@ -105,15 +121,11 @@
   top: 110px;
 }
 
-.journey-modal-wrap {
-  padding: 40px 60px 60px 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  border: 1px solid #2E2F31;
-  background: #282828;
-
+.journey-point-button.crypto-point-5 {
+  right: 277px;
+  top: 18px;
 }
+
 
 .journey-prev-button {
   margin-right: auto;

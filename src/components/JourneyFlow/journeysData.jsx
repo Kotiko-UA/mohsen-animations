@@ -10,6 +10,7 @@ import CryptoProductMasteryStep1 from './journey-steps/crypto/CryptoProductMaste
 import CryptoProductMasteryStep2 from './journey-steps/crypto/CryptoProductMasteryStep2'
 import CryptoProductMasteryStep3 from './journey-steps/crypto/CryptoProductMasteryStep3'
 import CryptoIntermediate from './journey-steps/crypto/CryptoIntermediate'
+import CryptoAdvanced from './journey-steps/crypto/CryptoAdvanced'
 
 import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
@@ -129,6 +130,20 @@ export const JOURNEYS = {
 					{
 						id: 'crypto-point-4-step-1',
 						component: CryptoIntermediate,
+						meta: {
+							sceneNode: 'crypto',
+							roadStep: 4,
+						},
+					},
+				],
+			},
+			{
+				id: 'crypto-point-5',
+				title: 'WES Crypto Advanced',
+				steps: [
+					{
+						id: 'crypto-point-4-step-1',
+						component: CryptoAdvanced,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 4,
