@@ -93,14 +93,6 @@ export const JOURNEYS = {
 							roadStep: 2,
 						},
 					},
-					{
-						id: 'crypto-point-2-step-2',
-						component: CryptoOnboardingStep2,
-						meta: {
-							sceneNode: 'crypto',
-							roadStep: 2,
-						},
-					},
 				],
 			},
 			{

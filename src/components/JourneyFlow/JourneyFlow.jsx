@@ -260,7 +260,7 @@ export default function JourneyFlow({
 								? 'completed gate'
 								: 'closed gate'
 
-						const pointLabel = isActive ? point.title : completed ? 'done' : ''
+						const pointLabel = isActive ? point.title : completed ? 'Done' : ''
 
 						return (
 							<button
@@ -282,7 +282,8 @@ export default function JourneyFlow({
 								</div>
 
 								{pointLabel && (
-									<div className='journey-point-label'>
+									<div
+										className={`journey-point-label ${!isActive && completed && 'done'}`}>
 										{isActive && <WhiteDot />}
 										{pointLabel}
 									</div>

@@ -68,6 +68,10 @@
 
 }
 
+.journey-point-label.done {
+  background: rgba(158, 91, 249, 0.52);
+}
+
 .journey-point-label svg {
   display: block;
   width: 8px;
