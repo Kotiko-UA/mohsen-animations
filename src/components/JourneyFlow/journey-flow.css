@@ -9,7 +9,7 @@
   right: 40px;
   transform: translateY(-50%);
   width: 745px;
-  max-height: 708px;
+  max-height: 800px;
   overflow-y: auto;
 }
 
@@ -517,4 +517,11 @@
   width: 241px;
   height: 257px;
   border-radius: 42px;
+}
+
+.cpms-2-img {
+  width: 567px;
+  height: 315px;
+  border-radius: 25px;
+  margin: 0 auto;
 }

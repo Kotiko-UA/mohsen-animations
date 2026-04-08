@@ -7,6 +7,8 @@ import CryptoLaunchpadBroker2 from './journey-steps/crypto/CryptoLaunchpadBroker
 import CryptoLaunchpadDiscord from './journey-steps/crypto/CryptoLaunchpadDiscord'
 import CryptoOnboardingStep1 from './journey-steps/crypto/CryptoOnboardingStep1'
 import CryptoProductMasteryStep1 from './journey-steps/crypto/CryptoProductMasteryStep1'
+import CryptoProductMasteryStep2 from './journey-steps/crypto/CryptoProductMasteryStep2'
+import CryptoProductMasteryStep3 from './journey-steps/crypto/CryptoProductMasteryStep3'
 
 import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
@@ -96,6 +98,22 @@ export const JOURNEYS = {
 					{
 						id: 'crypto-point-3-step-1',
 						component: CryptoProductMasteryStep1,
+						meta: {
+							sceneNode: 'crypto',
+							roadStep: 3,
+						},
+					},
+					{
+						id: 'crypto-point-3-step-2',
+						component: CryptoProductMasteryStep2,
+						meta: {
+							sceneNode: 'crypto',
+							roadStep: 3,
+						},
+					},
+					{
+						id: 'crypto-point-3-step-3',
+						component: CryptoProductMasteryStep3,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 3,
