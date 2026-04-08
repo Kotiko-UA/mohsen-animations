@@ -63,6 +63,8 @@ export const Animation = () => {
 	const [pressedKey, setPressedKey] = useState(null)
 	const [journeyProgress, setJourneyProgress] = useState({})
 	const [activeJourneyState, setActiveJourneyState] = useState(null)
+	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
+	const openJourneyTimeoutRef = useRef(null)
 
 	const containerRef = useRef(null)
 
@@ -95,20 +97,43 @@ export const Animation = () => {
 	const handleOpen = nextMode => {
 		if (nextMode === 'synthetics') return
 
+		if (openJourneyTimeoutRef.current) {
+			clearTimeout(openJourneyTimeoutRef.current)
+		}
+
 		setHoveredKey(null)
 		setPressedKey(null)
 		setActiveJourneyState(null)
+		setIsJourneyVisible(false)
 		setMode(nextMode)
 
-		requestAnimationFrame(() => setIsZoomed(true))
+		requestAnimationFrame(() => {
+			setIsZoomed(true)
+
+			openJourneyTimeoutRef.current = setTimeout(() => {
+				setIsJourneyVisible(true)
+			}, 400)
+		})
 	}
 
 	const handleClose = () => {
+		if (openJourneyTimeoutRef.current) {
+			clearTimeout(openJourneyTimeoutRef.current)
+		}
+
+		setIsJourneyVisible(false)
 		setIsZoomed(false)
 		setHoveredKey(null)
 		setPressedKey(null)
 		setActiveJourneyState(null)
 	}
+	useEffect(() => {
+		return () => {
+			if (openJourneyTimeoutRef.current) {
+				clearTimeout(openJourneyTimeoutRef.current)
+			}
+		}
+	}, [])
 
 	const handleTransitionEnd = () => {
 		if (!isZoomed) {
@@ -227,7 +252,7 @@ export const Animation = () => {
 						))}
 					</div>
 
-					{mode && (
+					{mode && isJourneyVisible && (
 						<div className='journey-window-wrap'>
 							<JourneyFlow
 								key={mode}
