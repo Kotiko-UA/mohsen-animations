@@ -221,6 +221,17 @@
   line-height: 122%;
 }
 
+.journey-modal-title-opacity {
+  color: #FFF;
+
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+
+  opacity: 0.7;
+}
+
 .journey-modal-stars {
   width: 80px;
   height: 16px;
@@ -232,7 +243,7 @@
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 126%;
 }
 
 .journey-modal-text span {
@@ -358,13 +369,32 @@
   align-items: center;
 }
 
-.text-h-16 {
+
+
+.text-h-16-500 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 126%;
+}
+
+.text-h-16-700 {
   font-family: Inter;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
   line-height: 126%;
 }
+
+.text-h-24-500 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 126%;
+}
+
 
 .flex-col-12 {
   display: flex;
@@ -379,3 +409,70 @@
 }
 
 /* ------------Crypto------------ */
+.journey-confirm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.journey-confirm-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.journey-confirm-checkbox {
+  position: relative;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.journey-confirm-checkbox:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.journey-confirm-checkbox:checked {
+  background: #7c4dff;
+  border-color: #7c4dff;
+  box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.18);
+}
+
+.journey-confirm-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.journey-confirm-checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.28);
+}
+
+.journey-confirm-label {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 400;
+  max-width: 430px;
+}

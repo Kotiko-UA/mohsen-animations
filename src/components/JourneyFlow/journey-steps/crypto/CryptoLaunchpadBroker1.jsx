@@ -13,7 +13,7 @@ export default function CryptoLaunchpadBroker1() {
 			</div>
 			<div className='flex-col-24'>
 				<div className='flex-col-12'>
-					<div className='text-h-16'>What Happens Next?</div>
+					<div className='text-h-16-700'>What Happens Next?</div>
 					<p className='journey-modal-text'>
 						We often receive questions like: “Which broker should I choose?” WOW
 						is an education and software platform, so we don’t operate brokers
@@ -26,7 +26,7 @@ export default function CryptoLaunchpadBroker1() {
 					</p>
 				</div>
 				<div className='flex-col-12'>
-					<div className='text-h-16'>What Happens Next?</div>
+					<div className='text-h-16-700'>What Happens Next?</div>
 					<p className='journey-modal-text'>
 						When you continue: You will be directed to XCONNECTLY, an
 						independent third-party platform. XCONNECTLY provides broker

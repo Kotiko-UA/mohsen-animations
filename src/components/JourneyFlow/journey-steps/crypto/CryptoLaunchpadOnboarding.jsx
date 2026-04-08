@@ -8,7 +8,7 @@ export default function CryptoLaunchpadOnboarding() {
 				<h2 className='journey-modal-title'>Onboarding</h2>
 			</div>
 			<div className='flex-col-12'>
-				<div className='text-h-16'>What Happens Next?</div>
+				<div className='text-h-16-700'>What Happens Next?</div>
 				<p className='journey-modal-text'>
 					Welcome to the Wow Education System (WES) where your journey to
 					excellence begins. <br /> <br /> If you’re new to WES, our dynamic
