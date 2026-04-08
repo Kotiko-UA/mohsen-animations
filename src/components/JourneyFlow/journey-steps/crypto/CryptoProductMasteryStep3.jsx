@@ -2,7 +2,6 @@ import {
 	JourneyGoToStepButton,
 	JourneyLinkButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/prod-m-img.jpg'
 
 export default function CryptoProductMasteryStep3() {
 	return (

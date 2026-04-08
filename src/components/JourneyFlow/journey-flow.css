@@ -47,6 +47,11 @@
 }
 
 .journey-point-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
   height: 22px;
   display: flex;
   justify-content: center;
@@ -65,6 +70,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 102%;
+  white-space: nowrap;
 
 }
 
@@ -92,6 +98,11 @@
 .journey-point-button.crypto-point-3 {
   left: 65px;
   bottom: 383px;
+}
+
+.journey-point-button.crypto-point-4 {
+  right: 165px;
+  top: 110px;
 }
 
 .journey-modal-wrap {
