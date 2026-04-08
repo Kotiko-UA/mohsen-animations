@@ -23,8 +23,8 @@ export default function CryptoLaunchpadBroker2() {
 			<div className='flex-col-12'>
 				<JourneyPrevButton />
 				<div className='journey-modal-flex-between'>
-					<div className='journey-modal-title-opacity'>You choose:</div>
-					<h2 className='journey-modal-title'>Exchange Discovery</h2>
+					<div className='text-h-32-700-opacity'>You choose:</div>
+					<h2 className='text-h-32-700'>Exchange Discovery</h2>
 				</div>
 			</div>
 

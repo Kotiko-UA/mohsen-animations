@@ -24,7 +24,7 @@ export default function HowMuchTime() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='journey-modal-flex-between'>
-				<h2 className='journey-modal-title'>Stocks Journey</h2>
+				<h2 className='text-h-32-700'>Stocks Journey</h2>
 
 				<div>
 					<StarsIcon className='journey-modal-stars' />
@@ -39,7 +39,7 @@ export default function HowMuchTime() {
 			</p>
 
 			<div className='journey-modal-ht-subwrap'>
-				<div className='journey-modal-subtitle'>
+				<div className='text-h-20-700'>
 					How much time can you commit each day?
 				</div>
 

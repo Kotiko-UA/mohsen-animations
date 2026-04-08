@@ -5,7 +5,7 @@ export default function CryptoLaunchpadOnboarding() {
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
 				<JourneyPrevButton />
-				<h2 className='journey-modal-title'>Onboarding</h2>
+				<h2 className='text-h-32-700'>Onboarding</h2>
 			</div>
 			<div className='flex-col-12'>
 				<div className='text-h-16-700'>What Happens Next?</div>

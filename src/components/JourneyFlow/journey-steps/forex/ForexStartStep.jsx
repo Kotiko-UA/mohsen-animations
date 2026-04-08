@@ -9,7 +9,7 @@ export default function ForexStartStep() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='journey-modal-flex-between'>
-				<h2 className='journey-modal-title'>Forex Journey</h2>
+				<h2 className='text-h-32-700'>Forex Journey</h2>
 				<div>
 					<StarsIcon className='journey-modal-stars' />
 					<p className='journey-modal-text'>4.8 (1450 reviews)</p>

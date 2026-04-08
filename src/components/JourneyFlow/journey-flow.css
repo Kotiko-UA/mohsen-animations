@@ -204,7 +204,7 @@
   justify-content: space-between;
 }
 
-.journey-modal-title {
+.text-h-32-700 {
   color: #FFF;
   font-family: Inter;
   font-size: 32px;
@@ -212,7 +212,7 @@
   line-height: normal;
 }
 
-.journey-modal-subtitle {
+.text-h-20-700 {
   color: #FFF;
 
   font-family: Inter;
@@ -221,7 +221,7 @@
   line-height: 122%;
 }
 
-.journey-modal-title-opacity {
+.text-h-32-700-opacity {
   color: #FFF;
 
   font-family: Inter;
@@ -230,6 +230,43 @@
   line-height: normal;
 
   opacity: 0.7;
+}
+
+.text-h-16-500 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 126%;
+}
+
+.text-h-16-700 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 126%;
+}
+
+.text-h-24-500 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 126%;
+}
+
+
+.flex-col-12 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flex-col-24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .journey-modal-stars {
@@ -371,42 +408,6 @@
 
 
 
-.text-h-16-500 {
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 500;
-  color: #fff;
-  line-height: 126%;
-}
-
-.text-h-16-700 {
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 126%;
-}
-
-.text-h-24-500 {
-  font-family: Inter;
-  font-size: 24px;
-  font-weight: 500;
-  color: #fff;
-  line-height: 126%;
-}
-
-
-.flex-col-12 {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.flex-col-24 {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
 
 /* ------------Crypto------------ */
 .journey-confirm-list {

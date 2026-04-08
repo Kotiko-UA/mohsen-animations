@@ -10,10 +10,10 @@ export default function CryptoLaunchpadStep1() {
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
 				<JourneyPrevButton />
-				<h2 className='journey-modal-title'>Launchpad</h2>
+				<h2 className='text-h-32-700'>Launchpad</h2>
 			</div>
 			<div className='journey-launchpad-w1'>
-				<div className='journey-modal-subtitle'>
+				<div className='text-h-20-700'>
 					How much time can you commit each day?
 				</div>
 				<div className='journey-launchpad-w2'>

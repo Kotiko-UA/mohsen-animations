@@ -9,7 +9,7 @@ export default function CryptoLaunchpadBroker1() {
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
 				<JourneyPrevButton />
-				<h2 className='journey-modal-title'>Exchange Discovery</h2>
+				<h2 className='text-h-32-700'>Exchange Discovery</h2>
 			</div>
 			<div className='flex-col-24'>
 				<div className='flex-col-12'>
