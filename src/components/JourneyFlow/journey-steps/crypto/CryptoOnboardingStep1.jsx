@@ -1,10 +1,9 @@
-import { JourneyPrevButton, JourneyLinkButton } from '../../JourneyStepControls'
+import { JourneyLinkButton } from '../../JourneyStepControls'
 
 export default function CryptoOnboardingStep1() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
-				<JourneyPrevButton />
 				<h2 className='text-h-32-700'>WOW Education System: Crypto Basics</h2>
 			</div>
 			<p className='journey-modal-text'>

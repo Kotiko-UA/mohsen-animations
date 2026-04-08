@@ -9,11 +9,13 @@ import WhiteDot from '../../assets/white-dot.svg?react'
 const createEmptyProgress = () => ({
 	completedPointIds: [],
 	viewedStepIndexesByPointId: {},
+	arePointsUnlocked: false,
 })
 
 const normalizeProgress = progress => ({
 	completedPointIds: progress?.completedPointIds ?? [],
 	viewedStepIndexesByPointId: progress?.viewedStepIndexesByPointId ?? {},
+	arePointsUnlocked: progress?.arePointsUnlocked ?? false,
 })
 
 const cloneProgress = progress => ({
@@ -23,16 +25,15 @@ const cloneProgress = progress => ({
 			([pointId, indexes]) => [pointId, [...indexes]],
 		),
 	),
+	arePointsUnlocked: progress?.arePointsUnlocked ?? false,
 })
 
 const isPointCompleted = (progress, pointId) =>
 	progress.completedPointIds.includes(pointId)
 
 const isPointUnlocked = (journey, pointIndex, progress) => {
-	if (pointIndex === 0) return true
-
-	const prevPoint = journey.points[pointIndex - 1]
-	return isPointCompleted(progress, prevPoint.id)
+	if (progress.arePointsUnlocked) return true
+	return pointIndex === 0
 }
 
 const getPointById = (journey, pointId) => {
@@ -82,11 +83,21 @@ const getStepView = ({
 
 const openLink = (link, target = '_blank') => {
 	if (!link) return
-
 	window.open(link, target, 'noopener,noreferrer')
 }
 
-export default function JourneyFlow({
+export default function JourneyFlow(props) {
+	const { journeyKey, journey } = props
+
+	const firstPointId = journey?.points?.[0]?.id ?? null
+	const introStepsLength = journey?.introSteps?.length ?? 0
+
+	const resetKey = `${journeyKey ?? 'journey'}:${firstPointId ?? 'no-point'}:${introStepsLength}`
+
+	return <JourneyFlowContent key={resetKey} {...props} />
+}
+
+function JourneyFlowContent({
 	journeyKey,
 	journey,
 	progress,
@@ -94,6 +105,7 @@ export default function JourneyFlow({
 	onStateChange,
 }) {
 	const firstPointId = journey?.points?.[0]?.id ?? null
+	const introSteps = journey?.introSteps ?? []
 
 	const safeProgress = useMemo(
 		() => normalizeProgress(progress ?? createEmptyProgress()),
@@ -102,42 +114,73 @@ export default function JourneyFlow({
 
 	const [activePointId, setActivePointId] = useState(firstPointId)
 	const [activeStepIndex, setActiveStepIndex] = useState(0)
+	const [isOverviewMode, setIsOverviewMode] = useState(false)
+	const [activeIntroStepIndex, setActiveIntroStepIndex] = useState(
+		introSteps.length ? 0 : null,
+	)
 
-	const activePoint = useMemo(() => {
-		if (!journey) return null
+	const selectedPoint = useMemo(() => {
+		if (!journey || !activePointId) return null
 		return getPointById(journey, activePointId)
 	}, [journey, activePointId])
 
-	const activePointIndex = useMemo(() => {
-		if (!journey || !activePoint) return -1
-		return journey.points.findIndex(point => point.id === activePoint.id)
-	}, [journey, activePoint])
+	const selectedPointIndex = useMemo(() => {
+		if (!journey || !selectedPoint) return -1
+		return journey.points.findIndex(point => point.id === selectedPoint.id)
+	}, [journey, selectedPoint])
 
-	const activeStep = activePoint?.steps?.[activeStepIndex] ?? null
-	const isFirstStep = activeStepIndex === 0
-	const isLastStep = activeStepIndex === (activePoint?.steps?.length ?? 1) - 1
-	const nextPoint = journey?.points?.[activePointIndex + 1] ?? null
+	const isIntroMode =
+		activeIntroStepIndex !== null &&
+		!safeProgress.arePointsUnlocked &&
+		!isOverviewMode
+
+	const activeIntroStep = isIntroMode
+		? (introSteps[activeIntroStepIndex] ?? null)
+		: null
+
+	const pointStep =
+		!isOverviewMode && !isIntroMode
+			? (selectedPoint?.steps?.[activeStepIndex] ?? null)
+			: null
+
+	const activePoint = isIntroMode ? null : selectedPoint
+	const activePointIndex = isIntroMode ? -1 : selectedPointIndex
+	const activeStep = isIntroMode ? activeIntroStep : pointStep
+	const currentStepIndex = isIntroMode ? activeIntroStepIndex : activeStepIndex
+
+	const isFirstStep = isIntroMode
+		? activeIntroStepIndex === 0
+		: !isOverviewMode && activeStepIndex === 0
+
+	const isLastStep = isIntroMode
+		? activeIntroStepIndex === introSteps.length - 1
+		: !isOverviewMode &&
+			activeStepIndex === (selectedPoint?.steps?.length ?? 1) - 1
+
+	const nextPoint =
+		!isIntroMode && !isOverviewMode
+			? (journey?.points?.[selectedPointIndex + 1] ?? null)
+			: null
 
 	useEffect(() => {
-		if (!activePoint || !activeStep) return
+		if (!selectedPoint || isOverviewMode || isIntroMode) return
 
 		const nextProgress = cloneProgress(safeProgress)
-
 		const viewedIndexes =
-			nextProgress.viewedStepIndexesByPointId[activePoint.id] ?? []
+			nextProgress.viewedStepIndexesByPointId[selectedPoint.id] ?? []
 
 		if (!viewedIndexes.includes(activeStepIndex)) {
-			nextProgress.viewedStepIndexesByPointId[activePoint.id] = [
+			nextProgress.viewedStepIndexesByPointId[selectedPoint.id] = [
 				...viewedIndexes,
 				activeStepIndex,
 			]
 		}
 
 		if (
-			activeStepIndex === activePoint.steps.length - 1 &&
-			!nextProgress.completedPointIds.includes(activePoint.id)
+			nextProgress.arePointsUnlocked &&
+			!nextProgress.completedPointIds.includes(selectedPoint.id)
 		) {
-			nextProgress.completedPointIds.push(activePoint.id)
+			nextProgress.completedPointIds.push(selectedPoint.id)
 		}
 
 		const prevJson = JSON.stringify(safeProgress)
@@ -146,24 +189,67 @@ export default function JourneyFlow({
 		if (prevJson !== nextJson) {
 			onProgressChange?.(nextProgress)
 		}
-	}, [activePoint, activeStep, activeStepIndex, safeProgress, onProgressChange])
+	}, [
+		selectedPoint,
+		activeStepIndex,
+		isOverviewMode,
+		isIntroMode,
+		safeProgress,
+		onProgressChange,
+	])
 
 	useEffect(() => {
-		if (!activePoint || !activeStep) return
+		if (isOverviewMode) {
+			onStateChange?.({
+				journeyKey,
+				point: null,
+				pointIndex: -1,
+				step: null,
+				stepIndex: null,
+				isPointCompleted: false,
+				isOverviewMode: true,
+				isIntroMode: false,
+			})
+			return
+		}
+
+		if (isIntroMode) {
+			if (!activeIntroStep) return
+
+			onStateChange?.({
+				journeyKey,
+				point: null,
+				pointIndex: -1,
+				step: activeIntroStep,
+				stepIndex: activeIntroStepIndex,
+				isPointCompleted: false,
+				isOverviewMode: false,
+				isIntroMode: true,
+			})
+			return
+		}
+
+		if (!selectedPoint || !pointStep) return
 
 		onStateChange?.({
 			journeyKey,
-			point: activePoint,
-			pointIndex: activePointIndex,
-			step: activeStep,
+			point: selectedPoint,
+			pointIndex: selectedPointIndex,
+			step: pointStep,
 			stepIndex: activeStepIndex,
-			isPointCompleted: isPointCompleted(safeProgress, activePoint.id),
+			isPointCompleted: isPointCompleted(safeProgress, selectedPoint.id),
+			isOverviewMode: false,
+			isIntroMode: false,
 		})
 	}, [
 		journeyKey,
-		activePoint,
-		activePointIndex,
-		activeStep,
+		isOverviewMode,
+		isIntroMode,
+		activeIntroStep,
+		activeIntroStepIndex,
+		selectedPoint,
+		selectedPointIndex,
+		pointStep,
 		activeStepIndex,
 		safeProgress,
 		onStateChange,
@@ -178,26 +264,43 @@ export default function JourneyFlow({
 		const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
 		if (!unlocked) return
 
+		setActiveIntroStepIndex(null)
 		setActivePointId(pointId)
 		setActiveStepIndex(0)
+		setIsOverviewMode(false)
 	}
 
 	const goToStep = stepIndex => {
-		if (!activePoint) return
-		if (stepIndex < 0 || stepIndex > activePoint.steps.length - 1) return
+		if (!selectedPoint || isIntroMode) return
+		if (stepIndex < 0 || stepIndex > selectedPoint.steps.length - 1) return
 
 		setActiveStepIndex(stepIndex)
+		setIsOverviewMode(false)
 	}
 
 	const goToPrevStep = () => {
-		if (isFirstStep) return
+		if (isIntroMode) {
+			if (activeIntroStepIndex > 0) {
+				setActiveIntroStepIndex(prev => prev - 1)
+			}
+			return
+		}
+
+		if (isOverviewMode || isFirstStep) return
 		setActiveStepIndex(prev => prev - 1)
 	}
 
 	const goToNextStep = () => {
-		if (!activePoint) return
+		if (isIntroMode) {
+			if (activeIntroStepIndex < introSteps.length - 1) {
+				setActiveIntroStepIndex(prev => prev + 1)
+			}
+			return
+		}
 
-		if (activeStepIndex < activePoint.steps.length - 1) {
+		if (!selectedPoint || isOverviewMode) return
+
+		if (activeStepIndex < selectedPoint.steps.length - 1) {
 			setActiveStepIndex(prev => prev + 1)
 			return
 		}
@@ -205,6 +308,21 @@ export default function JourneyFlow({
 		if (nextPoint) {
 			openPoint(nextPoint.id)
 		}
+	}
+
+	const unlockPointsOverview = () => {
+		const nextProgress = cloneProgress(safeProgress)
+		nextProgress.arePointsUnlocked = true
+
+		const prevJson = JSON.stringify(safeProgress)
+		const nextJson = JSON.stringify(nextProgress)
+
+		if (prevJson !== nextJson) {
+			onProgressChange?.(nextProgress)
+		}
+
+		setActiveIntroStepIndex(null)
+		setIsOverviewMode(true)
 	}
 
 	const openCurrentStepLink = () => {
@@ -223,8 +341,11 @@ export default function JourneyFlow({
 		goToNextStep,
 		openLink,
 		openCurrentStepLink,
+		unlockPointsOverview,
 		setActivePointId,
 		setActiveStepIndex,
+		setActiveIntroStepIndex,
+		setIsOverviewMode,
 	}
 
 	const state = {
@@ -233,12 +354,20 @@ export default function JourneyFlow({
 		activePoint,
 		activePointIndex,
 		activeStep,
-		activeStepIndex,
+		activeStepIndex: currentStepIndex,
 		isFirstStep,
 		isLastStep,
 		nextPoint,
+		isOverviewMode,
+		isIntroMode,
+		activeIntroStep,
+		activeIntroStepIndex,
+		selectedPoint,
+		selectedPointIndex,
 	}
-	const shouldShowPoints = activePointIndex > 0 || activeStepIndex >= 2
+
+	const shouldShowPoints = safeProgress.arePointsUnlocked
+
 	return (
 		<div className={`journey-flow ${journey.id}`}>
 			{shouldShowPoints && (
@@ -246,7 +375,8 @@ export default function JourneyFlow({
 					{journey.points.map((point, pointIndex) => {
 						const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
 						const completed = isPointCompleted(safeProgress, point.id)
-						const isActive = point.id === activePoint?.id
+						const isActive =
+							!isOverviewMode && !isIntroMode && point.id === selectedPoint?.id
 
 						const pointImage = isActive
 							? GateActive
@@ -283,7 +413,9 @@ export default function JourneyFlow({
 
 								{pointLabel && (
 									<div
-										className={`journey-point-label ${!isActive && completed && 'done'}`}>
+										className={`journey-point-label ${
+											!isActive && completed ? 'done' : ''
+										}`}>
 										{isActive && <WhiteDot />}
 										{pointLabel}
 									</div>
@@ -294,20 +426,22 @@ export default function JourneyFlow({
 				</div>
 			)}
 
-			<div className='journey-step-view'>
-				<div className='journey-step-content'>
-					<JourneyStepProvider value={{ actions, state }}>
-						{getStepView({
-							step: activeStep,
-							point: activePoint,
-							pointIndex: activePointIndex,
-							stepIndex: activeStepIndex,
-							actions,
-							state,
-						})}
-					</JourneyStepProvider>
+			{!isOverviewMode && activeStep && (
+				<div className='journey-step-view'>
+					<div className='journey-step-content'>
+						<JourneyStepProvider value={{ actions, state }}>
+							{getStepView({
+								step: activeStep,
+								point: activePoint,
+								pointIndex: activePointIndex,
+								stepIndex: currentStepIndex,
+								actions,
+								state,
+							})}
+						</JourneyStepProvider>
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	)
 }

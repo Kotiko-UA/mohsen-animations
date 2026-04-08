@@ -7,7 +7,7 @@ export default function CryptoLaunchpadDiscord() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
-				<JourneyGoToStepButton back={true} stepNumber={3} />
+				<JourneyGoToStepButton back={true} stepNumber={1} />
 				<h2 className='text-h-32-700'>Crypto Discord</h2>
 			</div>
 			<p className='journey-modal-text'>

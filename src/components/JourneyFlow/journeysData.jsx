@@ -18,6 +18,16 @@ export const JOURNEYS = {
 	crypto: {
 		id: 'crypto',
 		title: 'Crypto',
+		introSteps: [
+			{
+				id: 'crypto-intro-step-1',
+				component: CryptoStartStep,
+			},
+			{
+				id: 'crypto-intro-step-2',
+				component: HowMuchTimeCrypto,
+			},
+		],
 		points: [
 			{
 				id: 'crypto-point-1',
@@ -25,22 +35,6 @@ export const JOURNEYS = {
 				steps: [
 					{
 						id: 'crypto-point-1-step-1',
-						component: CryptoStartStep,
-						meta: {
-							sceneNode: 'crypto',
-							roadStep: 1,
-						},
-					},
-					{
-						id: 'crypto-point-1-step-2',
-						component: HowMuchTimeCrypto,
-						meta: {
-							sceneNode: 'crypto',
-							roadStep: 1,
-						},
-					},
-					{
-						id: 'crypto-point-1-step-3',
 						component: CryptoLaunchpadStep1,
 						meta: {
 							sceneNode: 'crypto',
@@ -48,7 +42,7 @@ export const JOURNEYS = {
 						},
 					},
 					{
-						id: 'crypto-point-1-step-4',
+						id: 'crypto-point-1-step-2',
 						component: CryptoLaunchpadOnboarding,
 						meta: {
 							sceneNode: 'crypto',
@@ -56,7 +50,7 @@ export const JOURNEYS = {
 						},
 					},
 					{
-						id: 'crypto-point-1-step-5',
+						id: 'crypto-point-1-step-3',
 						component: CryptoLaunchpadBroker1,
 						meta: {
 							sceneNode: 'crypto',
@@ -64,7 +58,7 @@ export const JOURNEYS = {
 						},
 					},
 					{
-						id: 'crypto-point-1-step-6',
+						id: 'crypto-point-1-step-4',
 						component: CryptoLaunchpadBroker2,
 						meta: {
 							sceneNode: 'crypto',
@@ -72,7 +66,7 @@ export const JOURNEYS = {
 						},
 					},
 					{
-						id: 'crypto-point-1-step-7',
+						id: 'crypto-point-1-step-5',
 						component: CryptoLaunchpadDiscord,
 						meta: {
 							sceneNode: 'crypto',
