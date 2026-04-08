@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { JourneyNextButton } from '../../JourneyStepControls'
 import StarsIcon from '../../../../assets/5-stars.svg?react'
+import { useJourneyStep } from '../../useJourneyStep'
 
 const commitmentOptions = [
 	{ id: '20-min', label: '20 min/day', value: 20 },
@@ -10,6 +10,7 @@ const commitmentOptions = [
 ]
 
 export default function HowMuchTime() {
+	const { actions } = useJourneyStep()
 	const [activeCommitmentId, setActiveCommitmentId] = useState('60-min')
 
 	const activeCommitment =
@@ -65,9 +66,11 @@ export default function HowMuchTime() {
 			</div>
 
 			<div className='journey-first-step-bw'>
-				<JourneyNextButton className='journey-modal-main-button'>
+				<button
+					onClick={actions.unlockPointsOverview}
+					className='journey-modal-main-button'>
 					Continue
-				</JourneyNextButton>
+				</button>
 
 				<p className='journey-modal-text'>
 					Your commitment: <span>{activeCommitment.label}</span> for the next{' '}

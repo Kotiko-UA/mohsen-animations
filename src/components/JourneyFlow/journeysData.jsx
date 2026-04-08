@@ -157,14 +157,24 @@ export const JOURNEYS = {
 	forex: {
 		id: 'forex',
 		title: 'Forex',
+		introSteps: [
+			{
+				id: 'forex-intro-step-1',
+				component: ForexStartStep,
+			},
+			{
+				id: 'forex-intro-step-2',
+				component: HowMuchTimeForex,
+			},
+		],
 		points: [
 			{
 				id: 'forex-point-1',
-				title: 'Intro',
+				title: 'Launchpad',
 				steps: [
 					{
 						id: 'forex-point-1-step-1',
-						component: ForexStartStep,
+						component: CryptoLaunchpadStep1,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
@@ -172,7 +182,31 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'forex-point-1-step-2',
-						component: HowMuchTimeForex,
+						component: CryptoLaunchpadOnboarding,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'forex-point-1-step-3',
+						component: CryptoLaunchpadBroker1,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'forex-point-1-step-4',
+						component: CryptoLaunchpadBroker2,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'forex-point-1-step-5',
+						component: CryptoLaunchpadDiscord,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,

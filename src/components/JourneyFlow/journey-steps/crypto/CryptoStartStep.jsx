@@ -1,8 +1,4 @@
-import {
-	JourneyLinkButton,
-	JourneyNextButton,
-	JourneyPrevButton,
-} from '../../JourneyStepControls'
+import { JourneyNextButton } from '../../JourneyStepControls'
 import StarsIcon from '../../../../assets/5-stars.svg?react'
 
 export default function CryptoStartStep() {

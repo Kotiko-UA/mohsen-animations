@@ -82,7 +82,7 @@ section {
 }
 
 .main-img.forex-mode {
-  transform-origin: 79% 72%;
+  transform-origin: 79% 100%;
 }
 
 .main-img.stocks-mode {
@@ -144,7 +144,7 @@ section {
 }
 
 .main-img-wrap.forex-mode .feature-img-wrapper.forex {
-  transform-origin: 263% 45%;
+  transform-origin: 285% 100%;
 }
 
 .main-img-wrap.stocks-mode .feature-img-wrapper.stocks {
@@ -217,8 +217,8 @@ section {
 }
 
 .eclipse-image.forex {
-  top: 29%;
   left: -18%;
+  bottom: -2%;
   transform: scale(0.55);
 }
 

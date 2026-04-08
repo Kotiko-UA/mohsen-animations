@@ -30,14 +30,6 @@
 
 }
 
-.crypto .journey-points {
-  position: absolute;
-  width: 542px;
-  height: 690px;
-  left: 77px;
-  bottom: 0px;
-}
-
 .journey-point-button {
   position: absolute;
   display: flex;
@@ -101,6 +93,15 @@
   flex-shrink: 0;
 }
 
+/* ---------------- Crypto points ---------------- */
+.crypto .journey-points {
+  position: absolute;
+  width: 542px;
+  height: 690px;
+  left: 77px;
+  bottom: 0px;
+}
+
 .journey-point-button.crypto-point-1 {
   right: 67px;
   bottom: 255px;
@@ -124,6 +125,20 @@
 .journey-point-button.crypto-point-5 {
   right: 277px;
   top: 18px;
+}
+
+/* ---------------- Forex points ---------------- */
+.forex .journey-points {
+  position: absolute;
+  width: 542px;
+  height: 690px;
+  left: 110px;
+  bottom: 0px;
+}
+
+.journey-point-button.forex-point-1 {
+  right: 67px;
+  bottom: 255px;
 }
 
 
