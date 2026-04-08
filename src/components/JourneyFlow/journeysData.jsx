@@ -6,8 +6,8 @@ import CryptoLaunchpadBroker1 from './journey-steps/crypto/CryptoLaunchpadBroker
 import CryptoLaunchpadBroker2 from './journey-steps/crypto/CryptoLaunchpadBroker2'
 import CryptoLaunchpadDiscord from './journey-steps/crypto/CryptoLaunchpadDiscord'
 import CryptoOnboardingStep1 from './journey-steps/crypto/CryptoOnboardingStep1'
-import CryptoOnboardingStep2 from './journey-steps/crypto/CryptoOnboardingStep2'
-import CryptoExchangeDiscoveryStep1 from './journey-steps/crypto/CryptoExchangeDiscoveryStep1'
+import CryptoProductMasteryStep1 from './journey-steps/crypto/CryptoProductMasteryStep1'
+
 import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
 import StocksStartStep from './journey-steps/stocks/StocksStartStep'
@@ -97,11 +97,11 @@ export const JOURNEYS = {
 			},
 			{
 				id: 'crypto-point-3',
-				title: 'Exchange Discovery',
+				title: 'Product Mastery',
 				steps: [
 					{
 						id: 'crypto-point-3-step-1',
-						component: CryptoExchangeDiscoveryStep1,
+						component: CryptoProductMasteryStep1,
 						meta: {
 							sceneNode: 'crypto',
 							roadStep: 3,
