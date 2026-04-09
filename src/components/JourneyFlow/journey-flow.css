@@ -203,7 +203,7 @@
   line-height: 122%;
   cursor: pointer;
 
-  transition: all 0.3s linear;
+  transition: background-color 0.3s linear;
 }
 
 
@@ -606,11 +606,10 @@
   background: rgba(255, 255, 255, 0.02);
 
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
-  transition: all 0.3s linear;
+  transition: background-color 0.3s linear, box-shadow 0.3s linear;
 }
 
 .f-a-play-wrap:hover {
-  border-radius: 4px;
   background: rgba(30, 12, 55, 0.66);
   box-shadow: 0 0 23.8px 0 rgba(134, 101, 255, 0.50);
 }
