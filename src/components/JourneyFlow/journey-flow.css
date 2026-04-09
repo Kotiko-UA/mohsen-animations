@@ -156,6 +156,11 @@
   left: 159px;
 }
 
+.journey-point-button.forex-point-5 {
+  top: -24px;
+  left: 241px;
+}
+
 
 .journey-prev-button {
   margin-right: auto;
@@ -302,6 +307,14 @@
   font-family: Inter;
   font-size: 16px;
   font-weight: 700;
+  color: #fff;
+  line-height: 126%;
+}
+
+.text-h-18-500 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
   color: #fff;
   line-height: 126%;
 }
@@ -577,4 +590,37 @@
   height: 315px;
   border-radius: 25px;
   margin: 0 auto;
+}
+
+.f-a-play-wrap {
+  height: 124px;
+  display: flex;
+  padding: 12px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  border-radius: 4px;
+  border: 1px solid #754CF0;
+  background: rgba(255, 255, 255, 0.02);
+
+  box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
+  transition: all 0.3s ease-in-out;
+}
+
+.f-a-play-wrap:hover {
+  border-radius: 4px;
+  background: rgba(30, 12, 55, 0.66);
+  box-shadow: 0 0 23.8px 0 rgba(134, 101, 255, 0.50);
+}
+
+.f-a-play-img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.f-a-play-text {
+  text-align: center;
 }
