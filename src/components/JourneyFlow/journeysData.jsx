@@ -18,6 +18,7 @@ import ForexBasic from './journey-steps/forex/ForexBasic'
 import ForexProductMasteryStep1 from './journey-steps/forex/ForexProductMasteryStep1'
 import ForexProductMasteryStep2 from './journey-steps/forex/ForexProductMasteryStep2'
 import ForexProductMasteryStep3 from './journey-steps/forex/ForexProductMasteryStep3'
+import ForexIntermediate from './journey-steps/forex/ForexIntermediate'
 
 import StocksStartStep from './journey-steps/stocks/StocksStartStep'
 import HowMuchTimeStocks from './journey-steps/stocks/HowMuchTime'
@@ -258,6 +259,28 @@ export const JOURNEYS = {
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 3,
+						},
+					},
+					{
+						id: 'forex-point-3-step-4',
+						component: ForexIntermediate,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 3,
+						},
+					},
+				],
+			},
+			{
+				id: 'forex-point-4',
+				title: 'WES Forex Intermediate',
+				steps: [
+					{
+						id: 'forex-point-4-step-2',
+						component: ForexIntermediate,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 4,
 						},
 					},
 				],
