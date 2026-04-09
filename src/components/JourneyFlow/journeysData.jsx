@@ -12,10 +12,14 @@ import CryptoProductMasteryStep3 from './journey-steps/crypto/CryptoProductMaste
 import CryptoIntermediate from './journey-steps/crypto/CryptoIntermediate'
 import CryptoAdvanced from './journey-steps/crypto/CryptoAdvanced'
 
-import StocksIntroStep1 from './journey-steps/stocks/StocksIntroStep1'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
-import StocksStartStep from './journey-steps/stocks/StocksStartStep'
 import HowMuchTimeForex from './journey-steps/forex/HowMuchTime'
+import ForexBasic from './journey-steps/forex/ForexBasic'
+import ForexProductMasteryStep1 from './journey-steps/forex/ForexProductMasteryStep1'
+import ForexProductMasteryStep2 from './journey-steps/forex/ForexProductMasteryStep2'
+import ForexProductMasteryStep3 from './journey-steps/forex/ForexProductMasteryStep3'
+
+import StocksStartStep from './journey-steps/stocks/StocksStartStep'
 import HowMuchTimeStocks from './journey-steps/stocks/HowMuchTime'
 
 export const JOURNEYS = {
@@ -210,6 +214,50 @@ export const JOURNEYS = {
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
+						},
+					},
+				],
+			},
+			{
+				id: 'forex-point-2',
+				title: 'WES Forex Basics',
+				steps: [
+					{
+						id: 'forex-point-2-step-1',
+						component: ForexBasic,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 2,
+						},
+					},
+				],
+			},
+			{
+				id: 'forex-point-3',
+				title: 'Product Mastery',
+				steps: [
+					{
+						id: 'forex-point-3-step-1',
+						component: ForexProductMasteryStep1,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 3,
+						},
+					},
+					{
+						id: 'forex-point-3-step-2',
+						component: ForexProductMasteryStep2,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 3,
+						},
+					},
+					{
+						id: 'forex-point-3-step-3',
+						component: ForexProductMasteryStep3,
+						meta: {
+							sceneNode: 'forex',
+							roadStep: 3,
 						},
 					},
 				],
