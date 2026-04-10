@@ -3,31 +3,46 @@ import styles from './Commitments.module.css'
 import CloseIcon from '../../assets/close-icon.svg?react'
 import CheckIcon from '../../assets/check.svg'
 import { useEffect, useState } from 'react'
+import {
+	getStoredCommitments,
+	JOURNEY_COMMITMENTS_UPDATED,
+} from '../../utils/journeyCommitments'
 
-const commitments = [
-	{
+const commitmentTypes = ['Crypto', 'Forex', 'Stocks']
+
+const buildCommitments = () => {
+	const storedCommitments = getStoredCommitments()
+
+	return commitmentTypes.map(type => ({
 		icon: CheckIcon,
-		type: 'Stocks',
-		time: 120,
-	},
-	{
-		icon: CheckIcon,
-		type: 'Forex',
-		time: 30,
-	},
-	{
-		icon: CheckIcon,
-		type: 'Crypto',
-		time: 0,
-	},
-]
+		type,
+		time: storedCommitments[type] ?? 0,
+	}))
+}
 
 export default function Commitments({ hidden }) {
-	const [isHidden, setIsHidden] = useState(false)
+	const [isHidden, setIsHidden] = useState(hidden)
+	const [commitments, setCommitments] = useState(buildCommitments)
 
 	useEffect(() => {
 		setIsHidden(hidden)
 	}, [hidden])
+
+	useEffect(() => {
+		const syncCommitments = () => {
+			setCommitments(buildCommitments())
+		}
+
+		syncCommitments()
+
+		window.addEventListener('storage', syncCommitments)
+		window.addEventListener(JOURNEY_COMMITMENTS_UPDATED, syncCommitments)
+
+		return () => {
+			window.removeEventListener('storage', syncCommitments)
+			window.removeEventListener(JOURNEY_COMMITMENTS_UPDATED, syncCommitments)
+		}
+	}, [])
 
 	const handleClose = () => {
 		setIsHidden(true)

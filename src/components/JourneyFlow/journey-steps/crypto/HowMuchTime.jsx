@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import StarsIcon from '../../../../assets/5-stars.svg?react'
 import { useJourneyStep } from '../../useJourneyStep'
+import {
+	getCommitmentMinutes,
+	saveCommitment,
+} from '../../../../utils/journeyCommitments'
 
 const commitmentOptions = [
 	{ id: '20-min', label: '20 min/day', value: 20 },
@@ -9,9 +13,22 @@ const commitmentOptions = [
 	{ id: '2-hours', label: '2 hrs/day', value: 120 },
 ]
 
+const journeyType = 'Crypto'
+
+const getInitialCommitmentId = () => {
+	const storedValue = getCommitmentMinutes(journeyType)
+
+	return (
+		commitmentOptions.find(option => option.value === storedValue)?.id ??
+		'60-min'
+	)
+}
+
 export default function HowMuchTime() {
 	const { actions } = useJourneyStep()
-	const [activeCommitmentId, setActiveCommitmentId] = useState('60-min')
+	const [activeCommitmentId, setActiveCommitmentId] = useState(
+		getInitialCommitmentId,
+	)
 
 	const activeCommitment =
 		commitmentOptions.find(option => option.id === activeCommitmentId) ??
@@ -19,7 +36,12 @@ export default function HowMuchTime() {
 
 	const handleCommitmentClick = option => {
 		setActiveCommitmentId(option.id)
-		console.log('active commitment:', option.label)
+		saveCommitment(journeyType, option.value)
+	}
+
+	const handleContinue = () => {
+		saveCommitment(journeyType, activeCommitment.value)
+		actions.unlockPointsOverview()
 	}
 
 	return (
@@ -66,9 +88,7 @@ export default function HowMuchTime() {
 			</div>
 
 			<div className='journey-first-step-bw'>
-				<button
-					onClick={actions.unlockPointsOverview}
-					className='journey-modal-main-button'>
+				<button onClick={handleContinue} className='journey-modal-main-button'>
 					Continue
 				</button>
 
