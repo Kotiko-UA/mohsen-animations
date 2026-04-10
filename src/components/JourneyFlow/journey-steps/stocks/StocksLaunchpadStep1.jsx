@@ -1,6 +1,6 @@
 import { JourneyGoToStepButton } from '../../JourneyStepControls'
 
-export default function CryptoLaunchpadStep1() {
+export default function StocksLaunchpadStep1() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
@@ -12,16 +12,11 @@ export default function CryptoLaunchpadStep1() {
 					<JourneyGoToStepButton
 						className='journey-modal-assent-button'
 						stepNumber={2}>
-						Onboarding
-					</JourneyGoToStepButton>
-					<JourneyGoToStepButton
-						className='journey-modal-assent-button'
-						stepNumber={3}>
 						Broker
 					</JourneyGoToStepButton>
 					<JourneyGoToStepButton
 						className='journey-modal-assent-button'
-						stepNumber={5}>
+						stepNumber={4}>
 						Discord
 					</JourneyGoToStepButton>
 				</div>

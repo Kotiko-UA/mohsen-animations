@@ -188,8 +188,6 @@ section {
 
 /* ---------- eclipse ---------- */
 
-.eclipse-image {}
-
 .feature-img-wrapper.hovered .eclipse-image,
 .feature-img-wrapper.pressed .eclipse-image,
 .feature-img-wrapper.active .eclipse-image {

@@ -161,6 +161,12 @@
   left: 241px;
 }
 
+/* ---------------- Stocks points ---------------- */
+
+.journey-point-button.stocks-point-1 {
+  left: 283px;
+  bottom: 214px;
+}
 
 .journey-prev-button {
   margin-right: auto;

@@ -15,6 +15,9 @@ import CryptoAdvanced from './journey-steps/crypto/CryptoAdvanced'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
 import HowMuchTimeForex from './journey-steps/forex/HowMuchTime'
 import ForexBasic from './journey-steps/forex/ForexBasic'
+import ForexLaunchpadBroker1 from './journey-steps/forex/ForexLaunchpadBroker1'
+import ForexLaunchpadBroker2 from './journey-steps/forex/ForexLaunchpadBroker2'
+import ForexLaunchpadDiscord from './journey-steps/forex/ForexLaunchpadDiscord'
 import ForexProductMasteryStep1 from './journey-steps/forex/ForexProductMasteryStep1'
 import ForexProductMasteryStep2 from './journey-steps/forex/ForexProductMasteryStep2'
 import ForexProductMasteryStep3 from './journey-steps/forex/ForexProductMasteryStep3'
@@ -24,6 +27,10 @@ import ForexAdvanced2 from './journey-steps/forex/ForexAdvanced2'
 
 import StocksStartStep from './journey-steps/stocks/StocksStartStep'
 import HowMuchTimeStocks from './journey-steps/stocks/HowMuchTime'
+import StocksLaunchpadStep1 from './journey-steps/stocks/StocksLaunchpadStep1'
+import StocksLaunchpadBroker1 from './journey-steps/stocks/StocksLaunchpadBroker1'
+import StocksLaunchpadBroker2 from './journey-steps/stocks/StocksLaunchpadBroker2'
+import StocksLaunchpadDiscord from './journey-steps/stocks/StocksLaunchpadDiscord'
 
 export const JOURNEYS = {
 	crypto: {
@@ -197,7 +204,7 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'forex-point-1-step-3',
-						component: CryptoLaunchpadBroker1,
+						component: ForexLaunchpadBroker1,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
@@ -205,7 +212,7 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'forex-point-1-step-4',
-						component: CryptoLaunchpadBroker2,
+						component: ForexLaunchpadBroker2,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
@@ -213,7 +220,7 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'forex-point-1-step-5',
-						component: CryptoLaunchpadDiscord,
+						component: ForexLaunchpadDiscord,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,
@@ -315,14 +322,24 @@ export const JOURNEYS = {
 	stocks: {
 		id: 'stocks',
 		title: 'Stocks',
+		introSteps: [
+			{
+				id: 'stocks-intro-step-1',
+				component: StocksStartStep,
+			},
+			{
+				id: 'stocks-intro-step-2',
+				component: HowMuchTimeStocks,
+			},
+		],
 		points: [
 			{
 				id: 'stocks-point-1',
-				title: 'Intro',
+				title: 'Launchpad',
 				steps: [
 					{
 						id: 'stocks-point-1-step-1',
-						component: StocksStartStep,
+						component: StocksLaunchpadStep1,
 						meta: {
 							sceneNode: 'stocks',
 							roadStep: 1,
@@ -330,7 +347,23 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'stocks-point-1-step-2',
-						component: HowMuchTimeStocks,
+						component: StocksLaunchpadBroker1,
+						meta: {
+							sceneNode: 'stocks',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'stocks-point-1-step-3',
+						component: StocksLaunchpadBroker2,
+						meta: {
+							sceneNode: 'stocks',
+							roadStep: 1,
+						},
+					},
+					{
+						id: 'stocks-point-1-step-4',
+						component: StocksLaunchpadDiscord,
 						meta: {
 							sceneNode: 'stocks',
 							roadStep: 1,
