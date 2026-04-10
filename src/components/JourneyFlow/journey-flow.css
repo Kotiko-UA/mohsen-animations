@@ -168,6 +168,21 @@
   bottom: 214px;
 }
 
+.journey-point-button.stocks-point-2 {
+  left: 419px;
+  bottom: 285px;
+}
+
+.journey-point-button.stocks-point-3 {
+  left: 499px;
+  bottom: 386px;
+}
+
+.journey-point-button.stocks-point-4 {
+  left: 446px;
+  bottom: 490px;
+}
+
 .journey-prev-button {
   margin-right: auto;
   display: flex;

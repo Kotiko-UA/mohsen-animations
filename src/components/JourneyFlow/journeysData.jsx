@@ -31,6 +31,9 @@ import StocksLaunchpadStep1 from './journey-steps/stocks/StocksLaunchpadStep1'
 import StocksLaunchpadBroker1 from './journey-steps/stocks/StocksLaunchpadBroker1'
 import StocksLaunchpadBroker2 from './journey-steps/stocks/StocksLaunchpadBroker2'
 import StocksLaunchpadDiscord from './journey-steps/stocks/StocksLaunchpadDiscord'
+import StockBasic from './journey-steps/stocks/StockBasic'
+import StocksIntermediate from './journey-steps/stocks/StocksIntermediate'
+import StockAdvanced from './journey-steps/stocks/StocksAdvanced'
 
 export const JOURNEYS = {
 	crypto: {
@@ -367,6 +370,48 @@ export const JOURNEYS = {
 						meta: {
 							sceneNode: 'stocks',
 							roadStep: 1,
+						},
+					},
+				],
+			},
+			{
+				id: 'stocks-point-2',
+				title: 'WES Stocks Basics',
+				steps: [
+					{
+						id: 'stocks-point-2-step-1',
+						component: StockBasic,
+						meta: {
+							sceneNode: 'stocks',
+							roadStep: 2,
+						},
+					},
+				],
+			},
+			{
+				id: 'stocks-point-3',
+				title: 'WES Stocks Intermediate',
+				steps: [
+					{
+						id: 'stocks-point-3-step-1',
+						component: StocksIntermediate,
+						meta: {
+							sceneNode: 'stocks',
+							roadStep: 3,
+						},
+					},
+				],
+			},
+			{
+				id: 'stocks-point-4',
+				title: 'WES Stocks Intermediate',
+				steps: [
+					{
+						id: 'stocks-point-4-step-1',
+						component: StockAdvanced,
+						meta: {
+							sceneNode: 'stocks',
+							roadStep: 4,
 						},
 					},
 				],
