@@ -19,26 +19,26 @@ function getTimeLeft(targetDate) {
 	if (diff <= 0) {
 		return {
 			total: 0,
+			days: '00',
 			hours: '00',
 			minutes: '00',
-			seconds: '00',
 		}
 	}
 
 	const totalSeconds = Math.floor(diff / 1000)
-	const hours = Math.floor(totalSeconds / 3600)
+	const days = Math.floor(totalSeconds / (24 * 60 * 60))
+	const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / 3600)
 	const minutes = Math.floor((totalSeconds % 3600) / 60)
-	const seconds = totalSeconds % 60
 
 	return {
 		total: diff,
+		days: String(days).padStart(2, '0'),
 		hours: String(hours).padStart(2, '0'),
 		minutes: String(minutes).padStart(2, '0'),
-		seconds: String(seconds).padStart(2, '0'),
 	}
 }
 
-export default function Timer({ targetDate = '01.05.2026', hidden }) {
+export default function Timer({ targetDate = '24.04.2026', hidden }) {
 	const parsedTargetDate = useMemo(
 		() => parseDateString(targetDate),
 		[targetDate],
@@ -46,7 +46,7 @@ export default function Timer({ targetDate = '01.05.2026', hidden }) {
 
 	const [timeLeft, setTimeLeft] = useState(() => {
 		if (!parsedTargetDate) {
-			return { hours: '00', minutes: '00', seconds: '00', total: 0 }
+			return { days: '00', hours: '00', minutes: '00', total: 0 }
 		}
 		return getTimeLeft(parsedTargetDate)
 	})
@@ -73,15 +73,31 @@ export default function Timer({ targetDate = '01.05.2026', hidden }) {
 	return (
 		<div className={`${styles.wrapper} ${hidden ? styles.hidden : ''}`}>
 			<div className={styles.timerWrapper}>
-				<TimerIcon className={styles.timerSVG} />
-				<div className={styles.timerText}>
-					{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
+				<div className={styles.timerPill}>
+					<div className={styles.timerItem}>
+						<div className={styles.timerValue}>{timeLeft.days}</div>
+						<div className={styles.timerLabel}>days</div>
+					</div>
+
+					<div className={styles.timerItem}>
+						<div className={styles.timerValue}>{timeLeft.hours} </div>
+						<div className={styles.timerLabel}>hours</div>
+					</div>
+
+					<div className={styles.timerSeparator}>:</div>
+
+					<div className={styles.timerItem}>
+						<div className={styles.timerValue}>{timeLeft.minutes}</div>
+						<div className={styles.timerLabel}>min</div>
+					</div>
 				</div>
 			</div>
 			<img src={TimerDot} alt='timer dot' className={styles.timerDot} />
 			<div className={styles.timeText}>
 				<div className={styles.textHeader}>Wes League</div>
-				<div className={styles.textParagraph}>start on 1st of May, 2026.</div>
+				<div className={styles.textParagraph}>
+					Wes Leagues is the start set 24 of April , midnight (25)
+				</div>
 			</div>
 		</div>
 	)

@@ -71,3 +71,22 @@
 .itemText span {
   font-weight: 700;
 }
+
+.timerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timerPill {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  column-gap: 14px;
+  padding: 10px 22px 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(39, 20, 110, 0.96), rgba(39, 20, 110, 0.96)) padding-box,
+    linear-gradient(90deg, #ff8a3d 0%, #8b5cf6 50%, #00d5ff 100%) border-box;
+}

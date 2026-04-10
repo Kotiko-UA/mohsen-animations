@@ -24,7 +24,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  width: 150px;
   padding: 7px 12px;
 
   background: linear-gradient(#240F66, #240F66) padding-box, linear-gradient(180deg, #F7BA59 0%, #E849F0 27.4%, #8463FB 60.58%, #3588FD 79.33%, #04D4F9 100%) border-box;
@@ -32,6 +31,14 @@
   border: 1px solid transparent;
 
   z-index: 2;
+}
+
+.timerPill {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  column-gap: 8px;
+
 }
 
 .timerSVG {
@@ -52,7 +59,7 @@
   width: 32px;
   height: 32px;
   position: absolute;
-  top: 48px;
+  top: 60px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
@@ -87,7 +94,7 @@
 
 .timeText {
   position: absolute;
-  top: 28px;
+  top: 42px;
   left: 50%;
   transform: translate(-50%, 30%);
 
@@ -128,4 +135,39 @@
   font-size: 16px;
   line-height: 126%;
   white-space: nowrap;
+}
+
+.timerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+}
+
+.timerValue {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 126%;
+}
+
+.timerLabel {
+  color: #FFF;
+
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.timerSeparator {
+  margin: 0 -4px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  align-self: start;
+  padding-top: 2px;
 }
