@@ -607,9 +607,10 @@
 }
 
 .cpms-2-img {
-  width: 567px;
-  height: 315px;
-  border-radius: 25px;
+  max-width: 567px;
+  width: 100%;
+  height: auto;
+  border-radius: 42px;
   margin: 0 auto;
 }
 

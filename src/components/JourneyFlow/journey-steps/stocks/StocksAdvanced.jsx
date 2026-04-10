@@ -1,5 +1,5 @@
 import { JourneyLinkButton } from '../../JourneyStepControls'
-import Img from '../../../../assets/crypto-advanced.jpg'
+import Img from '../../../../assets/stock-advanced-img.jpg'
 
 export default function StockAdvanced() {
 	return (
