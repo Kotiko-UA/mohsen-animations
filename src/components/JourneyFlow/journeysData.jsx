@@ -15,6 +15,7 @@ import CryptoAdvanced from './journey-steps/crypto/CryptoAdvanced'
 import ForexStartStep from './journey-steps/forex/ForexStartStep'
 import HowMuchTimeForex from './journey-steps/forex/HowMuchTime'
 import ForexBasic from './journey-steps/forex/ForexBasic'
+import ForexLaunchpadOnboarding from './journey-steps/forex/ForexLaunchpadOnboarding'
 import ForexLaunchpadBroker1 from './journey-steps/forex/ForexLaunchpadBroker1'
 import ForexLaunchpadBroker2 from './journey-steps/forex/ForexLaunchpadBroker2'
 import ForexLaunchpadDiscord from './journey-steps/forex/ForexLaunchpadDiscord'
@@ -199,7 +200,7 @@ export const JOURNEYS = {
 					},
 					{
 						id: 'forex-point-1-step-2',
-						component: CryptoLaunchpadOnboarding,
+						component: ForexLaunchpadOnboarding,
 						meta: {
 							sceneNode: 'forex',
 							roadStep: 1,

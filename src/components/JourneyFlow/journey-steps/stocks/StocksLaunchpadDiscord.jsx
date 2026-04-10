@@ -23,7 +23,9 @@ export default function StocksLaunchpadDiscord() {
 					<div className='flex-col-18'>
 						<div className='flex-row-12'>
 							<JourneyLinkButton
-								link={'#'}
+								link={
+									'https://discord.com/channels/1044261187812073513/1435531050930536478'
+								}
 								className='journey-modal-main-button'>
 								No
 							</JourneyLinkButton>

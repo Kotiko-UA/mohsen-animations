@@ -16,7 +16,11 @@ export default function StocksIntermediate() {
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/enrico/livestream/cff6b309-7303-4695-953f-a090ca5aac52'
+					}
+					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
 				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>

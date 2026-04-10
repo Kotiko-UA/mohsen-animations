@@ -1,6 +1,6 @@
 import { JourneyLinkButton, JourneyPrevButton } from '../../JourneyStepControls'
 
-export default function CryptoLaunchpadOnboarding() {
+export default function ForexLaunchpadOnboarding() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
@@ -30,7 +30,7 @@ export default function CryptoLaunchpadOnboarding() {
 				</JourneyLinkButton>
 				<JourneyLinkButton
 					link={
-						'https://wowpowers.com/academy-player/ca217843-829e-44d7-ae3f-7c8a6e4e3147'
+						'https://wowpowers.com/academy-player/fd670358-7dd0-4ff4-adc1-f312dc0361ec'
 					}
 					className='journey-modal-assent-button'>
 					Welcome Tour

@@ -23,7 +23,9 @@ export default function ForexLaunchpadDiscord() {
 					<div className='flex-col-18'>
 						<div className='flex-row-12'>
 							<JourneyLinkButton
-								link={'#'}
+								link={
+									'https://discord.com/channels/1084814874393194527/1177655091071811634'
+								}
 								className='journey-modal-main-button'>
 								No
 							</JourneyLinkButton>

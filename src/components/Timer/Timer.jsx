@@ -8,7 +8,6 @@ function parseDateString(dateString) {
 
 	if (!day || !month || !year) return null
 
-	// 01.05.2026 => 1 травня 2026, 00:00:00 за локальним часом
 	return new Date(year, month - 1, day, 0, 0, 0)
 }
 
@@ -78,7 +77,7 @@ export default function Timer({ targetDate = '24.04.2026', hidden }) {
 						<div className={styles.timerValue}>{timeLeft.days}</div>
 						<div className={styles.timerLabel}>days</div>
 					</div>
-
+					<div className={styles.timerSeparator}>:</div>
 					<div className={styles.timerItem}>
 						<div className={styles.timerValue}>{timeLeft.hours} </div>
 						<div className={styles.timerLabel}>hours</div>

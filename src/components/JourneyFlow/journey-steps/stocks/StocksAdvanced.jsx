@@ -15,7 +15,11 @@ export default function StockAdvanced() {
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/enrico/livestream/ad1aa74a-8dac-4d0e-87bf-3106ce8a552f'
+					}
+					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
 				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>

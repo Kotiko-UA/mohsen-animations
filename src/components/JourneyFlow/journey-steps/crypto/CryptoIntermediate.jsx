@@ -14,7 +14,11 @@ export default function CryptoIntermediate() {
 				concepts, and risk management strategies specific to digital assets.
 			</p>
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/fabrizio_a/livestream/269e3ad4-a86c-4ca2-8dc5-bd33ccb5dba2'
+					}
+					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
 				<JourneyLinkButton

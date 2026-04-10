@@ -35,7 +35,7 @@
 
 .timerPill {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
   align-items: center;
   column-gap: 8px;
 

@@ -20,7 +20,11 @@ export default function ForexIntermediate() {
 				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
 					Learning Path
 				</JourneyLinkButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/forex_intermediate_/livestream/3170f37f-2f4f-4af0-af2e-ceac2b842a79'
+					}
+					className='journey-modal-assent-button'>
 					Live Sessions
 				</JourneyLinkButton>
 			</div>

@@ -15,7 +15,11 @@ export default function CryptoAdvanced() {
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/fabrizio_a/livestream/d4a3afa7-fe9f-44b1-9191-6e10757bd8b1?reference=TOP_EDUCATORS'
+					}
+					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
 				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
