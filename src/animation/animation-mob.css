@@ -200,63 +200,27 @@ section {
 
 /* ---------- hit areas ---------- */
 
-.hit-areas-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-}
-
-.hit-areas-layer.disabled {
-  pointer-events: none;
-}
-
-.hit-area {
+.hit-area-button-mob {
   position: absolute;
   border: none;
   outline: none;
   padding: 0;
   margin: 0;
   background: transparent;
-  border-radius: 999px;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-
-.hit-area:focus-visible {
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.45);
-}
-
-.hit-area.locked {
-  cursor: default;
-}
-
-.hit-area.crypto {
-  width: 299px;
-  height: 401px;
-  left: 293px;
+  width: 370px;
+  height: 357px;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0px;
+  z-index: 10;
 }
 
-.hit-area.forex {
-  width: 194px;
-  height: 446px;
-  left: 603px;
-  bottom: 0px;
+.hit-area-button-mob.disabled {
+  pointer-events: none;
 }
 
-.hit-area.stocks {
-  width: 327px;
-  height: 263px;
-  left: 754px;
-  bottom: 157px;
-}
 
-.hit-area.synthetics {
-  width: 540px;
-  height: 180px;
-  left: 808px;
-  bottom: 0px;
-}
+
 
 /* ---------- extra decorative block ---------- */
 .wow-power-mob {
@@ -269,12 +233,12 @@ section {
   transform: translateX(-50%);
 }
 
-.can-click-image {
+.can-click-image-mob {
   position: absolute;
-  top: 390px;
-  left: 860px;
-  width: 69px;
-  height: 69px;
+  top: 562px;
+  right: 65px;
+  width: 56px;
+  height: 56px;
   z-index: 5;
 }
 

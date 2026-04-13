@@ -52,8 +52,6 @@ export const AnimationMob = () => {
 	const [mode, setMode] = useState(null)
 	const [isZoomed, setIsZoomed] = useState(false)
 	const [scale, setScale] = useState(1)
-	const [hoveredKey, setHoveredKey] = useState(null)
-	const [pressedKey, setPressedKey] = useState(null)
 	const [journeyProgress, setJourneyProgress] = useState({})
 	const [activeJourneyState, setActiveJourneyState] = useState(null)
 	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
@@ -87,18 +85,14 @@ export const AnimationMob = () => {
 		}
 	}, [])
 
-	const handleOpen = nextMode => {
-		if (nextMode === 'synthetics') return
-
+	const handleOpen = () => {
 		if (openJourneyTimeoutRef.current) {
 			clearTimeout(openJourneyTimeoutRef.current)
 		}
 
-		setHoveredKey(null)
-		setPressedKey(null)
 		setActiveJourneyState(null)
 		setIsJourneyVisible(false)
-		setMode(nextMode)
+		setMode('crypto')
 
 		requestAnimationFrame(() => {
 			setIsZoomed(true)
@@ -123,25 +117,6 @@ export const AnimationMob = () => {
 		}
 	}
 
-	const handlePointerEnter = key => {
-		if (mode) return
-		setHoveredKey(key)
-	}
-
-	const handlePointerLeave = key => {
-		if (hoveredKey === key) setHoveredKey(null)
-		if (pressedKey === key) setPressedKey(null)
-	}
-
-	const handlePointerDown = key => {
-		if (mode) return
-		setPressedKey(key)
-	}
-
-	const handlePointerUp = key => {
-		if (pressedKey === key) setPressedKey(null)
-	}
-
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
@@ -152,15 +127,8 @@ export const AnimationMob = () => {
 			'feature-img-wrapper',
 			item.key,
 			mode === item.key && 'active',
-			hoveredKey === item.key && 'hovered',
-			pressedKey === item.key && 'pressed',
 			item.type === 'locked' && 'locked',
 		]
-			.filter(Boolean)
-			.join(' ')
-
-	const getHitAreaClasses = item =>
-		['hit-area', item.key, item.type === 'locked' && 'locked']
 			.filter(Boolean)
 			.join(' ')
 
@@ -169,11 +137,15 @@ export const AnimationMob = () => {
 			<div className='scene-stage-mob' style={{ transform: `scale(${scale})` }}>
 				<div className={`main-img-wrap-mob ${stateClass}`}>
 					<ClickBanner hidden={mode} />
-					{/* <Commitments hidden={mode} /> */}
+					<Commitments hidden={mode} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
 
 					{!mode && (
-						<img className='can-click-image' src={CanClick} alt='Can click' />
+						<img
+							className='can-click-image-mob'
+							src={CanClick}
+							alt='Can click'
+						/>
 					)}
 					{!mode && (
 						<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
@@ -207,26 +179,11 @@ export const AnimationMob = () => {
 							/>
 						</div>
 					))}
-
-					<div className={`hit-areas-layer ${mode ? 'disabled' : ''}`}>
-						{ITEMS.map(item => (
-							<button
-								key={item.key}
-								type='button'
-								className={getHitAreaClasses(item)}
-								onPointerEnter={() => handlePointerEnter(item.key)}
-								onPointerLeave={() => handlePointerLeave(item.key)}
-								onPointerDown={() => handlePointerDown(item.key)}
-								onPointerUp={() => handlePointerUp(item.key)}
-								onPointerCancel={() => handlePointerLeave(item.key)}
-								onClick={() => handleOpen(item.key)}
-								aria-label={
-									item.type === 'locked' ? `${item.alt} locked` : item.alt
-								}
-								aria-pressed={mode === item.key}
-							/>
-						))}
-					</div>
+					<button
+						type='button'
+						className={`hit-area-button-mob ${mode ? 'disabled' : ''}`}
+						onClick={() => handleOpen()}
+					/>
 
 					{mode && isJourneyVisible && (
 						<div className='journey-window-wrap'>
