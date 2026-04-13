@@ -115,3 +115,10 @@
   width: 26px;
   height: 26px;
 }
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    opacity: 1;
+
+  }
+}

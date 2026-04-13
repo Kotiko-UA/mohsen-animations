@@ -6,7 +6,7 @@ import ArrowIcon from '../../assets/arrow-up-right.svg?react'
 import LockIcon from '../../assets/lock.svg?react'
 import styles from './Eclipse.module.css'
 
-const MessageCard = ({ text, className, type }) => {
+const Eclipse = ({ text, className, type }) => {
 	return (
 		<div className={`${styles.wrapper} ${className}`}>
 			{type === 'locked' && (
@@ -41,4 +41,4 @@ const MessageCard = ({ text, className, type }) => {
 	)
 }
 
-export default MessageCard
+export default Eclipse

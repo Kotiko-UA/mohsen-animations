@@ -5,6 +5,7 @@ import Timer from '../Timer/Timer'
 import Arrow from '../../assets/arrow-purple.svg?react'
 import ArrowWhite from '../../assets/arrow-purple.svg?react'
 import Dot from '../../assets/white-dot.svg?react'
+import Eclipse from '../Eclipse/Eclipse'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -529,9 +530,13 @@ export default function JourneyFlowMobile({
 					<button
 						type='button'
 						className='journey-mobile-entry-button'
-						onClick={() => openPoint(firstPointId)}>
-						<span className='journey-mobile-entry-icon'>↗</span>
-						<span>{journey.title}</span>
+						onClick={() => openPoint(firstPointId)}
+						disabled={!firstPointId || isLockedJourney}>
+						<Eclipse
+							className={`eclipse-image ${currentSlide.key} journey-active`}
+							text={currentSlide.alt ?? journey?.title ?? 'Journey'}
+							type={currentSlide.type}
+						/>
 					</button>
 				</div>
 			)}
