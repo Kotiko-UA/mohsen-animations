@@ -148,19 +148,20 @@ export default function JourneyFlowMobile({
 
 	const activeIntroStep =
 		screen === MOBILE_SCREENS.INTRO
-			? introSteps[0] ?? null
+			? (introSteps[0] ?? null)
 			: screen === MOBILE_SCREENS.TIME
-				? introSteps[1] ?? null
+				? (introSteps[1] ?? null)
 				: null
 
 	const pointStep =
 		screen === MOBILE_SCREENS.STEP
-			? selectedPoint?.steps?.[activeStepIndex] ?? null
+			? (selectedPoint?.steps?.[activeStepIndex] ?? null)
 			: null
 
 	const activeStep = activeIntroStep ?? pointStep
 	const activePoint = screen === MOBILE_SCREENS.STEP ? selectedPoint : null
-	const activePointIndex = screen === MOBILE_SCREENS.STEP ? selectedPointIndex : -1
+	const activePointIndex =
+		screen === MOBILE_SCREENS.STEP ? selectedPointIndex : -1
 	const currentStepIndex =
 		screen === MOBILE_SCREENS.STEP
 			? activeStepIndex
@@ -176,7 +177,7 @@ export default function JourneyFlowMobile({
 
 	const nextPoint =
 		screen === MOBILE_SCREENS.STEP
-			? journey?.points?.[selectedPointIndex + 1] ?? null
+			? (journey?.points?.[selectedPointIndex + 1] ?? null)
 			: null
 
 	const isFirstStep =
@@ -215,13 +216,7 @@ export default function JourneyFlowMobile({
 		if (prevJson !== nextJson) {
 			onProgressChange?.(nextProgress)
 		}
-	}, [
-		selectedPoint,
-		activeStepIndex,
-		safeProgress,
-		screen,
-		onProgressChange,
-	])
+	}, [selectedPoint, activeStepIndex, safeProgress, screen, onProgressChange])
 
 	useEffect(() => {
 		if (!journey) return
@@ -257,7 +252,11 @@ export default function JourneyFlowMobile({
 
 	const setJourneyByIndex = nextIndex => {
 		const normalizedIndex =
-			nextIndex < 0 ? items.length - 1 : nextIndex >= items.length ? 0 : nextIndex
+			nextIndex < 0
+				? items.length - 1
+				: nextIndex >= items.length
+					? 0
+					: nextIndex
 
 		const nextItem = items[normalizedIndex]
 		if (!nextItem) return
@@ -413,12 +412,12 @@ export default function JourneyFlowMobile({
 		currentSlide,
 	}
 
-	if (!journey || !currentSlide) {
+	if (!currentSlide) {
 		return null
 	}
 
 	return (
-		<div className={`journey-flow-mobile ${journey.id} screen-${screen}`}>
+		<div className={`journey-flow-mobile ${currentSlide.key} screen-${screen}`}>
 			{screen === MOBILE_SCREENS.SELECTOR && (
 				<div className='journey-mobile-selector'>
 					<div className='journey-mobile-league-pill'>
@@ -434,12 +433,14 @@ export default function JourneyFlowMobile({
 							disabled={isLockedJourney}>
 							<div className='journey-mobile-cta-title'>
 								<span className='journey-mobile-cta-dot' />
-								<span>{currentSlide.alt ?? journey.title}</span>
+								<span>{currentSlide.alt ?? journey?.title ?? 'Journey'}</span>
 							</div>
 
 							<div className='journey-mobile-cta-meta'>
 								{isLockedJourney ? (
-									<span className='journey-mobile-coming-soon'>Coming soon!</span>
+									<span className='journey-mobile-coming-soon'>
+										Coming soon!
+									</span>
 								) : (
 									<span>See info →</span>
 								)}
@@ -482,7 +483,7 @@ export default function JourneyFlowMobile({
 				</div>
 			)}
 
-			{screen === MOBILE_SCREENS.POINTS && (
+			{journey && screen === MOBILE_SCREENS.POINTS && (
 				<div className='journey-mobile-points-view'>
 					{journey.points.map((point, pointIndex) => {
 						const completed = isPointCompleted(safeProgress, point.id)
@@ -501,7 +502,9 @@ export default function JourneyFlowMobile({
 									.join(' ')}
 								onClick={() => openPoint(point.id)}>
 								<span className='journey-mobile-point-gate' />
-								<span className='journey-mobile-point-label'>{point.title}</span>
+								<span className='journey-mobile-point-label'>
+									{point.title}
+								</span>
 							</button>
 						)
 					})}
@@ -516,22 +519,26 @@ export default function JourneyFlowMobile({
 				</div>
 			)}
 
-			{activeStep && (screen === MOBILE_SCREENS.INTRO || screen === MOBILE_SCREENS.TIME || screen === MOBILE_SCREENS.STEP) && (
-				<div className='journey-mobile-step-view'>
-					<div className='journey-mobile-step-content'>
-						<JourneyStepProvider value={{ actions, state }}>
-							{getStepView({
-								step: activeStep,
-								point: activePoint,
-								pointIndex: activePointIndex,
-								stepIndex: currentStepIndex,
-								actions,
-								state,
-							})}
-						</JourneyStepProvider>
+			{journey &&
+				activeStep &&
+				(screen === MOBILE_SCREENS.INTRO ||
+					screen === MOBILE_SCREENS.TIME ||
+					screen === MOBILE_SCREENS.STEP) && (
+					<div className='journey-mobile-step-view'>
+						<div className='journey-mobile-step-content'>
+							<JourneyStepProvider value={{ actions, state }}>
+								{getStepView({
+									step: activeStep,
+									point: activePoint,
+									pointIndex: activePointIndex,
+									stepIndex: currentStepIndex,
+									actions,
+									state,
+								})}
+							</JourneyStepProvider>
+						</div>
 					</div>
-				</div>
-			)}
+				)}
 		</div>
 	)
 }

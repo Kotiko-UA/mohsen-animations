@@ -6,7 +6,7 @@ section {
 
 .main-container-mob {
   position: relative;
-  width: min(100vw, 1440px);
+  width: min(100vw, 375px);
   aspect-ratio: 375 / 812;
   overflow: hidden;
   margin-inline: auto;

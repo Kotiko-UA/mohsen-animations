@@ -53,11 +53,13 @@ export const AnimationMob = () => {
 	const [journeyProgress, setJourneyProgress] = useState({})
 	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
 	const [showCommitments, setShowCommitments] = useState(false)
-	const openJourneyTimeoutRef = useRef(null)
 
+	const openJourneyTimeoutRef = useRef(null)
 	const containerRef = useRef(null)
 
-	const handleClose = () => {
+	const isOpened = isZoomed || isJourneyVisible
+
+	const resetToInitialState = () => {
 		if (openJourneyTimeoutRef.current) {
 			clearTimeout(openJourneyTimeoutRef.current)
 		}
@@ -65,6 +67,11 @@ export const AnimationMob = () => {
 		setShowCommitments(false)
 		setIsJourneyVisible(false)
 		setIsZoomed(false)
+		setMode(null)
+	}
+
+	const handleClose = () => {
+		resetToInitialState()
 	}
 
 	useEffect(() => {
@@ -100,7 +107,7 @@ export const AnimationMob = () => {
 
 		setIsJourneyVisible(false)
 		setShowCommitments(false)
-		setMode(prev => prev ?? 'crypto')
+		setMode('crypto')
 
 		requestAnimationFrame(() => {
 			setIsZoomed(true)
@@ -119,12 +126,6 @@ export const AnimationMob = () => {
 		}
 	}, [])
 
-	const handleTransitionEnd = () => {
-		if (!isZoomed) {
-			setMode(null)
-		}
-	}
-
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
@@ -134,17 +135,17 @@ export const AnimationMob = () => {
 				<div className={`main-img-wrap-mob ${stateClass}`}>
 					<button
 						type='button'
-						className={`back-button ${mode ? 'visible' : ''}`}
+						className={`back-button ${isOpened ? 'visible' : ''}`}
 						onClick={handleClose}
 						aria-label='Back'>
 						<ArrowBack />
 					</button>
 
-					<ClickBanner hidden={mode} />
+					<ClickBanner hidden={isOpened} />
 					<Commitments hidden={!showCommitments} />
-					<Timer targetDate='01.05.2026' hidden={mode} />
+					<Timer targetDate='01.05.2026' hidden={isOpened} />
 
-					{!mode && (
+					{!isOpened && (
 						<img
 							className='can-click-image-mob'
 							src={CanClick}
@@ -158,20 +159,19 @@ export const AnimationMob = () => {
 						className={`main-img-mob ${stateClass}`}
 						src={MainImg}
 						alt='Main'
-						onTransitionEnd={handleTransitionEnd}
 					/>
 
 					<button
 						type='button'
-						className={`hit-area-button-mob ${mode ? 'disabled' : ''}`}
+						className={`hit-area-button-mob ${isOpened ? 'disabled' : ''}`}
 						onClick={handleOpen}
 					/>
 
-					{mode && isJourneyVisible && JOURNEYS[mode] && (
+					{mode && isJourneyVisible && (
 						<div className='journey-window-wrap'>
 							<JourneyFlowMobile
 								journeyKey={mode}
-								journey={JOURNEYS[mode]}
+								journey={JOURNEYS[mode] ?? null}
 								items={ITEMS}
 								progress={journeyProgress[mode]}
 								onJourneyChange={setMode}
