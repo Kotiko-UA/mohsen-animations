@@ -170,7 +170,7 @@ export const AnimationMob = () => {
 				<div className={`main-img-wrap-mob ${stateClass}`}>
 					<ClickBanner hidden={mode} />
 					{/* <Commitments hidden={mode} /> */}
-					{/* <Timer targetDate='01.05.2026' hidden={mode} /> */}
+					<Timer targetDate='01.05.2026' hidden={mode} />
 
 					{!mode && (
 						<img className='can-click-image' src={CanClick} alt='Can click' />

@@ -160,6 +160,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: normal;
+  opacity: 0.8;
 }
 
 .timerSeparator {
@@ -170,4 +171,55 @@
   color: #fff;
   align-self: start;
   padding-top: 2px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .wrapper {
+    top: 369px;
+    transform: translateX(-50%);
+
+    width: 150px;
+    height: 100px;
+  }
+
+  .timerWrapper {
+    padding: 4px 12px;
+  }
+
+  .timerSeparator {
+    font-size: 18px;
+  }
+
+  .timerItem {
+    min-width: 28px;
+  }
+
+  .timerValue {
+    font-size: 14px;
+    line-height: 102%;
+  }
+
+  .timerDot {
+    width: 24px;
+    height: 24px;
+    top: 44px;
+  }
+
+  .timeText {
+    top: 32px;
+    padding: 8px 12px;
+
+  }
+
+  .textHeader {
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .textParagraph {
+    font-size: 12px;
+    line-height: normal;
+
+  }
 }
