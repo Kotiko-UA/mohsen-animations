@@ -1,6 +1,7 @@
 import styles from './Commitments.module.css'
 
 import CloseIcon from '../../assets/close-icon.svg?react'
+import InfoIcon from '../../assets/info-icon.svg?react'
 import CheckIcon from '../../assets/check.svg'
 import { useEffect, useState } from 'react'
 import {
@@ -45,21 +46,20 @@ export default function Commitments({ hidden }) {
 	}, [])
 
 	const handleClose = () => {
-		setIsHidden(true)
+		setIsHidden(!isHidden)
 	}
 
 	return (
-		!isHidden && (
-			<div className={`${styles.wrapper} ${hidden ? styles.hidden : ''}`}>
-				<div className={styles.itemText}>Your commitments:</div>
-
-				<button
-					type='button'
-					className={styles.closeByButton}
-					onClick={handleClose}>
-					<CloseIcon className={styles.close} />
-				</button>
-
+		<div className={`${styles.wrapper} ${hidden ? styles.hidden : ''}`}>
+			<div className={styles.itemText}>Your commitments:</div>
+			<button
+				type='button'
+				className={styles.closeByButton}
+				onClick={handleClose}>
+				{!isHidden && <CloseIcon className={styles.close} />}
+				{isHidden && <InfoIcon className={styles.close} />}
+			</button>
+			{!isHidden && (
 				<div className={styles.comWrapper}>
 					{commitments.map(({ icon, type, time }) => (
 						<div
@@ -72,7 +72,7 @@ export default function Commitments({ hidden }) {
 						</div>
 					))}
 				</div>
-			</div>
-		)
+			)}
+		</div>
 	)
 }
