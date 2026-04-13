@@ -1,0 +1,258 @@
+.journey-flow-mobile {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	color: #fff;
+}
+
+.journey-flow-mobile > * {
+	pointer-events: auto;
+}
+
+.journey-mobile-selector {
+	position: absolute;
+	inset: 0;
+}
+
+.journey-mobile-league-pill {
+	position: absolute;
+	top: 270px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	min-width: 178px;
+	padding: 12px 18px;
+	border: 1px solid rgba(255, 180, 92, 0.7);
+	border-radius: 999px;
+	background: rgba(42, 28, 92, 0.86);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.26);
+	text-align: center;
+}
+
+.journey-mobile-league-pill span {
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.journey-mobile-selector-card {
+	position: absolute;
+	left: 16px;
+	right: 16px;
+	bottom: 16px;
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(20, 15, 49, 0.62);
+	backdrop-filter: blur(10px);
+}
+
+.journey-mobile-cta {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 16px 18px;
+	border: 0;
+	border-radius: 8px;
+	background: linear-gradient(90deg, #6e44ff 0%, #8054ff 100%);
+	color: #fff;
+	cursor: pointer;
+}
+
+.journey-mobile-cta:disabled {
+	opacity: 0.8;
+	cursor: default;
+}
+
+.journey-mobile-cta-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.journey-mobile-cta-dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #fff;
+	flex-shrink: 0;
+}
+
+.journey-mobile-cta-meta {
+	font-size: 16px;
+	white-space: nowrap;
+}
+
+.journey-mobile-coming-soon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #ee9b68 0%, #5bc0ff 100%);
+}
+
+.journey-mobile-selector-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-top: 18px;
+	padding-top: 18px;
+	border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.journey-mobile-nav-button {
+	width: 44px;
+	height: 44px;
+	border: 0;
+	border-radius: 50%;
+	background: #fff;
+	color: #7b58ff;
+	font-size: 22px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.journey-mobile-dots {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.journey-mobile-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.journey-mobile-dot.active {
+	width: 10px;
+	height: 10px;
+	background: #fff;
+}
+
+.journey-mobile-dot.locked {
+	opacity: 0.7;
+}
+
+.journey-mobile-step-view {
+	position: absolute;
+	inset: 0;
+}
+
+.journey-mobile-step-content {
+	position: absolute;
+	inset: 0;
+}
+
+.journey-mobile-points-view {
+	position: absolute;
+	inset: 0;
+}
+
+.journey-mobile-point-button {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	border: 0;
+	background: transparent;
+	color: #efe1ff;
+	cursor: pointer;
+}
+
+.journey-mobile-point-gate {
+	width: 54px;
+	height: 40px;
+	border: 6px solid rgba(214, 173, 255, 0.6);
+	border-bottom: 0;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	box-shadow: 0 0 20px rgba(180, 123, 255, 0.3);
+}
+
+.journey-mobile-point-label {
+	font-size: 12px;
+	line-height: 1.2;
+	text-align: center;
+	max-width: 88px;
+}
+
+.journey-mobile-point-button.completed .journey-mobile-point-gate {
+	border-color: rgba(255, 255, 255, 0.95);
+}
+
+.journey-mobile-entry-button {
+	position: absolute;
+	left: 50%;
+	bottom: 42px;
+	transform: translateX(-50%);
+	width: 120px;
+	height: 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	border: 2px solid rgba(216, 211, 255, 0.92);
+	border-radius: 50%;
+	background: radial-gradient(circle at 30% 30%, #6e3bd3 0%, #2b1a59 70%);
+	box-shadow:
+		0 0 0 10px rgba(173, 150, 255, 0.12),
+		0 0 24px rgba(157, 127, 255, 0.44);
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.journey-mobile-entry-icon {
+	font-size: 20px;
+	line-height: 1;
+}
+
+/*
+ * Тут залишив тільки базову структуру.
+ * Позиції воріт ти можеш виставити сам під свої png/avif.
+ */
+.journey-mobile-point-button.crypto-point-1,
+.journey-mobile-point-button.forex-point-1,
+.journey-mobile-point-button.stocks-point-1 {
+	left: 148px;
+	top: 170px;
+}
+
+.journey-mobile-point-button.crypto-point-2,
+.journey-mobile-point-button.forex-point-2,
+.journey-mobile-point-button.stocks-point-2 {
+	left: 60px;
+	top: 280px;
+}
+
+.journey-mobile-point-button.crypto-point-3,
+.journey-mobile-point-button.forex-point-3,
+.journey-mobile-point-button.stocks-point-3 {
+	right: 36px;
+	top: 330px;
+}
+
+.journey-mobile-point-button.crypto-point-4,
+.journey-mobile-point-button.forex-point-4,
+.journey-mobile-point-button.stocks-point-4 {
+	left: 86px;
+	top: 430px;
+}
+
+.journey-mobile-point-button.crypto-point-5,
+.journey-mobile-point-button.forex-point-5 {
+	left: 136px;
+	top: 520px;
+}

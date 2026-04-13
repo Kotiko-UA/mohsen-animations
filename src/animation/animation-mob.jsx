@@ -8,14 +8,13 @@ import StocksHover from '../assets/river-3-mob.avif'
 import SyntheticsHover from '../assets/river-4-mob.avif'
 import CanClick from '../assets/can-click.avif'
 import WoWPower from '../assets/wow_powers.webp'
-
-import Eclipse from '../components/Eclipse/Eclipse'
+import ArrowBack from '../assets/arrow-left.svg?react'
 import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'
 import Commitments from '../components/Commitments/Commitments'
 
-import JourneyFlow from '../components/JourneyFlow/JourneyFlow'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
+import JourneyFlowMobile from '../components/JourneyFlow/JourneyFlowMobile'
 
 const BASE_WIDTH = 375
 const BASE_HEIGHT = 812
@@ -42,7 +41,6 @@ const ITEMS = [
 	{
 		key: 'synthetics',
 		hoverSrc: SyntheticsHover,
-		activeSrc: SyntheticsHover,
 		alt: 'Synthetics',
 		type: 'locked',
 	},
@@ -53,11 +51,21 @@ export const AnimationMob = () => {
 	const [isZoomed, setIsZoomed] = useState(false)
 	const [scale, setScale] = useState(1)
 	const [journeyProgress, setJourneyProgress] = useState({})
-	const [activeJourneyState, setActiveJourneyState] = useState(null)
 	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
+	const [showCommitments, setShowCommitments] = useState(false)
 	const openJourneyTimeoutRef = useRef(null)
 
 	const containerRef = useRef(null)
+
+	const handleClose = () => {
+		if (openJourneyTimeoutRef.current) {
+			clearTimeout(openJourneyTimeoutRef.current)
+		}
+
+		setShowCommitments(false)
+		setIsJourneyVisible(false)
+		setIsZoomed(false)
+	}
 
 	useEffect(() => {
 		const element = containerRef.current
@@ -90,9 +98,9 @@ export const AnimationMob = () => {
 			clearTimeout(openJourneyTimeoutRef.current)
 		}
 
-		setActiveJourneyState(null)
 		setIsJourneyVisible(false)
-		setMode('crypto')
+		setShowCommitments(false)
+		setMode(prev => prev ?? 'crypto')
 
 		requestAnimationFrame(() => {
 			setIsZoomed(true)
@@ -120,24 +128,20 @@ export const AnimationMob = () => {
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
-	const activeSceneNode = activeJourneyState?.step?.meta?.sceneNode || null
-
-	const getFeatureClasses = item =>
-		[
-			'feature-img-wrapper',
-			item.key,
-			mode === item.key && 'active',
-			item.type === 'locked' && 'locked',
-		]
-			.filter(Boolean)
-			.join(' ')
-
 	return (
 		<div className='main-container-mob' ref={containerRef}>
 			<div className='scene-stage-mob' style={{ transform: `scale(${scale})` }}>
 				<div className={`main-img-wrap-mob ${stateClass}`}>
+					<button
+						type='button'
+						className={`back-button ${mode ? 'visible' : ''}`}
+						onClick={handleClose}
+						aria-label='Back'>
+						<ArrowBack />
+					</button>
+
 					<ClickBanner hidden={mode} />
-					<Commitments hidden={mode} />
+					<Commitments hidden={!showCommitments} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
 
 					{!mode && (
@@ -147,9 +151,8 @@ export const AnimationMob = () => {
 							alt='Can click'
 						/>
 					)}
-					{!mode && (
-						<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
-					)}
+
+					<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
 
 					<img
 						className={`main-img-mob ${stateClass}`}
@@ -158,47 +161,27 @@ export const AnimationMob = () => {
 						onTransitionEnd={handleTransitionEnd}
 					/>
 
-					{ITEMS.map(item => (
-						<div key={item.key} className={getFeatureClasses(item)}>
-							<Eclipse
-								className={`eclipse-image ${item.key} ${
-									activeSceneNode === item.key ? 'journey-active' : ''
-								}`}
-								text={item.alt}
-								type={item.type}
-							/>
-							<img
-								className='feature-img-hover'
-								src={item.hoverSrc}
-								alt={item.alt}
-							/>
-							<img
-								className='feature-img-active'
-								src={item.activeSrc}
-								alt={item.alt}
-							/>
-						</div>
-					))}
 					<button
 						type='button'
 						className={`hit-area-button-mob ${mode ? 'disabled' : ''}`}
-						onClick={() => handleOpen()}
+						onClick={handleOpen}
 					/>
 
-					{mode && isJourneyVisible && (
+					{mode && isJourneyVisible && JOURNEYS[mode] && (
 						<div className='journey-window-wrap'>
-							<JourneyFlow
-								key={mode}
+							<JourneyFlowMobile
 								journeyKey={mode}
 								journey={JOURNEYS[mode]}
+								items={ITEMS}
 								progress={journeyProgress[mode]}
+								onJourneyChange={setMode}
+								onCommitmentsToggle={setShowCommitments}
 								onProgressChange={nextProgress =>
 									setJourneyProgress(prev => ({
 										...prev,
 										[mode]: nextProgress,
 									}))
 								}
-								onStateChange={setActiveJourneyState}
 							/>
 						</div>
 					)}

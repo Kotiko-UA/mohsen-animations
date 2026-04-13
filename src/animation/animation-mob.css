@@ -63,67 +63,6 @@ section {
   transform: scale(2.15);
 }
 
-/* ---------- feature visuals ---------- */
-
-.feature-img-wrapper {
-  position: absolute;
-  pointer-events: none;
-  transform: scale(1);
-  object-position: center;
-  transition: transform 0.6s linear;
-}
-
-.feature-img-wrapper.crypto {
-  width: 375px;
-  height: 432px;
-  left: 287px;
-  bottom: -33px;
-  z-index: 2;
-}
-
-.feature-img-wrapper.forex {
-  width: 221px;
-  height: 483px;
-  left: 604px;
-  bottom: -48px;
-  z-index: 4;
-}
-
-.feature-img-wrapper.stocks {
-  width: 383px;
-  height: 418px;
-  left: 690px;
-  bottom: -24px;
-  z-index: 2;
-}
-
-.feature-img-wrapper.synthetics {
-  width: 539px;
-  height: 323px;
-  left: 741px;
-  bottom: -28px;
-  z-index: 3;
-}
-
-.main-img-wrap.crypto-mode .feature-img-wrapper.crypto {
-  transform-origin: 74% 100%;
-}
-
-.main-img-wrap.forex-mode .feature-img-wrapper.forex {
-  transform-origin: 285% 100%;
-}
-
-.main-img-wrap.stocks-mode .feature-img-wrapper.stocks {
-  transform-origin: 193% 39%;
-}
-
-.main-img-wrap.zoomed .feature-img-wrapper {
-  transform: scale(1.6);
-}
-
-.main-img-wrap.zoomed .feature-img-wrapper.stocks {
-  transform: scale(2.15);
-}
 
 /* ---------- internal feature images ---------- */
 
