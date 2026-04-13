@@ -53,6 +53,7 @@ export const AnimationMob = () => {
 	const [journeyProgress, setJourneyProgress] = useState({})
 	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
 	const [showCommitments, setShowCommitments] = useState(false)
+	const [journeyScreen, setJourneyScreen] = useState(null)
 
 	const openJourneyTimeoutRef = useRef(null)
 	const containerRef = useRef(null)
@@ -68,6 +69,7 @@ export const AnimationMob = () => {
 		setIsJourneyVisible(false)
 		setIsZoomed(false)
 		setMode(null)
+		setJourneyScreen(null)
 	}
 
 	const handleClose = () => {
@@ -129,13 +131,15 @@ export const AnimationMob = () => {
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
+	const showBackButton = isJourneyVisible && journeyScreen === 'points'
+
 	return (
 		<div className='main-container-mob' ref={containerRef}>
 			<div className='scene-stage-mob' style={{ transform: `scale(${scale})` }}>
 				<div className={`main-img-wrap-mob ${stateClass}`}>
 					<button
 						type='button'
-						className={`back-button ${isOpened ? 'visible' : ''}`}
+						className={`back-button ${showBackButton ? 'visible' : ''}`}
 						onClick={handleClose}
 						aria-label='Back'>
 						<ArrowBack />
@@ -176,6 +180,9 @@ export const AnimationMob = () => {
 								progress={journeyProgress[mode]}
 								onJourneyChange={setMode}
 								onCommitmentsToggle={setShowCommitments}
+								onStateChange={({ screen }) => {
+									setJourneyScreen(screen ?? null)
+								}}
 								onProgressChange={nextProgress =>
 									setJourneyProgress(prev => ({
 										...prev,
