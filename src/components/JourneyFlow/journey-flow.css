@@ -645,3 +645,79 @@
 .f-a-play-text {
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .journey-modal-wrap {
+    gap: 24px;
+  }
+
+  .text-h-32-700 {
+    font-size: 20px;
+  }
+
+  .text-h-20-700 {
+    font-size: 16px;
+    line-height: 126%;
+  }
+
+  .journey-modal-text {
+    font-size: 14px;
+    line-height: 116%;
+  }
+
+  .journey-modal-main-button,
+  .journey-modal-assent-button {
+    height: 40px;
+    padding: 8px 24px;
+    font-size: 16px;
+  }
+
+  .journey-modal-fs-subblock {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .journey-modal-fs-you-get {
+    font-size: 16px;
+  }
+
+  .journey-modal-fs-sb-w {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .journey-modal-fs-sb-1 {
+    padding-right: 0;
+    padding-bottom: 12px;
+    border-right: none;
+    border-bottom: 1px solid #FFF;
+  }
+
+  .journey-modal-fs-sb-1-top {
+    justify-content: flex-start;
+  }
+
+  .journey-modal-fs-sb-1-top>span {
+    font-size: 44px;
+  }
+
+  .journey-modal-fs-sb-1-top>p {
+    font-size: 16px;
+    max-width: 122px;
+  }
+
+  .journey-modal-fs-sb-1-bottom {
+    font-size: 14px;
+    line-height: 116%;
+  }
+
+  .journey-modal-fs-sb-2>li {
+    font-size: 14px;
+  }
+
+  .journey-modal-time-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}

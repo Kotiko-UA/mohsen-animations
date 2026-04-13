@@ -542,18 +542,16 @@ export default function JourneyFlowMobile({
 					screen === MOBILE_SCREENS.TIME ||
 					screen === MOBILE_SCREENS.STEP) && (
 					<div className='journey-mobile-step-view'>
-						<div className='journey-mobile-step-content'>
-							<JourneyStepProvider value={{ actions, state }}>
-								{getStepView({
-									step: activeStep,
-									point: activePoint,
-									pointIndex: activePointIndex,
-									stepIndex: currentStepIndex,
-									actions,
-									state,
-								})}
-							</JourneyStepProvider>
-						</div>
+						<JourneyStepProvider value={{ actions, state }}>
+							{getStepView({
+								step: activeStep,
+								point: activePoint,
+								pointIndex: activePointIndex,
+								stepIndex: currentStepIndex,
+								actions,
+								state,
+							})}
+						</JourneyStepProvider>
 					</div>
 				)}
 		</div>
