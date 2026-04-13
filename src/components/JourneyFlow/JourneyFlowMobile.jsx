@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { JourneyStepProvider } from './JourneyStepControls'
 import './journey-flow-mobile.css'
+import Timer from '../Timer/Timer'
+import Arrow from '../../assets/arrow-purple.svg?react'
+import ArrowWhite from '../../assets/arrow-purple.svg?react'
+import Dot from '../../assets/white-dot.svg?react'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -420,10 +424,7 @@ export default function JourneyFlowMobile({
 		<div className={`journey-flow-mobile ${currentSlide.key} screen-${screen}`}>
 			{screen === MOBILE_SCREENS.SELECTOR && (
 				<div className='journey-mobile-selector'>
-					<div className='journey-mobile-league-pill'>
-						<strong>Wes League</strong>
-						<span>start on 1st of May, 2026.</span>
-					</div>
+					<Timer targetDate='01.05.2026' />
 
 					<div className='journey-mobile-selector-card'>
 						<button
@@ -432,7 +433,7 @@ export default function JourneyFlowMobile({
 							onClick={openIntro}
 							disabled={isLockedJourney}>
 							<div className='journey-mobile-cta-title'>
-								<span className='journey-mobile-cta-dot' />
+								<Dot className='journey-mobile-cta-dot' />
 								<span>{currentSlide.alt ?? journey?.title ?? 'Journey'}</span>
 							</div>
 
@@ -442,7 +443,15 @@ export default function JourneyFlowMobile({
 										Coming soon!
 									</span>
 								) : (
-									<span>See info →</span>
+									<span
+										style={{
+											display: 'flex',
+											gap: '8px',
+											alignItems: 'center',
+										}}>
+										See info
+										<ArrowWhite style={{ with: '24px', height: '24px' }} />
+									</span>
 								)}
 							</div>
 						</button>
@@ -453,7 +462,7 @@ export default function JourneyFlowMobile({
 								className='journey-mobile-nav-button'
 								onClick={goToPrevSlide}
 								aria-label='Previous journey'>
-								←
+								<Arrow />
 							</button>
 
 							<div className='journey-mobile-dots'>
@@ -476,7 +485,7 @@ export default function JourneyFlowMobile({
 								className='journey-mobile-nav-button'
 								onClick={goToNextSlide}
 								aria-label='Next journey'>
-								→
+								<Arrow style={{ transform: 'rotate(180deg)' }} />
 							</button>
 						</div>
 					</div>
