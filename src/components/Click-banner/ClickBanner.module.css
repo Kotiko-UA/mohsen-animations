@@ -4,12 +4,12 @@
   left: 17px;
 
   display: flex;
-  padding: 40px 60px;
   flex-direction: column;
   gap: 12px;
+  padding: 40px 60px;
 
   border: 1px solid #434343;
-  background: rgba(40, 40, 40, 0.40);
+  background: rgba(40, 40, 40, 0.4);
   backdrop-filter: blur(30px);
 
   opacity: 1;
@@ -29,14 +29,15 @@
   gap: 8px;
 }
 
-.logoWrap svg {
+.logoIcon {
   width: 109px;
   height: 52px;
+  flex-shrink: 0;
 }
 
-.logoWrap div {
-  color: #FFF;
-  font-family: Inter;
+.logoText {
+  color: #fff;
+  font-family: Inter, sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 124%;
@@ -48,14 +49,50 @@
   gap: 12px;
 }
 
-.textWrap svg {
+.textIcon {
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 
-.textWrap div {
-  color: #FFF;
-  font-family: Inter;
+.text {
+  color: #fff;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   line-height: 126%;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 343px;
+    top: 18px;
+    left: 50%;
+    padding: 12px;
+    gap: 8px;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .hidden {
+    transform: translateX(-50%) translateY(-100%);
+  }
+
+  .logoIcon {
+    width: 68px;
+    height: 32px;
+  }
+
+  .logoText {
+    font-size: 18px;
+    line-height: 120%;
+  }
+
+  .textIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 116%;
+  }
 }

@@ -1,0 +1,289 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container-mob {
+  position: relative;
+  width: min(100vw, 1440px);
+  aspect-ratio: 375 / 812;
+  overflow: hidden;
+  margin-inline: auto;
+}
+
+.scene-stage-mob {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 375px;
+  height: 812px;
+  transform-origin: top left;
+}
+
+.main-img-wrap-mob {
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  width: 375px;
+  height: 812px;
+  z-index: 1;
+}
+
+
+/* ---------- main bg ---------- */
+
+.main-img-mob {
+  display: block;
+  width: 375px;
+  height: 812px;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  transition: transform 0.6s linear;
+}
+
+
+.main-img.crypto-mode {
+  transform-origin: 38% 100%;
+}
+
+.main-img.forex-mode {
+  transform-origin: 79% 100%;
+}
+
+.main-img.stocks-mode {
+  transform-origin: 100% 71%;
+}
+
+.main-img.zoomed {
+  transform: scale(1.7);
+}
+
+.main-img.stocks-mode.zoomed {
+  transform: scale(2.15);
+}
+
+/* ---------- feature visuals ---------- */
+
+.feature-img-wrapper {
+  position: absolute;
+  pointer-events: none;
+  transform: scale(1);
+  object-position: center;
+  transition: transform 0.6s linear;
+}
+
+.feature-img-wrapper.crypto {
+  width: 375px;
+  height: 432px;
+  left: 287px;
+  bottom: -33px;
+  z-index: 2;
+}
+
+.feature-img-wrapper.forex {
+  width: 221px;
+  height: 483px;
+  left: 604px;
+  bottom: -48px;
+  z-index: 4;
+}
+
+.feature-img-wrapper.stocks {
+  width: 383px;
+  height: 418px;
+  left: 690px;
+  bottom: -24px;
+  z-index: 2;
+}
+
+.feature-img-wrapper.synthetics {
+  width: 539px;
+  height: 323px;
+  left: 741px;
+  bottom: -28px;
+  z-index: 3;
+}
+
+.main-img-wrap.crypto-mode .feature-img-wrapper.crypto {
+  transform-origin: 74% 100%;
+}
+
+.main-img-wrap.forex-mode .feature-img-wrapper.forex {
+  transform-origin: 285% 100%;
+}
+
+.main-img-wrap.stocks-mode .feature-img-wrapper.stocks {
+  transform-origin: 193% 39%;
+}
+
+.main-img-wrap.zoomed .feature-img-wrapper {
+  transform: scale(1.6);
+}
+
+.main-img-wrap.zoomed .feature-img-wrapper.stocks {
+  transform: scale(2.15);
+}
+
+/* ---------- internal feature images ---------- */
+
+.feature-img-hover,
+.feature-img-active {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s linear;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.feature-img-wrapper.hovered .feature-img-hover,
+.feature-img-wrapper.active .feature-img-hover {
+  opacity: 1;
+}
+
+.feature-img-wrapper.pressed .feature-img-active {
+  opacity: 1;
+}
+
+.feature-img-wrapper.pressed .feature-img-hover {
+  opacity: 0;
+}
+
+/* ---------- eclipse ---------- */
+
+.feature-img-wrapper.hovered .eclipse-image,
+.feature-img-wrapper.pressed .eclipse-image,
+.feature-img-wrapper.active .eclipse-image {
+  opacity: 1;
+}
+
+.eclipse-image.crypto {
+  top: 37%;
+  left: 42%;
+  transform: scale(0.55);
+
+}
+
+.active .eclipse-image.crypto {
+  transform: scale(0.55) translate(19%, 61%);
+}
+
+
+.eclipse-image.forex {
+  left: -18%;
+  bottom: 19%;
+  transform: scale(0.55);
+}
+
+.active .eclipse-image.forex {
+  transform: scale(0.55) translate(7%, 83%);
+}
+
+.eclipse-image.stocks {
+  top: 35%;
+  left: -5%;
+  transform: scale(0.50);
+}
+
+.active .eclipse-image.stocks {
+  transform: scale(0.50) translate(33%, -40%);
+}
+
+.eclipse-image.synthetics {
+  top: 23%;
+  left: 8%;
+  transform: scale(0.5);
+}
+
+/* ---------- hit areas ---------- */
+
+.hit-areas-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.hit-areas-layer.disabled {
+  pointer-events: none;
+}
+
+.hit-area {
+  position: absolute;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.hit-area:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.45);
+}
+
+.hit-area.locked {
+  cursor: default;
+}
+
+.hit-area.crypto {
+  width: 299px;
+  height: 401px;
+  left: 293px;
+  bottom: 0px;
+}
+
+.hit-area.forex {
+  width: 194px;
+  height: 446px;
+  left: 603px;
+  bottom: 0px;
+}
+
+.hit-area.stocks {
+  width: 327px;
+  height: 263px;
+  left: 754px;
+  bottom: 157px;
+}
+
+.hit-area.synthetics {
+  width: 540px;
+  height: 180px;
+  left: 808px;
+  bottom: 0px;
+}
+
+/* ---------- extra decorative block ---------- */
+.wow-power-mob {
+  position: absolute;
+  top: 241px;
+  left: 50%;
+  width: 108px;
+  height: 137px;
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.can-click-image {
+  position: absolute;
+  top: 390px;
+  left: 860px;
+  width: 69px;
+  height: 69px;
+  z-index: 5;
+}
+
+/* ----Journey --------- */
+.journey-window-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}

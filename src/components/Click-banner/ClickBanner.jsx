@@ -6,14 +6,16 @@ const ClickBanner = ({ hidden }) => {
 	return (
 		<div className={`${styles.wrapper} ${hidden ? styles.hidden : ''}`}>
 			<div className={styles.logoWrap}>
-				<LogoIcon />
-				<div className={styles.text}>Wes Customer Journey</div>
+				<LogoIcon className={styles.logoIcon} />
+				<div className={styles.logoText}>Wes Customer Journey</div>
 			</div>
+
 			<div className={styles.textWrap}>
-				<div>Сlick a road to choose your market</div>
-				<ClickIcon />
+				<div className={styles.text}>Click a road to choose your market</div>
+				<ClickIcon className={styles.textIcon} />
 			</div>
 		</div>
 	)
 }
+
 export default ClickBanner
