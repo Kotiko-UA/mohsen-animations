@@ -422,6 +422,14 @@ export default function JourneyFlowMobile({
 
 	return (
 		<div className={`journey-flow-mobile ${currentSlide.key} screen-${screen}`}>
+			{currentSlide.hoverSrc && (
+				<img
+					className={`journey-mobile-river-image ${currentSlide.key}`}
+					src={currentSlide.hoverSrc}
+					alt={`${currentSlide.alt} river`}
+				/>
+			)}
+
 			{screen === MOBILE_SCREENS.SELECTOR && (
 				<div className='journey-mobile-selector'>
 					<Timer targetDate='01.05.2026' />
@@ -450,7 +458,7 @@ export default function JourneyFlowMobile({
 											alignItems: 'center',
 										}}>
 										See info
-										<ArrowWhite style={{ with: '24px', height: '24px' }} />
+										<ArrowWhite style={{ width: '24px', height: '24px' }} />
 									</span>
 								)}
 							</div>

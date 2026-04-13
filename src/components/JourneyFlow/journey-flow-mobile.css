@@ -241,10 +241,6 @@
 	line-height: 1;
 }
 
-/*
- * Тут залишив тільки базову структуру.
- * Позиції воріт ти можеш виставити сам під свої png/avif.
- */
 .journey-mobile-point-button.crypto-point-1,
 .journey-mobile-point-button.forex-point-1,
 .journey-mobile-point-button.stocks-point-1 {
@@ -277,4 +273,37 @@
 .journey-mobile-point-button.forex-point-5 {
 	left: 136px;
 	top: 520px;
+}
+
+.journey-mobile-river-image {
+	position: absolute;
+	z-index: -1;
+}
+
+.journey-mobile-river-image.crypto {
+	left: 0;
+	bottom: -60px;
+	width: 232px;
+	height: 440px;
+}
+
+.journey-mobile-river-image.forex {
+	left: 40px;
+	bottom: -46px;
+	width: 268px;
+	height: 449px;
+}
+
+.journey-mobile-river-image.stocks {
+	left: 89px;
+	bottom: -54px;
+	width: 248px;
+	height: 437px;
+}
+
+.journey-mobile-river-image.synthetics {
+	left: 89px;
+	bottom: -45px;
+	width: 327px;
+	height: 354px;
 }
