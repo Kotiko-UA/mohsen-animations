@@ -794,6 +794,25 @@
     left: 123px;
   }
 
+  .journey-point-button.stocks-point-1 {
+    left: 65px;
+    bottom: 222px;
+  }
+
+  .journey-point-button.stocks-point-2 {
+    left: 88px;
+    bottom: 376px;
+  }
+
+  .journey-point-button.stocks-point-3 {
+    left: 195px;
+    bottom: 466px;
+  }
+
+  .journey-point-button.stocks-point-4 {
+    left: 246px;
+    bottom: 557px;
+  }
 
   .journey-launchpad-w2 {
     flex-direction: column;
