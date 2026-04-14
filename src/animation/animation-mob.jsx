@@ -129,7 +129,7 @@ export const AnimationMob = () => {
 	}, [])
 
 	const stateClass =
-		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
+		`${mode ? `${mode}-mode` : ''} ${journeyScreen === 'points' ? 'zoomed' : ''}`.trim()
 
 	const showBackButton = isJourneyVisible && journeyScreen === 'points'
 
@@ -157,10 +157,16 @@ export const AnimationMob = () => {
 						/>
 					)}
 
-					<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
+					<img
+						className={`wow-power-mob ${isOpened ? 'hidden' : ''}`}
+						src={WoWPower}
+						alt='WoWPower'
+					/>
 
 					<img
-						className={`main-img-mob ${stateClass}`}
+						className={`main-img-mob ${mode ? `${mode}-mode` : ''} ${
+							journeyScreen === 'points' ? 'zoomed' : ''
+						}`}
 						src={MainImg}
 						alt='Main'
 					/>

@@ -332,7 +332,7 @@ section {
 
   .eclipse-image.crypto {
     top: 22%;
-    left: 25%;
+    left: 31%;
     transform: scale(0.7) translate(-50%, -50%);
 
   }
@@ -346,9 +346,13 @@ section {
 
   .eclipse-image.stocks {
     top: 22%;
-    left: 43%;
+    left: 17%;
     transform: scale(0.7) translate(-50%, -50%);
   }
 
 
+}
+
+.hidden {
+  opacity: 0;
 }

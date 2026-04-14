@@ -275,6 +275,7 @@
 .journey-mobile-river-image {
 	position: absolute;
 	z-index: -1;
+	transition: transform 0.6s linear;
 }
 
 .journey-mobile-river-image.crypto {
@@ -284,11 +285,23 @@
 	height: 440px;
 }
 
+.zoomed .journey-mobile-river-image.crypto {
+	left: 50px;
+	bottom: 32px;
+	transform: scale(1.55);
+}
+
 .journey-mobile-river-image.forex {
 	left: 40px;
 	bottom: -46px;
 	width: 268px;
 	height: 449px;
+}
+
+.zoomed .journey-mobile-river-image.forex {
+	left: 39px;
+	bottom: 43px;
+	transform: scale(1.55);
 }
 
 .journey-mobile-river-image.stocks {
@@ -298,9 +311,15 @@
 	height: 437px;
 }
 
+.zoomed .journey-mobile-river-image.stocks {
+	left: 6px;
+	bottom: 47px;
+	transform: scale(1.55);
+}
+
 .journey-mobile-river-image.synthetics {
 	left: 89px;
-	bottom: -45px;
+	bottom: -21px;
 	width: 327px;
 	height: 354px;
 }

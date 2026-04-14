@@ -43,24 +43,24 @@ section {
 }
 
 
-.main-img.crypto-mode {
-  transform-origin: 38% 100%;
+.main-img-mob.crypto-mode.zoomed {
+  transform-origin: 0% 100%;
 }
 
-.main-img.forex-mode {
-  transform-origin: 79% 100%;
+.main-img-mob.forex-mode.zoomed {
+  transform-origin: 50% 100%;
 }
 
-.main-img.stocks-mode {
-  transform-origin: 100% 71%;
+.main-img-mob.stocks-mode.zoomed {
+  transform-origin: 100% 100%;
 }
 
-.main-img.zoomed {
-  transform: scale(1.7);
+.main-img-mob.zoomed {
+  transform: scale(1.55);
 }
 
-.main-img.stocks-mode.zoomed {
-  transform: scale(2.15);
+.main-img-mob.synthetics-mode.zoomed {
+  transform: scale(1);
 }
 
 
