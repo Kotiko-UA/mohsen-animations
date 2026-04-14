@@ -97,6 +97,12 @@ section {
   height: 137px;
   z-index: 5;
   transform: translateX(-50%);
+  transition: opacity 2s linear;
+}
+
+.wow-power-mob-hidden {
+  opacity: 0;
+  transition: none;
 }
 
 .can-click-image-mob {

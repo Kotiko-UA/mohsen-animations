@@ -54,6 +54,7 @@ export const AnimationMob = () => {
 	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
 	const [showCommitments, setShowCommitments] = useState(false)
 	const [journeyScreen, setJourneyScreen] = useState(null)
+	const [journeyResetKey, setJourneyResetKey] = useState(0)
 
 	const openJourneyTimeoutRef = useRef(null)
 	const containerRef = useRef(null)
@@ -103,7 +104,24 @@ export const AnimationMob = () => {
 			}, 400)
 		})
 	}
+	const handleBackToCurrentJourney = () => {
+		if (openJourneyTimeoutRef.current) {
+			clearTimeout(openJourneyTimeoutRef.current)
+		}
 
+		setShowCommitments(false)
+		setJourneyScreen('selector')
+		setIsJourneyVisible(false)
+		setJourneyResetKey(prev => prev + 1)
+
+		requestAnimationFrame(() => {
+			setIsZoomed(true)
+
+			openJourneyTimeoutRef.current = setTimeout(() => {
+				setIsJourneyVisible(true)
+			}, 400)
+		})
+	}
 	useEffect(() => {
 		return () => {
 			if (openJourneyTimeoutRef.current) {
@@ -124,7 +142,7 @@ export const AnimationMob = () => {
 					<button
 						type='button'
 						className={`back-button ${showBackButton ? 'visible' : ''}`}
-						onClick={handleOpen}
+						onClick={handleBackToCurrentJourney}
 						aria-label='Back'>
 						<ArrowBack />
 					</button>
@@ -142,7 +160,7 @@ export const AnimationMob = () => {
 					)}
 
 					<img
-						className={`wow-power-mob ${journeyScreen === 'points' ? 'hidden' : ''}`}
+						className={`wow-power-mob ${journeyScreen === 'points' ? 'wow-power-mob-hidden' : ''}`}
 						src={WoWPower}
 						alt='WoWPower'
 					/>
