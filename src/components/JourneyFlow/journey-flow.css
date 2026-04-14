@@ -10,7 +10,7 @@
   transform: translateY(-50%);
   width: 745px;
   max-height: 800px;
-  padding: 40px 0 60px 0;
+  padding: 40px 0 60px;
   background: #282828;
   border: 1px solid #2E2F31;
 }
@@ -19,15 +19,14 @@
   padding: 0 60px;
   max-height: 700px;
   overflow-y: auto;
-
 }
 
 .journey-modal-wrap {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-
-
+  gap: 24px;
+  max-height: 720px;
+  overflow-y: auto;
 }
 
 .journey-point-button {
@@ -36,10 +35,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   border: none;
   background-color: transparent;
-
   z-index: 2;
   cursor: pointer;
 }
@@ -65,21 +62,17 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-
   padding: 4px 8px;
-
   border-radius: 60px;
   background: #49ADDE;
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
   backdrop-filter: blur(10px);
-
   color: #FFF;
   font-family: Inter;
   font-size: 14px;
   font-weight: 500;
   line-height: 102%;
   white-space: nowrap;
-
 }
 
 .journey-point-label.done {
@@ -93,94 +86,91 @@
   flex-shrink: 0;
 }
 
-/* ---------------- Crypto points ---------------- */
-.crypto .journey-points {
-  position: absolute;
-  width: 542px;
-  height: 690px;
-  left: 77px;
-  bottom: 0px;
-}
-
-.journey-point-button.crypto-point-1 {
-  right: 67px;
-  bottom: 255px;
-}
-
-.journey-point-button.crypto-point-2 {
-  left: 224px;
-  bottom: 342px;
-}
-
-.journey-point-button.crypto-point-3 {
-  left: 65px;
-  bottom: 383px;
-}
-
-.journey-point-button.crypto-point-4 {
-  right: 165px;
-  top: 110px;
-}
-
-.journey-point-button.crypto-point-5 {
-  right: 277px;
-  top: 18px;
-}
-
-/* ---------------- Forex points ---------------- */
+/* ---------- Mobile point positions ---------- */
+.crypto .journey-points,
 .forex .journey-points {
   position: absolute;
   width: 542px;
   height: 690px;
+  bottom: 0;
+}
+
+.crypto .journey-points {
+  left: 77px;
+}
+
+.forex .journey-points {
   left: 110px;
-  bottom: 0px;
+}
+
+.journey-point-button.crypto-point-1 {
+  right: 84px;
+  bottom: 209px;
+}
+
+.journey-point-button.crypto-point-2 {
+  left: 163px;
+  bottom: 307px;
+}
+
+.journey-point-button.crypto-point-3 {
+  left: 121px;
+  bottom: 402px;
+}
+
+.journey-point-button.crypto-point-4 {
+  right: 277px;
+  top: 272px;
+}
+
+.journey-point-button.crypto-point-5 {
+  right: 250px;
+  top: 181px;
 }
 
 .journey-point-button.forex-point-1 {
-  left: 198px;
-  bottom: 239px;
-}
-
-.journey-point-button.forex-point-2 {
-  left: 198px;
-  bottom: 376px;
-}
-
-.journey-point-button.forex-point-3 {
-  left: 378px;
-  bottom: 460px;
-}
-
-.journey-point-button.forex-point-4 {
-  top: 74px;
-  left: 159px;
-}
-
-.journey-point-button.forex-point-5 {
-  top: -24px;
-  left: 241px;
-}
-
-/* ---------------- Stocks points ---------------- */
-
-.journey-point-button.stocks-point-1 {
-  left: 283px;
+  left: 150px;
   bottom: 214px;
 }
 
+.journey-point-button.forex-point-2 {
+  left: 130px;
+  bottom: 317px;
+}
+
+.journey-point-button.forex-point-3 {
+  left: 107px;
+  bottom: 428px;
+}
+
+.journey-point-button.forex-point-4 {
+  top: 230px;
+  left: 182px;
+}
+
+.journey-point-button.forex-point-5 {
+  top: 158px;
+  left: 123px;
+}
+
+.journey-point-button.stocks-point-1 {
+  left: 65px;
+  bottom: 222px;
+}
+
 .journey-point-button.stocks-point-2 {
-  left: 419px;
-  bottom: 285px;
+  left: 88px;
+  bottom: 376px;
 }
 
 .journey-point-button.stocks-point-3 {
-  left: 499px;
-  bottom: 386px;
+  left: 195px;
+  bottom: 466px;
 }
 
 .journey-point-button.stocks-point-4 {
-  left: 446px;
-  bottom: 490px;
+  left: 246px;
+  bottom: 557px;
 }
 
 .journey-prev-button {
@@ -192,7 +182,6 @@
   background-color: transparent;
   cursor: pointer;
   flex-shrink: 0;
-
 }
 
 .journey-prev-button svg {
@@ -203,31 +192,24 @@
 
 .journey-modal-main-button,
 .journey-modal-assent-button {
-  height: 48px;
+  height: 40px;
   display: flex;
   width: 100%;
-  padding: 12px 24px;
+  padding: 8px 24px;
   justify-content: center;
   align-items: center;
-
   border-radius: 4px;
   border: none;
-
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
-
-
   color: #FFF;
   text-align: center;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 122%;
   cursor: pointer;
-
   transition: background-color 0.3s linear;
 }
-
-
 
 .journey-modal-main-button {
   background-color: #754CF0;
@@ -245,7 +227,6 @@
 .journey-modal-main-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-
 }
 
 .journey-modal-assent-button {
@@ -265,7 +246,6 @@
 .journey-modal-assent-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-
 }
 
 .journey-modal-main-button.h40,
@@ -291,34 +271,31 @@
 .text-h-32-700 {
   color: #FFF;
   font-family: Inter;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
   line-height: normal;
 }
 
 .text-h-20-700 {
   color: #FFF;
-
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 122%;
+  line-height: 126%;
 }
 
 .text-h-32-700-opacity {
   color: #FFF;
-
   font-family: Inter;
-  font-size: 24px;
+  font-size: 14px;
   font-weight: 500;
   line-height: normal;
-
   opacity: 0.7;
 }
 
 .text-h-16-500 {
   font-family: Inter;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: #fff;
   line-height: 126%;
@@ -342,7 +319,7 @@
 
 .text-h-24-500 {
   font-family: Inter;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 500;
   color: #fff;
   line-height: 126%;
@@ -355,7 +332,6 @@
   color: #fff;
   line-height: 116%;
 }
-
 
 .flex-col-12 {
   display: flex;
@@ -372,7 +348,7 @@
 .flex-col-24 {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .flex-row-12 {
@@ -394,9 +370,9 @@
 .journey-modal-text {
   color: #FFF;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 126%;
+  line-height: 116%;
 }
 
 .journey-modal-text span {
@@ -415,43 +391,43 @@
 
 .journey-modal-fs-subblock {
   display: flex;
-  padding: 24px;
+  padding: 12px;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   border: 1px solid #3E3E3E;
   background: #282828;
-
 }
 
 .journey-modal-fs-you-get {
   color: #FFF;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   line-height: normal;
 }
 
 .journey-modal-fs-sb-w {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 18px;
+  gap: 24px;
 }
 
 .journey-modal-fs-sb-1 {
-
   display: flex;
-  padding-right: 12px;
+  padding-right: 0;
+  padding-bottom: 12px;
   flex-direction: column;
   gap: 6px;
   justify-content: center;
-  border-right: 1px solid #FFF;
-
+  border-right: none;
+  border-bottom: 1px solid #FFF;
 }
 
 .journey-modal-fs-sb-1-top {
   height: 58px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 6px;
 }
@@ -464,6 +440,10 @@
   line-height: normal;
 }
 
+.journey-modal-fs-sb-1-top>span {
+  font-size: 44px;
+}
+
 .journey-modal-fs-sb-1-top p {
   color: #FFF;
   font-family: Inter;
@@ -472,12 +452,17 @@
   line-height: normal;
 }
 
+.journey-modal-fs-sb-1-top>p {
+  max-width: 122px;
+  font-size: 16px;
+}
+
 .journey-modal-fs-sb-1-bottom {
   color: #FFF;
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 116%;
 }
 
 .journey-modal-fs-sb-2 {
@@ -498,6 +483,10 @@
   line-height: normal;
 }
 
+.journey-modal-fs-sb-2>li {
+  font-size: 14px;
+}
+
 .journey-modal-ht-subwrap {
   display: flex;
   flex-direction: column;
@@ -505,7 +494,8 @@
 }
 
 .journey-modal-time-options {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
@@ -517,15 +507,13 @@
 
 .journey-launchpad-w2 {
   display: flex;
+  flex-direction: column;
   gap: 12px;
   justify-content: space-between;
   align-items: center;
 }
 
-
-
-
-/* ------------Crypto------------ */
+/* ---------- Crypto ---------- */
 .journey-confirm-list {
   display: flex;
   flex-direction: column;
@@ -596,12 +584,17 @@
 
 .journey-modal-dis-sw {
   display: flex;
+  flex-direction: column;
   gap: 40px;
   align-self: stretch;
 }
 
+.journey-modal-dis-button {
+  width: 64px;
+}
+
 .cr-l-dis-img {
-  width: 241px;
+  width: 100%;
   height: 257px;
   border-radius: 42px;
 }
@@ -622,11 +615,9 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-
   border-radius: 4px;
   border: 1px solid #754CF0;
   background: rgba(255, 255, 255, 0.02);
-
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
   transition: background-color 0.3s linear, box-shadow 0.3s linear;
 }
@@ -647,190 +638,186 @@
 }
 
 .journey-mobile-back-button {
-  display: none;
+  display: flex;
 }
 
-@media screen and (max-width: 768px) {
-  .journey-mobile-back-button {
-    display: flex;
-  }
-
+@media screen and (min-width: 769px) {
   .journey-modal-wrap {
-    max-height: 720px;
-    overflow-y: auto;
-    gap: 24px;
+    gap: 40px;
+    max-height: none;
+    overflow-y: visible;
   }
 
-  .text-h-32-700-opacity {
-    font-size: 14px;
+  .journey-point-button.crypto-point-1 {
+    right: 67px;
+    bottom: 255px;
   }
 
-  .text-h-32-700 {
-    font-size: 20px;
+  .journey-point-button.crypto-point-2 {
+    left: 224px;
+    bottom: 342px;
   }
 
-  .text-h-20-700 {
-    font-size: 16px;
-    line-height: 126%;
+  .journey-point-button.crypto-point-3 {
+    left: 65px;
+    bottom: 383px;
   }
 
-  .text-h-24-500 {
-    font-size: 16px;
+  .journey-point-button.crypto-point-4 {
+    right: 165px;
+    top: 110px;
   }
 
-  .text-h-16-500 {
-    font-size: 14px;
+  .journey-point-button.crypto-point-5 {
+    right: 277px;
+    top: 18px;
   }
 
-  .journey-modal-text {
-    font-size: 14px;
-    line-height: 116%;
+  .journey-point-button.forex-point-1 {
+    left: 198px;
+    bottom: 239px;
+  }
+
+  .journey-point-button.forex-point-2 {
+    left: 198px;
+    bottom: 376px;
+  }
+
+  .journey-point-button.forex-point-3 {
+    left: 378px;
+    bottom: 460px;
+  }
+
+  .journey-point-button.forex-point-4 {
+    top: 74px;
+    left: 159px;
+  }
+
+  .journey-point-button.forex-point-5 {
+    top: -24px;
+    left: 241px;
+  }
+
+  .journey-point-button.stocks-point-1 {
+    left: 283px;
+    bottom: 214px;
+  }
+
+  .journey-point-button.stocks-point-2 {
+    left: 419px;
+    bottom: 285px;
+  }
+
+  .journey-point-button.stocks-point-3 {
+    left: 499px;
+    bottom: 386px;
+  }
+
+  .journey-point-button.stocks-point-4 {
+    left: 446px;
+    bottom: 490px;
   }
 
   .journey-modal-main-button,
   .journey-modal-assent-button {
-    height: 40px;
-    padding: 8px 24px;
+    height: 48px;
+    padding: 12px 24px;
+    font-size: 20px;
+  }
+
+  .text-h-32-700 {
+    font-size: 32px;
+  }
+
+  .text-h-20-700 {
+    font-size: 20px;
+    line-height: 122%;
+  }
+
+  .text-h-32-700-opacity {
+    font-size: 24px;
+  }
+
+  .text-h-16-500 {
     font-size: 16px;
   }
 
-  .journey-modal-fs-subblock {
-    padding: 12px;
-    gap: 8px;
+  .text-h-24-500 {
+    font-size: 24px;
   }
 
-  .journey-modal-fs-you-get {
+  .journey-modal-text {
     font-size: 16px;
-  }
-
-  .journey-modal-fs-sb-w {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .journey-modal-fs-sb-1 {
-    padding-right: 0;
-    padding-bottom: 12px;
-    border-right: none;
-    border-bottom: 1px solid #FFF;
-  }
-
-  .journey-modal-fs-sb-1-top {
-    justify-content: flex-start;
-  }
-
-  .journey-modal-fs-sb-1-top>span {
-    font-size: 44px;
-  }
-
-  .journey-modal-fs-sb-1-top>p {
-    font-size: 16px;
-    max-width: 122px;
-  }
-
-  .journey-modal-fs-sb-1-bottom {
-    font-size: 14px;
-    line-height: 116%;
-  }
-
-  .journey-modal-fs-sb-2>li {
-    font-size: 14px;
-  }
-
-  .journey-modal-time-options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-
-  .journey-point-button.crypto-point-1 {
-    right: 84px;
-    bottom: 209px;
-  }
-
-  .journey-point-button.crypto-point-2 {
-    left: 163px;
-    bottom: 307px;
-  }
-
-  .journey-point-button.crypto-point-3 {
-    left: 121px;
-    bottom: 402px;
-  }
-
-  .journey-point-button.crypto-point-4 {
-    right: 277px;
-    top: 272px;
-  }
-
-  .journey-point-button.crypto-point-5 {
-    right: 250px;
-    top: 181px;
-  }
-
-  .journey-point-button.forex-point-1 {
-    left: 150px;
-    bottom: 214px;
-  }
-
-  .journey-point-button.forex-point-2 {
-    left: 130px;
-    bottom: 317px;
-  }
-
-  .journey-point-button.forex-point-3 {
-    left: 107px;
-    bottom: 428px;
-  }
-
-  .journey-point-button.forex-point-4 {
-    top: 230px;
-    left: 182px;
-  }
-
-  .journey-point-button.forex-point-5 {
-    top: 158px;
-    left: 123px;
-  }
-
-  .journey-point-button.stocks-point-1 {
-    left: 65px;
-    bottom: 222px;
-  }
-
-  .journey-point-button.stocks-point-2 {
-    left: 88px;
-    bottom: 376px;
-  }
-
-  .journey-point-button.stocks-point-3 {
-    left: 195px;
-    bottom: 466px;
-  }
-
-  .journey-point-button.stocks-point-4 {
-    left: 246px;
-    bottom: 557px;
-  }
-
-  .journey-launchpad-w2 {
-    flex-direction: column;
+    line-height: 126%;
   }
 
   .flex-col-24 {
+    gap: 24px;
+  }
+
+  .journey-modal-fs-subblock {
+    padding: 24px;
     gap: 12px;
   }
 
+  .journey-modal-fs-you-get {
+    font-size: 20px;
+  }
+
+  .journey-modal-fs-sb-w {
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  .journey-modal-fs-sb-1 {
+    padding-right: 12px;
+    padding-bottom: 0;
+    border-right: 1px solid #FFF;
+    border-bottom: none;
+  }
+
+  .journey-modal-fs-sb-1-top {
+    justify-content: center;
+  }
+
+  .journey-modal-fs-sb-1-top>span {
+    font-size: 48px;
+  }
+
+  .journey-modal-fs-sb-1-top>p {
+    max-width: none;
+    font-size: 20px;
+  }
+
+  .journey-modal-fs-sb-1-bottom {
+    line-height: normal;
+  }
+
+  .journey-modal-fs-sb-2>li {
+    font-size: 16px;
+  }
+
+  .journey-modal-time-options {
+    display: flex;
+  }
+
+  .journey-launchpad-w2 {
+    flex-direction: row;
+  }
+
   .journey-modal-dis-sw {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .journey-modal-dis-button {
-    width: 64px;
+    width: auto;
   }
 
   .cr-l-dis-img {
-    width: 100%;
+    width: 241px;
+  }
+
+  .journey-mobile-back-button {
+    display: none;
   }
 }

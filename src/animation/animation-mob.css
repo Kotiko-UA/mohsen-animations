@@ -29,9 +29,7 @@ section {
   z-index: 1;
 }
 
-
 /* ---------- main bg ---------- */
-
 .main-img-mob {
   display: block;
   width: 375px;
@@ -41,7 +39,6 @@ section {
   transform: scale(1);
   transition: transform 0.6s linear;
 }
-
 
 .main-img-mob.crypto-mode.zoomed {
   transform-origin: 0% 100%;
@@ -63,9 +60,7 @@ section {
   transform: scale(1);
 }
 
-
 /* ---------- hit areas ---------- */
-
 .hit-area-button-mob {
   position: absolute;
   border: none;
@@ -77,16 +72,13 @@ section {
   height: 357px;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0px;
+  bottom: 0;
   z-index: 10;
 }
 
 .hit-area-button-mob.disabled {
   pointer-events: none;
 }
-
-
-
 
 /* ---------- extra decorative block ---------- */
 .wow-power-mob {
@@ -114,7 +106,7 @@ section {
   z-index: 5;
 }
 
-/* ----Journey --------- */
+/* ---------- Journey ---------- */
 .journey-window-wrap {
   position: absolute;
   top: 0;
