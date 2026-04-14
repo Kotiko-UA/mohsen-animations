@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './animation-mob.css'
 
 import MainImg from '../assets/main-mob.jpg'
@@ -9,15 +9,17 @@ import SyntheticsHover from '../assets/river-4-mob.avif'
 import CanClick from '../assets/can-click.avif'
 import WoWPower from '../assets/wow_powers.webp'
 import ArrowBack from '../assets/arrow-left.svg?react'
+
 import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'
 import Commitments from '../components/Commitments/Commitments'
-
-import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 import JourneyFlowMobile from '../components/JourneyFlow/JourneyFlowMobile'
+import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 
 const BASE_WIDTH = 375
 const BASE_HEIGHT = 812
+const TARGET_DATE = '01.05.2026'
+const JOURNEY_OPEN_DELAY = 400
 
 const ITEMS = [
 	{
@@ -46,6 +48,12 @@ const ITEMS = [
 	},
 ]
 
+const getScale = element => {
+	const rect = element.getBoundingClientRect()
+
+	return Math.min(rect.width / BASE_WIDTH, rect.height / BASE_HEIGHT)
+}
+
 export const AnimationMob = () => {
 	const [mode, setMode] = useState(null)
 	const [isZoomed, setIsZoomed] = useState(false)
@@ -56,30 +64,58 @@ export const AnimationMob = () => {
 	const [journeyScreen, setJourneyScreen] = useState(null)
 	const [journeyResetKey, setJourneyResetKey] = useState(0)
 
-	const openJourneyTimeoutRef = useRef(null)
 	const containerRef = useRef(null)
+	const openJourneyTimeoutRef = useRef(null)
 
 	const isOpened = isZoomed || isJourneyVisible
+	const shouldZoom = journeyScreen === 'points' || journeyScreen === 'step'
+	const showBackButton = isJourneyVisible && journeyScreen === 'points'
+
+	const mainImageClassName = useMemo(
+		() =>
+			['main-img-mob', mode ? `${mode}-mode` : '', shouldZoom ? 'zoomed' : '']
+				.filter(Boolean)
+				.join(' '),
+		[mode, shouldZoom],
+	)
+
+	const stateClassName = useMemo(
+		() =>
+			[mode ? `${mode}-mode` : '', shouldZoom ? 'zoomed' : '']
+				.filter(Boolean)
+				.join(' '),
+		[mode, shouldZoom],
+	)
+
+	const clearOpenJourneyTimeout = useCallback(() => {
+		if (!openJourneyTimeoutRef.current) return
+
+		clearTimeout(openJourneyTimeoutRef.current)
+		openJourneyTimeoutRef.current = null
+	}, [])
+
+	const openJourneyWithDelay = useCallback(() => {
+		requestAnimationFrame(() => {
+			setIsZoomed(true)
+
+			openJourneyTimeoutRef.current = setTimeout(() => {
+				setIsJourneyVisible(true)
+				openJourneyTimeoutRef.current = null
+			}, JOURNEY_OPEN_DELAY)
+		})
+	}, [])
 
 	useEffect(() => {
 		const element = containerRef.current
-		if (!element) return
+		if (!element) return undefined
 
 		const updateScale = () => {
-			const rect = element.getBoundingClientRect()
-			const nextScale = Math.min(
-				rect.width / BASE_WIDTH,
-				rect.height / BASE_HEIGHT,
-			)
-			setScale(nextScale)
+			setScale(getScale(element))
 		}
 
 		updateScale()
 
-		const resizeObserver = new ResizeObserver(() => {
-			updateScale()
-		})
-
+		const resizeObserver = new ResizeObserver(updateScale)
 		resizeObserver.observe(element)
 
 		return () => {
@@ -87,58 +123,49 @@ export const AnimationMob = () => {
 		}
 	}, [])
 
-	const handleOpen = () => {
-		if (openJourneyTimeoutRef.current) {
-			clearTimeout(openJourneyTimeoutRef.current)
-		}
+	useEffect(() => clearOpenJourneyTimeout, [clearOpenJourneyTimeout])
+
+	const handleOpen = useCallback(() => {
+		clearOpenJourneyTimeout()
 
 		setIsJourneyVisible(false)
 		setShowCommitments(false)
 		setMode('crypto')
 
-		requestAnimationFrame(() => {
-			setIsZoomed(true)
+		openJourneyWithDelay()
+	}, [clearOpenJourneyTimeout, openJourneyWithDelay])
 
-			openJourneyTimeoutRef.current = setTimeout(() => {
-				setIsJourneyVisible(true)
-			}, 400)
-		})
-	}
-	const handleBackToCurrentJourney = () => {
-		if (openJourneyTimeoutRef.current) {
-			clearTimeout(openJourneyTimeoutRef.current)
-		}
+	const handleBackToCurrentJourney = useCallback(() => {
+		clearOpenJourneyTimeout()
 
 		setShowCommitments(false)
 		setJourneyScreen('selector')
 		setIsJourneyVisible(false)
 		setJourneyResetKey(prev => prev + 1)
 
-		requestAnimationFrame(() => {
-			setIsZoomed(true)
+		openJourneyWithDelay()
+	}, [clearOpenJourneyTimeout, openJourneyWithDelay])
 
-			openJourneyTimeoutRef.current = setTimeout(() => {
-				setIsJourneyVisible(true)
-			}, 400)
-		})
-	}
-	useEffect(() => {
-		return () => {
-			if (openJourneyTimeoutRef.current) {
-				clearTimeout(openJourneyTimeoutRef.current)
-			}
-		}
+	const handleJourneyStateChange = useCallback(({ screen }) => {
+		setJourneyScreen(screen ?? null)
 	}, [])
 
-	const shouldZoom = journeyScreen === 'points' || journeyScreen === 'step'
-	const stateClass =
-		`${mode ? `${mode}-mode` : ''} ${shouldZoom ? 'zoomed' : ''}`.trim()
+	const handleProgressChange = useCallback(
+		nextProgress => {
+			if (!mode) return
 
-	const showBackButton = isJourneyVisible && journeyScreen === 'points'
+			setJourneyProgress(prev => ({
+				...prev,
+				[mode]: nextProgress,
+			}))
+		},
+		[mode],
+	)
+
 	return (
 		<div className='main-container-mob' ref={containerRef}>
 			<div className='scene-stage-mob' style={{ transform: `scale(${scale})` }}>
-				<div className={`main-img-wrap-mob ${stateClass}`}>
+				<div className={`main-img-wrap-mob ${stateClassName}`}>
 					<button
 						type='button'
 						className={`back-button ${showBackButton ? 'visible' : ''}`}
@@ -149,7 +176,7 @@ export const AnimationMob = () => {
 
 					<ClickBanner hidden={isOpened} />
 					<Commitments hidden={!showCommitments} />
-					<Timer targetDate='01.05.2026' hidden={isOpened} />
+					<Timer targetDate={TARGET_DATE} hidden={isOpened} />
 
 					{!isOpened && (
 						<img
@@ -160,18 +187,14 @@ export const AnimationMob = () => {
 					)}
 
 					<img
-						className={`wow-power-mob ${journeyScreen === 'points' ? 'wow-power-mob-hidden' : ''}`}
+						className={`wow-power-mob ${
+							journeyScreen === 'points' ? 'wow-power-mob-hidden' : ''
+						}`}
 						src={WoWPower}
 						alt='WoWPower'
 					/>
 
-					<img
-						className={`main-img-mob ${mode ? `${mode}-mode` : ''} ${
-							shouldZoom ? 'zoomed' : ''
-						}`}
-						src={MainImg}
-						alt='Main'
-					/>
+					<img className={mainImageClassName} src={MainImg} alt='Main' />
 
 					<button
 						type='button'
@@ -189,15 +212,8 @@ export const AnimationMob = () => {
 								progress={journeyProgress[mode]}
 								onJourneyChange={setMode}
 								onCommitmentsToggle={setShowCommitments}
-								onStateChange={({ screen }) => {
-									setJourneyScreen(screen ?? null)
-								}}
-								onProgressChange={nextProgress =>
-									setJourneyProgress(prev => ({
-										...prev,
-										[mode]: nextProgress,
-									}))
-								}
+								onStateChange={handleJourneyStateChange}
+								onProgressChange={handleProgressChange}
 							/>
 						</div>
 					)}

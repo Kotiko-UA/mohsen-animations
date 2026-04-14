@@ -1,21 +1,47 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { JourneyStepProvider } from './JourneyStepControls'
 import './journey-flow-mobile.css'
+
 import Timer from '../Timer/Timer'
+import Eclipse from '../Eclipse/Eclipse'
 import Arrow from '../../assets/arrow-purple.svg?react'
 import ArrowWhite from '../../assets/arrow-purple.svg?react'
 import Dot from '../../assets/white-dot.svg?react'
-import Eclipse from '../Eclipse/Eclipse'
+import WhiteDot from '../../assets/white-dot.svg?react'
 import GateClose from '../../assets/step-closed.avif'
 import GateActive from '../../assets/step-active.avif'
 import GateCompleted from '../../assets/step-completed.avif'
-import WhiteDot from '../../assets/white-dot.svg?react'
 
-const createEmptyProgress = () => ({
+const TARGET_DATE = '01.05.2026'
+
+const MOBILE_SCREENS = {
+	SELECTOR: 'selector',
+	INTRO: 'intro',
+	TIME: 'time',
+	POINTS: 'points',
+	STEP: 'step',
+}
+
+const EMPTY_PROGRESS = {
 	completedPointIds: [],
 	viewedStepIndexesByPointId: {},
 	arePointsUnlocked: false,
-})
+}
+
+const SEE_INFO_STYLE = {
+	display: 'flex',
+	gap: '8px',
+	alignItems: 'center',
+}
+
+const ARROW_ICON_STYLE = {
+	width: '24px',
+	height: '24px',
+}
+
+const NEXT_ARROW_STYLE = {
+	transform: 'rotate(180deg)',
+}
 
 const normalizeProgress = progress => ({
 	completedPointIds: progress?.completedPointIds ?? [],
@@ -30,22 +56,40 @@ const cloneProgress = progress => ({
 			([pointId, indexes]) => [pointId, [...indexes]],
 		),
 	),
-	arePointsUnlocked: progress?.arePointsUnlocked ?? false,
+	arePointsUnlocked: progress.arePointsUnlocked,
 })
+
+const isSameProgress = (firstProgress, secondProgress) =>
+	JSON.stringify(firstProgress) === JSON.stringify(secondProgress)
 
 const isPointCompleted = (progress, pointId) =>
 	progress.completedPointIds.includes(pointId)
 
-const isPointUnlocked = (journey, pointIndex, progress) => {
-	if (progress.arePointsUnlocked) return true
-	return pointIndex === 0
+const isPointUnlocked = (_journey, pointIndex, progress) =>
+	progress.arePointsUnlocked || pointIndex === 0
+
+const getPointById = (journey, pointId) =>
+	journey?.points?.find(point => point.id === pointId) ??
+	journey?.points?.[0] ??
+	null
+
+const getInitialSlideIndex = (items, journeyKey) => {
+	const index = items.findIndex(item => item.key === journeyKey)
+
+	return index >= 0 ? index : 0
 }
-const getPointById = (journey, pointId) => {
-	return (
-		journey?.points?.find(point => point.id === pointId) ??
-		journey?.points?.[0] ??
-		null
-	)
+
+const getNormalizedIndex = (index, length) => {
+	if (index < 0) return length - 1
+	if (index >= length) return 0
+
+	return index
+}
+
+const openLink = (link, target = '_blank') => {
+	if (!link) return
+
+	window.open(link, target, 'noopener,noreferrer')
 }
 
 const getStepView = ({
@@ -85,22 +129,28 @@ const getStepView = ({
 	return step?.content ?? null
 }
 
-const openLink = (link, target = '_blank') => {
-	if (!link) return
-	window.open(link, target, 'noopener,noreferrer')
-}
+const getPointImageData = ({ isActive, completed }) => {
+	if (isActive) {
+		return {
+			image: GateActive,
+			alt: 'active gate',
+			label: null,
+		}
+	}
 
-const MOBILE_SCREENS = {
-	SELECTOR: 'selector',
-	INTRO: 'intro',
-	TIME: 'time',
-	POINTS: 'points',
-	STEP: 'step',
-}
+	if (completed) {
+		return {
+			image: GateCompleted,
+			alt: 'completed gate',
+			label: 'Done',
+		}
+	}
 
-const getInitialSlideIndex = (items, journeyKey) => {
-	const index = items.findIndex(item => item.key === journeyKey)
-	return index >= 0 ? index : 0
+	return {
+		image: GateClose,
+		alt: 'closed gate',
+		label: '',
+	}
 }
 
 export default function JourneyFlowMobile({
@@ -114,7 +164,7 @@ export default function JourneyFlowMobile({
 	onCommitmentsToggle,
 }) {
 	const safeProgress = useMemo(
-		() => normalizeProgress(progress ?? createEmptyProgress()),
+		() => normalizeProgress(progress ?? EMPTY_PROGRESS),
 		[progress],
 	)
 
@@ -122,7 +172,7 @@ export default function JourneyFlowMobile({
 	const firstPointId = journey?.points?.[0]?.id ?? null
 
 	const [screen, setScreen] = useState(MOBILE_SCREENS.SELECTOR)
-	const [slideIndex, setSlideIndex] = useState(
+	const [slideIndex, setSlideIndex] = useState(() =>
 		getInitialSlideIndex(items, journeyKey),
 	)
 	const [activePointId, setActivePointId] = useState(firstPointId)
@@ -151,38 +201,41 @@ export default function JourneyFlowMobile({
 
 	const selectedPoint = useMemo(() => {
 		if (!journey || !activePointId) return null
+
 		return getPointById(journey, activePointId)
 	}, [journey, activePointId])
 
 	const selectedPointIndex = useMemo(() => {
 		if (!journey || !selectedPoint) return -1
+
 		return journey.points.findIndex(point => point.id === selectedPoint.id)
 	}, [journey, selectedPoint])
 
-	const activeIntroStep =
-		screen === MOBILE_SCREENS.INTRO
-			? (introSteps[0] ?? null)
-			: screen === MOBILE_SCREENS.TIME
-				? (introSteps[1] ?? null)
-				: null
+	const activeIntroStep = useMemo(() => {
+		if (screen === MOBILE_SCREENS.INTRO) return introSteps[0] ?? null
+		if (screen === MOBILE_SCREENS.TIME) return introSteps[1] ?? null
 
-	const pointStep =
-		screen === MOBILE_SCREENS.STEP
-			? (selectedPoint?.steps?.[activeStepIndex] ?? null)
-			: null
+		return null
+	}, [introSteps, screen])
+
+	const pointStep = useMemo(() => {
+		if (screen !== MOBILE_SCREENS.STEP) return null
+
+		return selectedPoint?.steps?.[activeStepIndex] ?? null
+	}, [activeStepIndex, screen, selectedPoint])
 
 	const activeStep = activeIntroStep ?? pointStep
 	const activePoint = screen === MOBILE_SCREENS.STEP ? selectedPoint : null
 	const activePointIndex =
 		screen === MOBILE_SCREENS.STEP ? selectedPointIndex : -1
-	const currentStepIndex =
-		screen === MOBILE_SCREENS.STEP
-			? activeStepIndex
-			: screen === MOBILE_SCREENS.INTRO
-				? 0
-				: screen === MOBILE_SCREENS.TIME
-					? 1
-					: null
+
+	const currentStepIndex = useMemo(() => {
+		if (screen === MOBILE_SCREENS.STEP) return activeStepIndex
+		if (screen === MOBILE_SCREENS.INTRO) return 0
+		if (screen === MOBILE_SCREENS.TIME) return 1
+
+		return null
+	}, [activeStepIndex, screen])
 
 	const isIntroMode =
 		screen === MOBILE_SCREENS.INTRO || screen === MOBILE_SCREENS.TIME
@@ -223,10 +276,7 @@ export default function JourneyFlowMobile({
 			nextProgress.completedPointIds.push(selectedPoint.id)
 		}
 
-		const prevJson = JSON.stringify(safeProgress)
-		const nextJson = JSON.stringify(nextProgress)
-
-		if (prevJson !== nextJson) {
+		if (!isSameProgress(safeProgress, nextProgress)) {
 			onProgressChange?.(nextProgress)
 		}
 	}, [selectedPoint, activeStepIndex, safeProgress, screen, onProgressChange])
@@ -263,76 +313,83 @@ export default function JourneyFlowMobile({
 		onStateChange,
 	])
 
-	const setJourneyByIndex = nextIndex => {
-		const normalizedIndex =
-			nextIndex < 0
-				? items.length - 1
-				: nextIndex >= items.length
-					? 0
-					: nextIndex
+	const setJourneyByIndex = useCallback(
+		nextIndex => {
+			const normalizedIndex = getNormalizedIndex(nextIndex, items.length)
+			const nextItem = items[normalizedIndex]
 
-		const nextItem = items[normalizedIndex]
-		if (!nextItem) return
+			if (!nextItem) return
 
-		setSlideIndex(normalizedIndex)
-		onJourneyChange?.(nextItem.key)
-	}
+			setSlideIndex(normalizedIndex)
+			onJourneyChange?.(nextItem.key)
+		},
+		[items, onJourneyChange],
+	)
 
-	const goToPrevSlide = () => setJourneyByIndex(slideIndex - 1)
-	const goToNextSlide = () => setJourneyByIndex(slideIndex + 1)
+	const goToPrevSlide = useCallback(() => {
+		setJourneyByIndex(slideIndex - 1)
+	}, [setJourneyByIndex, slideIndex])
 
-	const openSelector = () => {
+	const goToNextSlide = useCallback(() => {
+		setJourneyByIndex(slideIndex + 1)
+	}, [setJourneyByIndex, slideIndex])
+
+	const openSelector = useCallback(() => {
 		setScreen(MOBILE_SCREENS.SELECTOR)
 		setActivePointId(firstPointId)
 		setActiveStepIndex(0)
-	}
+	}, [firstPointId])
 
-	const openIntro = () => {
+	const unlockPointsOverview = useCallback(() => {
+		const nextProgress = cloneProgress(safeProgress)
+		nextProgress.arePointsUnlocked = true
+
+		if (!isSameProgress(safeProgress, nextProgress)) {
+			onProgressChange?.(nextProgress)
+		}
+
+		setScreen(MOBILE_SCREENS.POINTS)
+	}, [safeProgress, onProgressChange])
+
+	const openIntro = useCallback(() => {
 		if (isLockedJourney || !introSteps[0]) return
-		setScreen(MOBILE_SCREENS.INTRO)
-	}
 
-	const openTime = () => {
+		setScreen(MOBILE_SCREENS.INTRO)
+	}, [introSteps, isLockedJourney])
+
+	const openTime = useCallback(() => {
 		if (isLockedJourney || !introSteps[1]) {
 			unlockPointsOverview()
 			return
 		}
 
 		setScreen(MOBILE_SCREENS.TIME)
-	}
+	}, [introSteps, isLockedJourney, unlockPointsOverview])
 
-	const openPoint = pointId => {
-		const point = getPointById(journey, pointId)
-		if (!point) return
+	const openPoint = useCallback(
+		pointId => {
+			const point = getPointById(journey, pointId)
+			if (!point) return
 
-		setActivePointId(point.id)
-		setActiveStepIndex(0)
-		setScreen(MOBILE_SCREENS.STEP)
-	}
+			setActivePointId(point.id)
+			setActiveStepIndex(0)
+			setScreen(MOBILE_SCREENS.STEP)
+		},
+		[journey],
+	)
 
-	const goToStep = stepIndex => {
-		if (!selectedPoint) return
-		if (stepIndex < 0 || stepIndex > selectedPoint.steps.length - 1) return
+	const goToStep = useCallback(
+		stepIndex => {
+			if (!selectedPoint) return
+			if (stepIndex < 0 || stepIndex > selectedPoint.steps.length - 1) return
 
-		setActiveStepIndex(stepIndex)
-		setScreen(MOBILE_SCREENS.STEP)
-	}
+			setActiveStepIndex(stepIndex)
+			setScreen(MOBILE_SCREENS.STEP)
+		},
+		[selectedPoint],
+	)
 
-	const unlockPointsOverview = () => {
-		const nextProgress = cloneProgress(safeProgress)
-		nextProgress.arePointsUnlocked = true
-
-		const prevJson = JSON.stringify(safeProgress)
-		const nextJson = JSON.stringify(nextProgress)
-
-		if (prevJson !== nextJson) {
-			onProgressChange?.(nextProgress)
-		}
-
-		setScreen(MOBILE_SCREENS.POINTS)
-	}
-
-	const goToPrevStep = () => {
+	const goToPrevStep = useCallback(() => {
 		if (screen === MOBILE_SCREENS.TIME) {
 			setScreen(MOBILE_SCREENS.INTRO)
 			return
@@ -351,9 +408,9 @@ export default function JourneyFlowMobile({
 		}
 
 		setScreen(MOBILE_SCREENS.POINTS)
-	}
+	}, [activeStepIndex, openSelector, screen])
 
-	const goToNextStep = () => {
+	const goToNextStep = useCallback(() => {
 		if (screen === MOBILE_SCREENS.INTRO) {
 			openTime()
 			return
@@ -377,53 +434,95 @@ export default function JourneyFlowMobile({
 		}
 
 		setScreen(MOBILE_SCREENS.POINTS)
-	}
-
-	const openCurrentStepLink = () => {
-		if (!activeStep?.link) return
-		openLink(activeStep.link, activeStep.linkTarget ?? '_blank')
-	}
-
-	const actions = {
-		openSelector,
-		openIntro,
-		openTime,
-		openPoint,
-		goToStep,
-		goToPrevStep,
-		goToNextStep,
-		unlockPointsOverview,
-		openLink,
-		openCurrentStepLink,
-		setActivePointId,
-		setActiveStepIndex,
-		setScreen,
-	}
-
-	const state = {
-		journey,
-		progress: safeProgress,
-		activePoint,
-		activePointIndex,
-		activeStep,
-		activeStepIndex: currentStepIndex,
-		isFirstStep,
-		isLastStep,
+	}, [
+		activeStepIndex,
 		nextPoint,
-		isOverviewMode,
-		isIntroMode,
-		activeIntroStep,
-		activeIntroStepIndex:
-			screen === MOBILE_SCREENS.INTRO
-				? 0
-				: screen === MOBILE_SCREENS.TIME
-					? 1
-					: null,
-		selectedPoint,
-		selectedPointIndex,
+		openPoint,
+		openTime,
 		screen,
-		currentSlide,
-	}
+		selectedPoint,
+		unlockPointsOverview,
+	])
+
+	const openCurrentStepLink = useCallback(() => {
+		if (!activeStep?.link) return
+
+		openLink(activeStep.link, activeStep.linkTarget ?? '_blank')
+	}, [activeStep])
+
+	const actions = useMemo(
+		() => ({
+			openSelector,
+			openIntro,
+			openTime,
+			openPoint,
+			goToStep,
+			goToPrevStep,
+			goToNextStep,
+			unlockPointsOverview,
+			openLink,
+			openCurrentStepLink,
+			setActivePointId,
+			setActiveStepIndex,
+			setScreen,
+		}),
+		[
+			goToNextStep,
+			goToPrevStep,
+			goToStep,
+			openCurrentStepLink,
+			openIntro,
+			openPoint,
+			openSelector,
+			openTime,
+			unlockPointsOverview,
+		],
+	)
+
+	const state = useMemo(
+		() => ({
+			journey,
+			progress: safeProgress,
+			activePoint,
+			activePointIndex,
+			activeStep,
+			activeStepIndex: currentStepIndex,
+			isFirstStep,
+			isLastStep,
+			nextPoint,
+			isOverviewMode,
+			isIntroMode,
+			activeIntroStep,
+			activeIntroStepIndex:
+				screen === MOBILE_SCREENS.INTRO
+					? 0
+					: screen === MOBILE_SCREENS.TIME
+						? 1
+						: null,
+			selectedPoint,
+			selectedPointIndex,
+			screen,
+			currentSlide,
+		}),
+		[
+			activeIntroStep,
+			activePoint,
+			activePointIndex,
+			activeStep,
+			currentSlide,
+			currentStepIndex,
+			isFirstStep,
+			isIntroMode,
+			isLastStep,
+			isOverviewMode,
+			journey,
+			nextPoint,
+			safeProgress,
+			screen,
+			selectedPoint,
+			selectedPointIndex,
+		],
+	)
 
 	if (!currentSlide) {
 		return null
@@ -441,7 +540,7 @@ export default function JourneyFlowMobile({
 
 			{screen === MOBILE_SCREENS.SELECTOR && (
 				<div className='journey-mobile-selector'>
-					<Timer targetDate='01.05.2026' />
+					<Timer targetDate={TARGET_DATE} />
 
 					<div className='journey-mobile-selector-card'>
 						<button
@@ -460,14 +559,9 @@ export default function JourneyFlowMobile({
 										Coming soon!
 									</span>
 								) : (
-									<span
-										style={{
-											display: 'flex',
-											gap: '8px',
-											alignItems: 'center',
-										}}>
+									<span style={SEE_INFO_STYLE}>
 										See info
-										<ArrowWhite style={{ width: '24px', height: '24px' }} />
+										<ArrowWhite style={ARROW_ICON_STYLE} />
 									</span>
 								)}
 							</div>
@@ -502,7 +596,7 @@ export default function JourneyFlowMobile({
 								className='journey-mobile-nav-button'
 								onClick={goToNextSlide}
 								aria-label='Next journey'>
-								<Arrow style={{ transform: 'rotate(180deg)' }} />
+								<Arrow style={NEXT_ARROW_STYLE} />
 							</button>
 						</div>
 					</div>
@@ -515,20 +609,8 @@ export default function JourneyFlowMobile({
 						const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
 						const completed = isPointCompleted(safeProgress, point.id)
 						const isActive = point.id === selectedPoint?.id
-
-						const pointImage = isActive
-							? GateActive
-							: completed
-								? GateCompleted
-								: GateClose
-
-						const pointAlt = isActive
-							? 'active gate'
-							: completed
-								? 'completed gate'
-								: 'closed gate'
-
-						const pointLabel = isActive ? point.title : completed ? 'Done' : ''
+						const pointImageData = getPointImageData({ isActive, completed })
+						const pointLabel = isActive ? point.title : pointImageData.label
 
 						return (
 							<button
@@ -546,7 +628,7 @@ export default function JourneyFlowMobile({
 								onClick={() => openPoint(point.id)}
 								disabled={!unlocked}>
 								<div className='journey-point-image-wrap'>
-									<img src={pointImage} alt={pointAlt} />
+									<img src={pointImageData.image} alt={pointImageData.alt} />
 								</div>
 
 								{pointLabel && (
