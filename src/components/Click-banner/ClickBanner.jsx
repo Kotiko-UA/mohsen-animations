@@ -7,7 +7,7 @@ const ClickBanner = ({ hidden }) => {
 		<div className={`${styles.wrapper} ${hidden ? styles.hidden : ''}`}>
 			<div className={styles.logoWrap}>
 				<LogoIcon className={styles.logoIcon} />
-				<div className={styles.logoText}>Wes Customer Journey</div>
+				<div className={styles.logoText}>WES Customer Journey</div>
 			</div>
 
 			<div className={styles.textWrap}>

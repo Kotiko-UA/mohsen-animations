@@ -158,7 +158,7 @@ export const AnimationMob = () => {
 					)}
 
 					<img
-						className={`wow-power-mob ${isOpened ? 'hidden' : ''}`}
+						className={`wow-power-mob ${journeyScreen === 'points' ? 'hidden' : ''}`}
 						src={WoWPower}
 						alt='WoWPower'
 					/>

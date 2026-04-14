@@ -646,7 +646,15 @@
   text-align: center;
 }
 
+.journey-mobile-back-button {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
+  .journey-mobile-back-button {
+    display: flex;
+  }
+
   .journey-modal-wrap {
     gap: 24px;
   }
@@ -719,5 +727,31 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+
+
+  .journey-point-button.crypto-point-1 {
+    right: 84px;
+    bottom: 209px;
+  }
+
+  .journey-point-button.crypto-point-2 {
+    left: 163px;
+    bottom: 307px;
+  }
+
+  .journey-point-button.crypto-point-3 {
+    left: 121px;
+    bottom: 402px;
+  }
+
+  .journey-point-button.crypto-point-4 {
+    right: 277px;
+    top: 272px;
+  }
+
+  .journey-point-button.crypto-point-5 {
+    right: 250px;
+    top: 181px;
   }
 }

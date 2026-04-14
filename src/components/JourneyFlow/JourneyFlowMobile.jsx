@@ -6,6 +6,10 @@ import Arrow from '../../assets/arrow-purple.svg?react'
 import ArrowWhite from '../../assets/arrow-purple.svg?react'
 import Dot from '../../assets/white-dot.svg?react'
 import Eclipse from '../Eclipse/Eclipse'
+import GateClose from '../../assets/step-closed.avif'
+import GateActive from '../../assets/step-active.avif'
+import GateCompleted from '../../assets/step-completed.avif'
+import WhiteDot from '../../assets/white-dot.svg?react'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -32,6 +36,10 @@ const cloneProgress = progress => ({
 const isPointCompleted = (progress, pointId) =>
 	progress.completedPointIds.includes(pointId)
 
+const isPointUnlocked = (journey, pointIndex, progress) => {
+	if (progress.arePointsUnlocked) return true
+	return pointIndex === 0
+}
 const getPointById = (journey, pointId) => {
 	return (
 		journey?.points?.find(point => point.id === pointId) ??
@@ -504,25 +512,52 @@ export default function JourneyFlowMobile({
 			{journey && screen === MOBILE_SCREENS.POINTS && (
 				<div className='journey-mobile-points-view'>
 					{journey.points.map((point, pointIndex) => {
+						const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
 						const completed = isPointCompleted(safeProgress, point.id)
+						const isActive = point.id === selectedPoint?.id
+
+						const pointImage = isActive
+							? GateActive
+							: completed
+								? GateCompleted
+								: GateClose
+
+						const pointAlt = isActive
+							? 'active gate'
+							: completed
+								? 'completed gate'
+								: 'closed gate'
+
+						const pointLabel = isActive ? point.title : completed ? 'Done' : ''
 
 						return (
 							<button
 								key={point.id}
 								type='button'
 								className={[
-									'journey-mobile-point-button',
-									point.id,
+									'journey-point-button',
+									isActive ? 'active' : '',
+									unlocked ? 'unlocked' : 'locked',
 									completed ? 'completed' : '',
-									pointIndex === 0 ? 'first' : '',
+									point.id,
 								]
 									.filter(Boolean)
 									.join(' ')}
-								onClick={() => openPoint(point.id)}>
-								<span className='journey-mobile-point-gate' />
-								<span className='journey-mobile-point-label'>
-									{point.title}
-								</span>
+								onClick={() => openPoint(point.id)}
+								disabled={!unlocked}>
+								<div className='journey-point-image-wrap'>
+									<img src={pointImage} alt={pointAlt} />
+								</div>
+
+								{pointLabel && (
+									<div
+										className={`journey-point-label ${
+											!isActive && completed ? 'done' : ''
+										}`}>
+										{isActive && <WhiteDot />}
+										{pointLabel}
+									</div>
+								)}
 							</button>
 						)
 					})}

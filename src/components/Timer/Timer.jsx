@@ -93,9 +93,9 @@ export default function Timer({ targetDate = '24.04.2026', hidden }) {
 			</div>
 			<img src={TimerDot} alt='timer dot' className={styles.timerDot} />
 			<div className={styles.timeText}>
-				<div className={styles.textHeader}>Wes League</div>
+				<div className={styles.textHeader}>WES League</div>
 				<div className={styles.textParagraph}>
-					Wes Leagues is the start set 24 of April , midnight (25)
+					WES Leagues is the start set 24 of April , midnight (25)
 				</div>
 			</div>
 		</div>

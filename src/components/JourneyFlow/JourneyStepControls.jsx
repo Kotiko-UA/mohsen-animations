@@ -149,3 +149,28 @@ export const JourneyGoToStepButton = ({
 		</button>
 	)
 }
+export const JourneyMobileBackToPointsButton = ({
+	children,
+	className = '',
+	onClick,
+	...props
+}) => {
+	const { actions } = useJourneyStep()
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented) return
+
+		actions.unlockPointsOverview?.()
+	}
+
+	return (
+		<button
+			className={`journey-prev-button journey-mobile-back-button ${className}`}
+			type='button'
+			onClick={handleClick}
+			{...props}>
+			{children ?? <ArrowBack />}
+		</button>
+	)
+}
