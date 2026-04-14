@@ -183,6 +183,13 @@ export default function JourneyFlowMobile({
 	const [activePointId, setActivePointId] = useState(firstPointId)
 	const [activeStepIndex, setActiveStepIndex] = useState(0)
 
+	const isZoomScreen =
+		screen === MOBILE_SCREENS.POINTS || screen === MOBILE_SCREENS.STEP
+
+	const delayedContentClass = isZoomScreen
+		? 'journey-mobile-delayed-content'
+		: ''
+
 	useEffect(() => {
 		setSlideIndex(getInitialSlideIndex(items, journeyKey))
 	}, [items, journeyKey])
@@ -538,7 +545,7 @@ export default function JourneyFlowMobile({
 			{currentSlide.hoverSrc && (
 				<img
 					key={currentSlide.key}
-					className={`journey-mobile-river-image ${currentSlide.key}`}
+					className={`journey-mobile-river-image ${currentSlide.key} ${delayedContentClass}`}
 					src={currentSlide.hoverSrc}
 					alt={`${currentSlide.alt} river`}
 				/>
@@ -610,7 +617,7 @@ export default function JourneyFlowMobile({
 			)}
 
 			{journey && screen === MOBILE_SCREENS.POINTS && (
-				<div className='journey-mobile-points-view'>
+				<div className={`journey-mobile-points-view ${delayedContentClass}`}>
 					{journey.points.map((point, pointIndex) => {
 						const unlocked = isPointUnlocked(journey, pointIndex, safeProgress)
 						const completed = isPointCompleted(safeProgress, point.id)
@@ -669,7 +676,7 @@ export default function JourneyFlowMobile({
 				(screen === MOBILE_SCREENS.INTRO ||
 					screen === MOBILE_SCREENS.TIME ||
 					screen === MOBILE_SCREENS.STEP) && (
-					<div className='journey-mobile-step-view'>
+					<div className={`journey-mobile-step-view ${delayedContentClass}`}>
 						<JourneyStepProvider value={{ actions, state }}>
 							{getStepView({
 								step: activeStep,
