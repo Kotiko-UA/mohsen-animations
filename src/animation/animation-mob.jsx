@@ -182,6 +182,7 @@ export const AnimationMob = () => {
 					{mode && isJourneyVisible && (
 						<div className='journey-window-wrap'>
 							<JourneyFlowMobile
+								key={`${mode}-${journeyResetKey}`}
 								journeyKey={mode}
 								journey={JOURNEYS[mode] ?? null}
 								items={ITEMS}
