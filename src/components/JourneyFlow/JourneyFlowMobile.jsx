@@ -537,6 +537,7 @@ export default function JourneyFlowMobile({
 		<div className={`journey-flow-mobile ${currentSlide.key} screen-${screen}`}>
 			{currentSlide.hoverSrc && (
 				<img
+					key={currentSlide.key}
 					className={`journey-mobile-river-image ${currentSlide.key}`}
 					src={currentSlide.hoverSrc}
 					alt={`${currentSlide.alt} river`}
