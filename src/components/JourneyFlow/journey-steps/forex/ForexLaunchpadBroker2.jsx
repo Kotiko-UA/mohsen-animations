@@ -24,7 +24,7 @@ export default function ForexLaunchpadBroker2() {
 				<JourneyPrevButton />
 				<div className='journey-modal-flex-between'>
 					<div className='text-h-32-700-opacity'>You choose:</div>
-					<h2 className='text-h-32-700'>Broker Discovery</h2>
+					<h2 className='text-h-32-700'>Exchange Discovery</h2>
 				</div>
 			</div>
 

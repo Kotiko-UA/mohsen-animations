@@ -1,10 +1,14 @@
-import { JourneyNextButton } from '../../JourneyStepControls'
+import {
+	JourneyMobileBackToPointsButton,
+	JourneyNextButton,
+} from '../../JourneyStepControls'
 import Img from '../../../../assets/forex-advanced-1.jpg'
 
 export default function ForexAdvanced() {
 	return (
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
+				<JourneyMobileBackToPointsButton />
 				<h2 className='text-h-32-700'>WOW Education System: Forex Advanced</h2>
 			</div>
 			<div className='journey-modal-text'>

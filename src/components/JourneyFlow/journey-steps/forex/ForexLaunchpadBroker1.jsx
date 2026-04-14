@@ -9,7 +9,7 @@ export default function ForexLaunchpadBroker1() {
 		<div className='journey-modal-wrap'>
 			<div className='flex-col-12'>
 				<JourneyGoToStepButton back={true} stepNumber={1} />
-				<h2 className='text-h-32-700'>Broker Discovery</h2>
+				<h2 className='text-h-32-700'>Exchange Discovery</h2>
 			</div>
 			<div className='flex-col-24'>
 				<div className='flex-col-12'>

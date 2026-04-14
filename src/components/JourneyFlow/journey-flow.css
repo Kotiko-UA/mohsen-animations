@@ -661,6 +661,10 @@
     gap: 24px;
   }
 
+  .text-h-32-700-opacity {
+    font-size: 14px;
+  }
+
   .text-h-32-700 {
     font-size: 20px;
   }
@@ -668,6 +672,14 @@
   .text-h-20-700 {
     font-size: 16px;
     line-height: 126%;
+  }
+
+  .text-h-24-500 {
+    font-size: 16px;
+  }
+
+  .text-h-16-500 {
+    font-size: 14px;
   }
 
   .journey-modal-text {
@@ -756,6 +768,32 @@
     right: 250px;
     top: 181px;
   }
+
+  .journey-point-button.forex-point-1 {
+    left: 150px;
+    bottom: 214px;
+  }
+
+  .journey-point-button.forex-point-2 {
+    left: 130px;
+    bottom: 317px;
+  }
+
+  .journey-point-button.forex-point-3 {
+    left: 107px;
+    bottom: 428px;
+  }
+
+  .journey-point-button.forex-point-4 {
+    top: 230px;
+    left: 182px;
+  }
+
+  .journey-point-button.forex-point-5 {
+    top: 158px;
+    left: 123px;
+  }
+
 
   .journey-launchpad-w2 {
     flex-direction: column;
