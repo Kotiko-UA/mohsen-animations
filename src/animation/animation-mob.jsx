@@ -73,6 +73,9 @@ export const AnimationMob = () => {
 
 	const showBackButton = isJourneyVisible && journeyScreen === 'points'
 
+	const isWowPowerHidden =
+		journeyScreen === 'points' || journeyScreen === 'step'
+
 	const mainImageClassName = useMemo(
 		() =>
 			['main-img-mob', mode ? `${mode}-mode` : '', shouldZoom ? 'zoomed' : '']
@@ -190,7 +193,7 @@ export const AnimationMob = () => {
 
 					<img
 						className={`wow-power-mob ${
-							journeyScreen === 'points' ? 'wow-power-mob-hidden' : ''
+							isWowPowerHidden ? 'wow-power-mob-hidden' : ''
 						}`}
 						src={WoWPower}
 						alt='WoWPower'
