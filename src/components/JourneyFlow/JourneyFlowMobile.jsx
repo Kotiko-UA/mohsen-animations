@@ -153,6 +153,8 @@ const getPointImageData = ({ isActive, completed }) => {
 	}
 }
 
+const EMPTY_INTRO_STEPS = []
+
 export default function JourneyFlowMobile({
 	journeyKey,
 	journey,
@@ -168,7 +170,10 @@ export default function JourneyFlowMobile({
 		[progress],
 	)
 
-	const introSteps = journey?.introSteps ?? []
+	const introSteps = useMemo(
+		() => journey?.introSteps ?? EMPTY_INTRO_STEPS,
+		[journey?.introSteps],
+	)
 	const firstPointId = journey?.points?.[0]?.id ?? null
 
 	const [screen, setScreen] = useState(MOBILE_SCREENS.SELECTOR)
