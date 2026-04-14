@@ -656,6 +656,8 @@
   }
 
   .journey-modal-wrap {
+    max-height: 720px;
+    overflow-y: auto;
     gap: 24px;
   }
 
@@ -753,5 +755,25 @@
   .journey-point-button.crypto-point-5 {
     right: 250px;
     top: 181px;
+  }
+
+  .journey-launchpad-w2 {
+    flex-direction: column;
+  }
+
+  .flex-col-24 {
+    gap: 12px;
+  }
+
+  .journey-modal-dis-sw {
+    flex-direction: column;
+  }
+
+  .journey-modal-dis-button {
+    width: 64px;
+  }
+
+  .cr-l-dis-img {
+    width: 100%;
   }
 }

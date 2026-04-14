@@ -60,22 +60,6 @@ export const AnimationMob = () => {
 
 	const isOpened = isZoomed || isJourneyVisible
 
-	const resetToInitialState = () => {
-		if (openJourneyTimeoutRef.current) {
-			clearTimeout(openJourneyTimeoutRef.current)
-		}
-
-		setShowCommitments(false)
-		setIsJourneyVisible(false)
-		setIsZoomed(false)
-		setMode(null)
-		setJourneyScreen(null)
-	}
-
-	const handleClose = () => {
-		resetToInitialState()
-	}
-
 	useEffect(() => {
 		const element = containerRef.current
 		if (!element) return
@@ -128,11 +112,11 @@ export const AnimationMob = () => {
 		}
 	}, [])
 
+	const shouldZoom = journeyScreen === 'points' || journeyScreen === 'step'
 	const stateClass =
-		`${mode ? `${mode}-mode` : ''} ${journeyScreen === 'points' ? 'zoomed' : ''}`.trim()
+		`${mode ? `${mode}-mode` : ''} ${shouldZoom ? 'zoomed' : ''}`.trim()
 
 	const showBackButton = isJourneyVisible && journeyScreen === 'points'
-
 	return (
 		<div className='main-container-mob' ref={containerRef}>
 			<div className='scene-stage-mob' style={{ transform: `scale(${scale})` }}>
@@ -140,7 +124,7 @@ export const AnimationMob = () => {
 					<button
 						type='button'
 						className={`back-button ${showBackButton ? 'visible' : ''}`}
-						onClick={handleClose}
+						onClick={handleOpen}
 						aria-label='Back'>
 						<ArrowBack />
 					</button>
@@ -165,7 +149,7 @@ export const AnimationMob = () => {
 
 					<img
 						className={`main-img-mob ${mode ? `${mode}-mode` : ''} ${
-							journeyScreen === 'points' ? 'zoomed' : ''
+							shouldZoom ? 'zoomed' : ''
 						}`}
 						src={MainImg}
 						alt='Main'

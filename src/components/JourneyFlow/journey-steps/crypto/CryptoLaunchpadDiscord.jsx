@@ -26,7 +26,7 @@ export default function CryptoLaunchpadDiscord() {
 								link={
 									'https://discord.com/channels/1084814874393194527/1134143656098541698'
 								}
-								className='journey-modal-main-button'>
+								className='journey-modal-main-button journey-modal-dis-button'>
 								No
 							</JourneyLinkButton>
 							<p className='text-p-14 w-full'>
@@ -36,7 +36,7 @@ export default function CryptoLaunchpadDiscord() {
 						<div className='flex-row-12'>
 							<JourneyLinkButton
 								link={'#'}
-								className='journey-modal-main-button'>
+								className='journey-modal-main-button journey-modal-dis-button'>
 								Yes
 							</JourneyLinkButton>
 							<p className='text-p-14 w-full'>
