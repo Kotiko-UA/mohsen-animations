@@ -68,7 +68,7 @@
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
   backdrop-filter: blur(10px);
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 102%;
@@ -203,7 +203,7 @@
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
   color: #FFF;
   text-align: center;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 122%;
@@ -270,7 +270,7 @@
 
 .text-h-32-700 {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: normal;
@@ -278,7 +278,7 @@
 
 .text-h-20-700 {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 126%;
@@ -286,7 +286,7 @@
 
 .text-h-32-700-opacity {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -294,7 +294,7 @@
 }
 
 .text-h-16-500 {
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #fff;
@@ -302,7 +302,7 @@
 }
 
 .text-h-16-700 {
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
@@ -310,7 +310,7 @@
 }
 
 .text-h-18-500 {
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 500;
   color: #fff;
@@ -318,7 +318,7 @@
 }
 
 .text-h-24-500 {
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: #fff;
@@ -326,7 +326,7 @@
 }
 
 .text-p-14 {
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #fff;
@@ -369,7 +369,7 @@
 
 .journey-modal-text {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 116%;
@@ -400,7 +400,7 @@
 
 .journey-modal-fs-you-get {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
@@ -434,7 +434,7 @@
 
 .journey-modal-fs-sb-1-top span {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 48px;
   font-weight: 700;
   line-height: normal;
@@ -446,7 +446,7 @@
 
 .journey-modal-fs-sb-1-top p {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: normal;
@@ -459,7 +459,7 @@
 
 .journey-modal-fs-sb-1-bottom {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 116%;
@@ -477,7 +477,7 @@
 
 .journey-modal-fs-sb-2 li {
   color: #FFF;
-  font-family: Inter;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: normal;

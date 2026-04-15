@@ -405,7 +405,7 @@ export const JOURNEYS = {
 			},
 			{
 				id: 'stocks-point-4',
-				title: 'WES Stocks Intermediate',
+				title: 'WES Stocks Advanced',
 				steps: [
 					{
 						id: 'stocks-point-4-step-1',
