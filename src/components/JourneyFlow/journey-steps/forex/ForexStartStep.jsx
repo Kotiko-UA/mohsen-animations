@@ -1,9 +1,13 @@
-import { JourneyNextButton } from '../../JourneyStepControls'
+import {
+	JourneyMobileBackToHomeButton,
+	JourneyNextButton,
+} from '../../JourneyStepControls'
 import StarsIcon from '../../../../assets/5-stars.svg?react'
 
 export default function ForexStartStep() {
 	return (
 		<div className='journey-modal-wrap'>
+			<JourneyMobileBackToHomeButton />
 			<div className='journey-modal-flex-between'>
 				<h2 className='text-h-32-700'>Forex Journey</h2>
 				<div>

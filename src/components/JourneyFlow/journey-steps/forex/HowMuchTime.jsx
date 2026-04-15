@@ -5,6 +5,7 @@ import {
 	getCommitmentMinutes,
 	saveCommitment,
 } from '../../../../utils/journeyCommitments'
+import { JourneyMobileBackToHomeButton } from '../../JourneyStepControls'
 
 const commitmentOptions = [
 	{ id: '20-min', label: '20 min/day', value: 20 },
@@ -46,6 +47,7 @@ export default function HowMuchTime() {
 
 	return (
 		<div className='journey-modal-wrap'>
+			<JourneyMobileBackToHomeButton />
 			<div className='journey-modal-flex-between'>
 				<h2 className='text-h-32-700'>Forex Journey</h2>
 

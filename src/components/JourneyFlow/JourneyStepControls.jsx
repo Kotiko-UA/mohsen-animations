@@ -174,3 +174,28 @@ export const JourneyMobileBackToPointsButton = ({
 		</button>
 	)
 }
+export const JourneyMobileBackToHomeButton = ({
+	children,
+	className = '',
+	onClick,
+	...props
+}) => {
+	const { actions } = useJourneyStep()
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented) return
+
+		actions.openSelector?.()
+	}
+
+	return (
+		<button
+			className={`journey-prev-button journey-mobile-back-home-button ${className}`}
+			type='button'
+			onClick={handleClick}
+			{...props}>
+			{children ?? <ArrowBack />}
+		</button>
+	)
+}
