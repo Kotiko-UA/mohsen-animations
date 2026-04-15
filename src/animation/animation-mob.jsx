@@ -20,7 +20,6 @@ const BASE_WIDTH = 375
 const BASE_HEIGHT = 812
 const TARGET_DATE = '01.05.2026'
 const JOURNEY_OPEN_DELAY = 400
-const ZOOM_TRANSITION_MS = 600
 
 const ITEMS = [
 	{
@@ -219,6 +218,7 @@ export const AnimationMob = () => {
 								onCommitmentsToggle={setShowCommitments}
 								onStateChange={handleJourneyStateChange}
 								onProgressChange={handleProgressChange}
+								handleBackToCurrentJourney={handleBackToCurrentJourney}
 							/>
 						</div>
 					)}
