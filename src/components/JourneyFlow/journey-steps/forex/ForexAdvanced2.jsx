@@ -12,7 +12,7 @@ export default function ForexAdvanced2() {
 			<div className='journey-modal-dis-sw'>
 				<a
 					className='f-a-play-wrap'
-					href='#'
+					href='https://wowpowers.com/stream-player/nate/livestream/1e033a9f-1338-4b08-b22d-2a8a3fa64b4f?reference=TOP_EDUCATORS'
 					target='_blank'
 					noopener
 					noreferrer
@@ -22,7 +22,7 @@ export default function ForexAdvanced2() {
 				</a>
 				<a
 					className='f-a-play-wrap'
-					href='#'
+					href='https://wowpowers.com/stream-player/reynaldo/livestream/cdbd577d-5132-41d9-a188-845afef4f31e'
 					target='_blank'
 					noopener
 					noreferrer
@@ -32,7 +32,7 @@ export default function ForexAdvanced2() {
 				</a>
 				<a
 					className='f-a-play-wrap'
-					href='#'
+					href='https://wowpowers.com/stream-player/giuliano/livestream/253eef6c-dff1-41cd-84aa-e32a1e6ac473'
 					target='_blank'
 					noopener
 					noreferrer
