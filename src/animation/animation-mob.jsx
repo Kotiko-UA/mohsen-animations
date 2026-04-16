@@ -6,7 +6,6 @@ import CryptoHover from '../assets/river-1-mob.avif'
 import ForexHover from '../assets/river-2-mob.avif'
 import StocksHover from '../assets/river-3-mob.avif'
 import SyntheticsHover from '../assets/river-4-mob.avif'
-import CanClick from '../assets/can-click.avif'
 import WoWPower from '../assets/wow_powers.webp'
 import ArrowBack from '../assets/arrow-left.svg?react'
 
@@ -181,14 +180,6 @@ export const AnimationMob = () => {
 					<ClickBanner hidden={isOpened} />
 					<Commitments hidden={!showCommitments} />
 					<Timer targetDate={TARGET_DATE} hidden={isOpened} />
-
-					{!isOpened && (
-						<img
-							className='can-click-image-mob'
-							src={CanClick}
-							alt='Can click'
-						/>
-					)}
 
 					<img
 						className={`wow-power-mob ${

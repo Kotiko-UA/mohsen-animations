@@ -10,7 +10,6 @@ import StocksHover from '../assets/river-3-hover.avif'
 import StocksActive from '../assets/river-3-click.avif'
 import SyntheticsHover from '../assets/river-4-hover.avif'
 import ArrowBack from '../assets/arrow-left.svg?react'
-import CanClick from '../assets/can-click.avif'
 import WoWPower from '../assets/wow_powers.webp'
 
 import Eclipse from '../components/Eclipse/Eclipse'
@@ -198,9 +197,6 @@ export const Animation = () => {
 					<Commitments hidden={mode} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
 
-					{!mode && (
-						<img className='can-click-image' src={CanClick} alt='Can click' />
-					)}
 					{!mode && <img className='wow-power' src={WoWPower} alt='WoWPower' />}
 
 					<img
