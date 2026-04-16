@@ -20,7 +20,11 @@ export default function StockBasic() {
 				short, interactive, and easy-to-follow modules.
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
-			<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+			<JourneyLinkButton
+				link={
+					'https://wowpowers.com/catalog/paths/726a87f3-ae23-4527-a4c3-17620c5ff2c5'
+				}
+				className='journey-modal-main-button'>
 				Take me there!
 			</JourneyLinkButton>
 		</div>

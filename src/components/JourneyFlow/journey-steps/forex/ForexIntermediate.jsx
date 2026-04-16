@@ -21,13 +21,15 @@ export default function ForexIntermediate() {
 				questions.
 			</p>
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/path/772273f6-d0b4-4edd-9711-6f03b05ef84a'
+					}
+					className='journey-modal-main-button'>
 					Learning Path
 				</JourneyLinkButton>
 				<JourneyLinkButton
-					link={
-						'https://wowpowers.com/stream-player/forex_intermediate_/livestream/3170f37f-2f4f-4af0-af2e-ceac2b842a79'
-					}
+					link={'https://wowpowers.com/schedule'}
 					className='journey-modal-assent-button'>
 					Live Sessions
 				</JourneyLinkButton>

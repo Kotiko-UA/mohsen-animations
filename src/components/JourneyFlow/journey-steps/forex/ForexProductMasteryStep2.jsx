@@ -20,7 +20,11 @@ export default function ForexProductMasteryStep2() {
 				action.
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
-			<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+			<JourneyLinkButton
+				link={
+					'https://wowpowers.com/catalog/paths/cfe10bdb-bb60-4cc3-bfd4-9033e771c309#'
+				}
+				className='journey-modal-main-button'>
 				Take me there!
 			</JourneyLinkButton>
 		</div>

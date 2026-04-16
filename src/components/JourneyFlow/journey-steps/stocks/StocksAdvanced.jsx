@@ -26,7 +26,11 @@ export default function StockAdvanced() {
 					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/path/b5de8cf0-4305-4df8-b645-137421c41372'
+					}
+					className='journey-modal-assent-button'>
 					Learning Path
 				</JourneyLinkButton>
 			</div>

@@ -21,10 +21,18 @@ export default function ForexProductMasteryStep3() {
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
-					Take me there!
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/academy-player/fd670358-7dd0-4ff4-adc1-f312dc0361ec'
+					}
+					className='journey-modal-main-button'>
+					Tutorial
 				</JourneyLinkButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/launchpad/livestream/4723525f-0ef0-4137-9b31-7f80d61887d1'
+					}
+					className='journey-modal-assent-button'>
 					Live Sessions
 				</JourneyLinkButton>
 			</div>

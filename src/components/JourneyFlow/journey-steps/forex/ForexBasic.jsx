@@ -18,7 +18,11 @@ export default function ForexBasic() {
 				concepts in a clear and simple manner.
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
-			<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+			<JourneyLinkButton
+				link={
+					'https://wowpowers.com/catalog/paths/491af712-e570-4347-96cd-e45b1968defd'
+				}
+				className='journey-modal-main-button'>
 				Take me there!
 			</JourneyLinkButton>
 		</div>

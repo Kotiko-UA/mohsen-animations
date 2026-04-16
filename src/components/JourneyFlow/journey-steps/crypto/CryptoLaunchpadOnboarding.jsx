@@ -23,7 +23,7 @@ export default function CryptoLaunchpadOnboarding() {
 			<div className='flex-col-24'>
 				<JourneyLinkButton
 					link={
-						'https://wowpowers.com/stream-player/launchpad/livestream/590ae3ec-1e0e-4d86-8e8e-dd8b75f1ea1c'
+						'https://wowpowers.com/stream-player/launchpad/livestream/4723525f-0ef0-4137-9b31-7f80d61887d1'
 					}
 					className='journey-modal-main-button'>
 					Live Sessions

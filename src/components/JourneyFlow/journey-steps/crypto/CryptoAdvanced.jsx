@@ -26,7 +26,11 @@ export default function CryptoAdvanced() {
 					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/path/ab0722b0-1ac6-4d08-aae6-d73006b889b9'
+					}
+					className='journey-modal-assent-button'>
 					Learning Path
 				</JourneyLinkButton>
 			</div>

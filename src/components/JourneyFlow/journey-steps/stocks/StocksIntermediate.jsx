@@ -27,7 +27,11 @@ export default function StocksIntermediate() {
 					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/path/0db8991e-f47c-458f-a9cc-043f2d7fc56d'
+					}
+					className='journey-modal-assent-button'>
 					Learning Path
 				</JourneyLinkButton>
 			</div>

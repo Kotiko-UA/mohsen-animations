@@ -24,10 +24,18 @@ export default function CryptoProductMasteryStep3() {
 				</p>
 			</div>
 			<div className='flex-col-24'>
-				<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/stream-player/launchpad/livestream/4723525f-0ef0-4137-9b31-7f80d61887d1'
+					}
+					className='journey-modal-main-button'>
 					Live Sessions
 				</JourneyLinkButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/academy-player/ca217843-829e-44d7-ae3f-7c8a6e4e3147'
+					}
+					className='journey-modal-assent-button'>
 					Tutorial
 				</JourneyLinkButton>
 			</div>

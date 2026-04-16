@@ -19,7 +19,11 @@ export default function CryptoOnboardingStep1() {
 				easy-to-understand modules.
 			</p>
 
-			<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+			<JourneyLinkButton
+				link={
+					'https://wowpowers.com/catalog/paths/d72c025a-c289-482e-b0ef-0536529da0f9'
+				}
+				className='journey-modal-main-button'>
 				Take me there!
 			</JourneyLinkButton>
 		</div>

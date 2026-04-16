@@ -21,7 +21,11 @@ export default function CryptoProductMasteryStep2() {
 				tools and techniques and start using SageMaster Crypto.
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
-			<JourneyLinkButton link={'#'} className='journey-modal-main-button'>
+			<JourneyLinkButton
+				link={
+					'https://wowpowers.com/catalog/paths/6f356a3e-3eff-4d91-8e48-61f0b13fac1f'
+				}
+				className='journey-modal-main-button'>
 				Take me there!
 			</JourneyLinkButton>
 		</div>
