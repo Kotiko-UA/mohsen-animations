@@ -34,11 +34,11 @@ export default function ForexLaunchpadDiscord() {
 							</p>
 						</div>
 						<div className='flex-row-12'>
-							<JourneyLinkButton
-								link={'#'}
+							<JourneyGoToStepButton
+								stepNumber={1}
 								className='journey-modal-main-button journey-modal-dis-button'>
 								Yes
-							</JourneyLinkButton>
+							</JourneyGoToStepButton>
 							<p className='text-p-14 w-full'>
 								Click YES if you've already entered the servers.
 							</p>
