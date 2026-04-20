@@ -159,6 +159,7 @@ export default function JourneyFlowMobile({
 	journeyKey,
 	journey,
 	items = [],
+	isMobile,
 	progress,
 	onProgressChange,
 	onStateChange,
@@ -189,6 +190,10 @@ export default function JourneyFlowMobile({
 	const delayedContentClass = isZoomScreen
 		? 'journey-mobile-delayed-content'
 		: ''
+
+	const currentHoverSrc = isMobile
+		? currentSlide?.hoverSrc?.mobile
+		: currentSlide?.hoverSrc?.tablet
 
 	useEffect(() => {
 		setSlideIndex(getInitialSlideIndex(items, journeyKey))
@@ -546,7 +551,7 @@ export default function JourneyFlowMobile({
 				<img
 					key={currentSlide.key}
 					className={`journey-mobile-river-image ${currentSlide.key} ${delayedContentClass}`}
-					src={currentSlide.hoverSrc}
+					src={currentHoverSrc}
 					alt={`${currentSlide.alt} river`}
 				/>
 			)}

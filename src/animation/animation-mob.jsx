@@ -2,10 +2,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './animation-mob.css'
 
 import MainImg from '../assets/main-mob.jpg'
-import CryptoHover from '../assets/river-1-mob.avif'
-import ForexHover from '../assets/river-2-mob.avif'
-import StocksHover from '../assets/river-3-mob.avif'
-import SyntheticsHover from '../assets/river-4-mob.avif'
+import MainImgTablet from '../assets/main-tablet.jpg'
+import CryptoHoverMobile from '../assets/river-1-mob.avif'
+import ForexHoverMobile from '../assets/river-2-mob.avif'
+import StocksHoverMobile from '../assets/river-3-mob.avif'
+import SyntheticsHoverMobile from '../assets/river-4-mob.avif'
+import CryptoHoverTablet from '../assets/river-1-tablet.avif'
+import ForexHoverTablet from '../assets/river-2-tablet.avif'
+import StocksHoverTablet from '../assets/river-3-tablet.avif'
+import SyntheticsHoverTablet from '../assets/river-4-tablet.avif'
 import WoWPower from '../assets/wow_powers.webp'
 import ArrowBack from '../assets/arrow-left.svg?react'
 
@@ -17,40 +22,59 @@ import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 
 const BASE_WIDTH = 375
 const BASE_HEIGHT = 812
+const BASE_WIDTH_TABLET = 1024
+const BASE_HEIGHT_TABLET = 576
 const TARGET_DATE = '01.05.2026'
 const JOURNEY_OPEN_DELAY = 400
 
 const ITEMS = [
 	{
 		key: 'crypto',
-		hoverSrc: CryptoHover,
+		hoverSrc: {
+			mobile: CryptoHoverMobile,
+			tablet: CryptoHoverTablet,
+		},
 		alt: 'Crypto',
 		type: 'normal',
 	},
 	{
 		key: 'forex',
-		hoverSrc: ForexHover,
+		hoverSrc: {
+			mobile: ForexHoverMobile,
+			tablet: ForexHoverTablet,
+		},
 		alt: 'Forex',
 		type: 'normal',
 	},
 	{
 		key: 'stocks',
-		hoverSrc: StocksHover,
+		hoverSrc: {
+			mobile: StocksHoverMobile,
+			tablet: StocksHoverTablet,
+		},
 		alt: 'Stocks',
 		type: 'normal',
 	},
 	{
 		key: 'synthetics',
-		hoverSrc: SyntheticsHover,
+		hoverSrc: {
+			mobile: SyntheticsHoverMobile,
+			tablet: SyntheticsHoverTablet,
+		},
 		alt: 'Synthetics',
 		type: 'locked',
 	},
 ]
 
-const getScale = element => {
-	const rect = element.getBoundingClientRect()
+const isMobileViewport = width => width < 768
 
-	return Math.min(rect.width / BASE_WIDTH, rect.height / BASE_HEIGHT)
+const getScale = ({ width, height }) => {
+	const isMobile = isMobileViewport(width)
+
+	const baseWidth = isMobile ? BASE_WIDTH : BASE_WIDTH_TABLET
+	const baseHeight = isMobile ? BASE_HEIGHT : BASE_HEIGHT_TABLET
+
+	return Math.min(width / baseWidth, height / baseHeight)
 }
 
 export const AnimationMob = () => {
@@ -62,6 +86,7 @@ export const AnimationMob = () => {
 	const [showCommitments, setShowCommitments] = useState(false)
 	const [journeyScreen, setJourneyScreen] = useState(null)
 	const [journeyResetKey, setJourneyResetKey] = useState(0)
+	const [isMobile, setIsMobile] = useState(true)
 
 	const containerRef = useRef(null)
 	const openJourneyTimeoutRef = useRef(null)
@@ -108,12 +133,17 @@ export const AnimationMob = () => {
 		})
 	}, [])
 
+	const mainImgSrc = isMobile ? MainImg : MainImgTablet
+
 	useEffect(() => {
 		const element = containerRef.current
-		if (!element) return undefined
+		if (!element) return
 
 		const updateScale = () => {
-			setScale(getScale(element))
+			const rect = element.getBoundingClientRect()
+
+			setIsMobile(isMobileViewport(rect.width))
+			setScale(getScale({ width: rect.width, height: rect.height }))
 		}
 
 		updateScale()
@@ -121,9 +151,7 @@ export const AnimationMob = () => {
 		const resizeObserver = new ResizeObserver(updateScale)
 		resizeObserver.observe(element)
 
-		return () => {
-			resizeObserver.disconnect()
-		}
+		return () => resizeObserver.disconnect()
 	}, [])
 
 	useEffect(() => clearOpenJourneyTimeout, [clearOpenJourneyTimeout])
@@ -189,7 +217,7 @@ export const AnimationMob = () => {
 						alt='WoWPower'
 					/>
 
-					<img className={mainImageClassName} src={MainImg} alt='Main' />
+					<img className={mainImageClassName} src={mainImgSrc} alt='Main' />
 
 					<button
 						type='button'
@@ -204,6 +232,7 @@ export const AnimationMob = () => {
 								journeyKey={mode}
 								journey={JOURNEYS[mode] ?? null}
 								items={ITEMS}
+								isMobile={isMobile}
 								progress={journeyProgress[mode]}
 								onJourneyChange={setMode}
 								onCommitmentsToggle={setShowCommitments}

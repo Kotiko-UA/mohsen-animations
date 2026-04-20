@@ -5,11 +5,11 @@ import { AnimationMob } from './animation/animation-mob'
 import './App.css'
 
 function App() {
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 1279)
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 768)
+			setIsMobile(window.innerWidth <= 1279)
 		}
 
 		window.addEventListener('resize', handleResize)
