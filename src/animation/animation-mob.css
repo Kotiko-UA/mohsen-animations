@@ -145,9 +145,7 @@ section {
     left: 362px;
     width: 207px;
     height: 254px;
-    z-index: 5;
     transform: translateX(0);
-    transition: opacity 2s linear;
   }
 
   .hit-area-button-mob {
