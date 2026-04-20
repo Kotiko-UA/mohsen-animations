@@ -1,26 +1,28 @@
 .wrapper {
   position: absolute;
-  top: 17px;
-  left: 17px;
+  top: 18px;
+  left: 50%;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 40px 60px;
+  gap: 8px;
+  width: 343px;
+  padding: 12px;
 
+  border-radius: 8px;
   border: 1px solid #434343;
-  background: rgba(40, 40, 40, 0.4);
+  background: rgba(207, 207, 207, 0.40);
   backdrop-filter: blur(30px);
 
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
   transition: opacity 0.6s linear, transform 0.6s linear;
   z-index: 5;
 }
 
 .hidden {
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateX(-50%) translateY(-100%);
 }
 
 .logoWrap {
@@ -30,17 +32,17 @@
 }
 
 .logoIcon {
-  width: 109px;
-  height: 52px;
+  width: 68px;
+  height: 32px;
   flex-shrink: 0;
 }
 
 .logoText {
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 124%;
+  line-height: 120%;
 }
 
 .textWrap {
@@ -50,49 +52,57 @@
 }
 
 .textIcon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
 .text {
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  line-height: 126%;
+  font-size: 14px;
+  line-height: 116%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .wrapper {
-    width: 343px;
-    top: 18px;
-    left: 50%;
-    padding: 12px;
-    gap: 8px;
-    transform: translateX(-50%) translateY(0);
+    width: auto;
+    top: 17px;
+    left: 17px;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+
+    padding: 40px 60px;
+    gap: 12px;
+
+
   }
 
   .hidden {
-    transform: translateX(-50%) translateY(-100%);
+    transform: translateY(-100%);
   }
 
   .logoIcon {
-    width: 68px;
-    height: 32px;
+    width: 109px;
+    height: 52px;
   }
 
   .logoText {
-    font-size: 18px;
-    line-height: 120%;
+    font-size: 24px;
+    line-height: 124%;
   }
 
   .textIcon {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
   }
 
   .text {
-    font-size: 14px;
-    line-height: 116%;
+    font-size: 16px;
+    line-height: 126%;
   }
 }

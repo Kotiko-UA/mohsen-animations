@@ -116,3 +116,38 @@ section {
   height: 100%;
   z-index: 20;
 }
+
+@media screen and (min-width: 768px) {
+
+  .main-container-mob {
+    aspect-ratio: 1024 / 576;
+  }
+
+  .scene-stage-mob {
+    width: 1024px;
+    height: 576px;
+  }
+
+  .main-img-wrap-mob {
+    width: 1024px;
+    height: 576px;
+  }
+
+  /* ---------- main bg ---------- */
+  .main-img-mob {
+    width: 1024px;
+    height: 576px;
+  }
+
+  .wow-power-mob {
+    position: absolute;
+    top: 4px;
+    left: 362px;
+    width: 207px;
+    height: 254px;
+    z-index: 5;
+    transform: translateX(0);
+    transition: opacity 2s linear;
+  }
+
+}

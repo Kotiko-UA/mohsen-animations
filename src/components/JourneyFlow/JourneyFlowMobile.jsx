@@ -191,10 +191,6 @@ export default function JourneyFlowMobile({
 		? 'journey-mobile-delayed-content'
 		: ''
 
-	const currentHoverSrc = isMobile
-		? currentSlide?.hoverSrc?.mobile
-		: currentSlide?.hoverSrc?.tablet
-
 	useEffect(() => {
 		setSlideIndex(getInitialSlideIndex(items, journeyKey))
 	}, [items, journeyKey])
@@ -551,7 +547,11 @@ export default function JourneyFlowMobile({
 				<img
 					key={currentSlide.key}
 					className={`journey-mobile-river-image ${currentSlide.key} ${delayedContentClass}`}
-					src={currentHoverSrc}
+					src={
+						isMobile
+							? currentSlide?.hoverSrc?.mobile
+							: currentSlide?.hoverSrc?.tablet
+					}
 					alt={`${currentSlide.alt} river`}
 				/>
 			)}

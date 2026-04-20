@@ -325,7 +325,7 @@ section {
   opacity: 0;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1280px) {
   .eclipse-image.crypto {
     top: 37%;
     left: 42%;

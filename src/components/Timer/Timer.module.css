@@ -1,6 +1,6 @@
 .wrapper {
   position: absolute;
-  top: 289px;
+  top: 369px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -24,9 +24,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 7px 12px;
+  padding: 4px 12px;
 
-  background: linear-gradient(#240F66, #240F66) padding-box, linear-gradient(180deg, #F7BA59 0%, #E849F0 27.4%, #8463FB 60.58%, #3588FD 79.33%, #04D4F9 100%) border-box;
+  background: linear-gradient(#240F66, #240F66) padding-box,
+    linear-gradient(180deg,
+      #F7BA59 0%,
+      #E849F0 27.4%,
+      #8463FB 60.58%,
+      #3588FD 79.33%,
+      #04D4F9 100%) border-box;
   border-radius: 999px;
   border: 1px solid transparent;
 
@@ -38,7 +44,6 @@
   grid-template-columns: auto auto auto auto auto;
   align-items: center;
   column-gap: 8px;
-
 }
 
 .timerSVG {
@@ -56,11 +61,11 @@
 }
 
 .timerDot {
-  width: 32px;
-  height: 32px;
   position: absolute;
-  top: 60px;
+  top: 44px;
   left: 50%;
+  width: 24px;
+  height: 24px;
   transform: translateX(-50%);
   z-index: 4;
 
@@ -94,18 +99,24 @@
 
 .timeText {
   position: absolute;
-  top: 42px;
+  top: 32px;
   left: 50%;
   transform: translate(-50%, 30%);
 
-  padding: 16px 24px 12px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4px;
+  padding: 8px 12px;
 
-  background: linear-gradient(#240F66, #240F66) padding-box, linear-gradient(180deg, #F7BA59 0%, #E849F0 27.4%, #8463FB 60.58%, #3588FD 79.33%, #04D4F9 100%) border-box;
+  background: linear-gradient(#240F66, #240F66) padding-box,
+    linear-gradient(180deg,
+      #F7BA59 0%,
+      #E849F0 27.4%,
+      #8463FB 60.58%,
+      #3588FD 79.33%,
+      #04D4F9 100%) border-box;
   border-radius: 999px;
   border: 1px solid transparent;
 
@@ -123,17 +134,17 @@
   color: #FFF;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
+  line-height: normal;
   white-space: nowrap;
 }
 
 .textParagraph {
   color: #FFF;
-
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  line-height: 126%;
+  font-size: 12px;
+  line-height: normal;
   white-space: nowrap;
 }
 
@@ -141,21 +152,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 44px;
+  min-width: 28px;
 }
 
 .timerValue {
   color: #FFF;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 126%;
+  line-height: 102%;
 }
 
 .timerLabel {
   color: #FFF;
-
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -165,61 +175,66 @@
 
 .timerSeparator {
   margin: 0 -4px;
-  font-size: 22px;
+  padding-top: 2px;
+  align-self: start;
+
+  font-size: 18px;
   font-weight: 500;
   line-height: 1;
   color: #fff;
-  align-self: start;
-  padding-top: 2px;
 }
 
-@media screen and (max-width: 768px) {
-
+@media screen and (min-width: 768px) {
   .wrapper {
-    top: 369px;
-    transform: translateX(-50%);
+    top: 241px;
+    left: 390px;
 
+    transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    top: 289px;
     width: 150px;
     height: 100px;
+    transform: translateX(-50%);
   }
 
   .timerWrapper {
-    padding: 4px 12px;
+    padding: 7px 12px;
   }
 
   .timerSeparator {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .timerItem {
-    min-width: 28px;
+    min-width: 44px;
   }
 
   .timerValue {
-    font-size: 14px;
-    line-height: 102%;
+    font-size: 16px;
+    line-height: 126%;
   }
 
   .timerDot {
-    width: 24px;
-    height: 24px;
-    top: 44px;
+    top: 60px;
+    width: 32px;
+    height: 32px;
   }
 
   .timeText {
-    top: 32px;
-    padding: 8px 12px;
-
+    top: 42px;
+    padding: 16px 24px 12px 24px;
   }
 
   .textHeader {
-    font-size: 14px;
-    line-height: normal;
+    font-size: 18px;
   }
 
   .textParagraph {
-    font-size: 12px;
-    line-height: normal;
-
+    font-size: 16px;
+    line-height: 126%;
   }
 }
