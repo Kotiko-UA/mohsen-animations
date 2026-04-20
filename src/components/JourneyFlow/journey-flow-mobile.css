@@ -46,9 +46,10 @@
 	right: 16px;
 	bottom: 16px;
 	padding: 12px;
-	border: 1px solid rgba(255, 255, 255, 0.12);
-	background: rgba(20, 15, 49, 0.62);
-	backdrop-filter: blur(10px);
+	border-radius: 8px;
+	border: 1px solid #434343;
+	background: rgba(207, 207, 207, 0.40);
+	backdrop-filter: blur(30px);
 }
 
 .journey-mobile-cta {
@@ -89,6 +90,12 @@
 .journey-mobile-cta-dot {
 	width: 24px;
 	height: 24px;
+	flex-shrink: 0;
+}
+
+.journey-mobile-cta-lock {
+	width: 20px;
+	height: 20px;
 	flex-shrink: 0;
 }
 
@@ -317,5 +324,33 @@
 	100% {
 		opacity: 1;
 		visibility: visible;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.journey-mobile-selector-card {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.journey-mobile-selector-card .journey-mobile-cta {
+		width: fit-content;
+	}
+
+	.journey-mobile-selector-footer {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	.journey-mobile-cta {
+		padding: 4px 8px;
+		height: 38px;
+	}
+
+	.journey-mobile-coming-soon {
+		padding: 0 12px;
+		height: 30px;
 	}
 }

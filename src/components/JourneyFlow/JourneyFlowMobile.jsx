@@ -7,6 +7,7 @@ import Eclipse from '../Eclipse/Eclipse'
 import Arrow from '../../assets/arrow-purple.svg?react'
 import ArrowWhite from '../../assets/arrow-purple.svg?react'
 import Dot from '../../assets/white-dot.svg?react'
+import Lock from '../../assets/lock.svg?react'
 import WhiteDot from '../../assets/white-dot.svg?react'
 import GateClose from '../../assets/step-closed.avif'
 import GateActive from '../../assets/step-active.avif'
@@ -567,7 +568,11 @@ export default function JourneyFlowMobile({
 							onClick={openIntro}
 							disabled={isLockedJourney}>
 							<div className='journey-mobile-cta-title'>
-								<Dot className='journey-mobile-cta-dot' />
+								{isLockedJourney ? (
+									<Lock className='journey-mobile-cta-lock' />
+								) : (
+									<Dot className='journey-mobile-cta-dot' />
+								)}
 								<span>{currentSlide.alt ?? journey?.title ?? 'Journey'}</span>
 							</div>
 
