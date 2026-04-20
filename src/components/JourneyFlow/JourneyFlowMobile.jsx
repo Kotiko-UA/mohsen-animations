@@ -676,7 +676,9 @@ export default function JourneyFlowMobile({
 				(screen === MOBILE_SCREENS.INTRO ||
 					screen === MOBILE_SCREENS.TIME ||
 					screen === MOBILE_SCREENS.STEP) && (
-					<div className={`journey-mobile-step-view ${delayedContentClass}`}>
+					<div
+						key={`${activePoint?.id ?? 'intro'}-${currentStepIndex}`}
+						className={`journey-mobile-step-view ${delayedContentClass}  step-enter`}>
 						<JourneyStepProvider value={{ actions, state }}>
 							{getStepView({
 								step: activeStep,

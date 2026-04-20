@@ -427,7 +427,9 @@ function JourneyFlowContent({
 			)}
 
 			{!isOverviewMode && activeStep && (
-				<div className='journey-step-view'>
+				<div
+					key={`${activePoint?.id ?? 'intro'}-${currentStepIndex}`}
+					className='journey-step-view  step-enter'>
 					<div className='journey-step-content'>
 						<JourneyStepProvider value={{ actions, state }}>
 							{getStepView({
