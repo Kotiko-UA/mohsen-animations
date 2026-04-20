@@ -652,6 +652,10 @@
     overflow-y: visible;
   }
 
+  .journey-mobile-back-home-button {
+    display: none;
+  }
+
   .journey-point-button.crypto-point-1 {
     right: 67px;
     bottom: 255px;
