@@ -353,4 +353,50 @@
 		padding: 0 12px;
 		height: 30px;
 	}
+
+	.journey-mobile-river-image.crypto {
+		left: 27px;
+		bottom: -7px;
+		width: 412px;
+		height: 322px;
+	}
+
+	.zoomed .journey-mobile-river-image.crypto {
+		left: 158px;
+		bottom: 77px;
+		transform: scale(1.55);
+	}
+
+	.journey-mobile-river-image.forex {
+		left: 331px;
+		bottom: -3px;
+		width: 268px;
+		height: 341px;
+	}
+
+	.zoomed .journey-mobile-river-image.forex {
+		left: 305px;
+		bottom: 94px;
+		transform: scale(1.55);
+	}
+
+	.journey-mobile-river-image.stocks {
+		left: 404px;
+		bottom: -10px;
+		width: 405px;
+		height: 313px;
+	}
+
+	.zoomed .journey-mobile-river-image.stocks {
+		left: 198px;
+		bottom: 79px;
+		transform: scale(1.55);
+	}
+
+	.journey-mobile-river-image.synthetics {
+		left: 441px;
+		bottom: -7px;
+		width: 588px;
+		height: 227px;
+	}
 }

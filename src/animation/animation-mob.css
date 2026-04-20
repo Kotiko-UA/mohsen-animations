@@ -150,4 +150,8 @@ section {
     transition: opacity 2s linear;
   }
 
+  .hit-area-button-mob {
+    width: 992px;
+    height: 270px;
+  }
 }
