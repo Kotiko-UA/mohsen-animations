@@ -2,7 +2,7 @@
 	position: absolute;
 	inset: 0;
 	pointer-events: none;
-	color: #fff;
+	color: #282828;
 }
 
 .journey-flow-mobile>* {
@@ -62,7 +62,7 @@
 	border: 0;
 	border-radius: 8px;
 	background: linear-gradient(90deg, #6e44ff 0%, #8054ff 100%);
-	color: #fff;
+	color: #282828;
 	cursor: pointer;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .journey-mobile-cta-title>span {
-	color: #FFF;
+	color: #282828;
 	font-family: "Montserrat", sans-serif;
 	font-size: 18px;
 	font-weight: 500;
@@ -100,7 +100,7 @@
 }
 
 .journey-mobile-cta-meta {
-	color: #FFF;
+	color: #282828;
 	font-family: "Montserrat", sans-serif;
 	font-size: 14px;
 	font-style: normal;
@@ -178,8 +178,10 @@
 	transform: translate(-50%, -50%);
 	width: 343px;
 	padding: 24px 16px;
-	background: #282828;
-	border: 1px solid #2E2F31;
+	border-radius: 16px;
+	border: 1px solid #434343;
+	background: rgba(255, 255, 255, 0.90);
+	backdrop-filter: blur(28px);
 }
 
 .journey-mobile-point-button {

@@ -11,8 +11,11 @@
   width: 745px;
   max-height: 800px;
   padding: 40px 0 60px;
-  background: #282828;
-  border: 1px solid #2E2F31;
+
+  border-radius: 16px;
+  border: 1px solid #434343;
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(28px);
 }
 
 .journey-step-view {
@@ -86,7 +89,7 @@
   background: #49ADDE;
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
   backdrop-filter: blur(10px);
-  color: #FFF;
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -193,6 +196,9 @@
 }
 
 .journey-prev-button {
+  padding: 0;
+  width: 32px;
+  height: 32px;
   margin-right: auto;
   display: flex;
   justify-content: center;
@@ -219,8 +225,8 @@
   align-items: center;
   border-radius: 4px;
   border: none;
-  box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
-  color: #FFF;
+  box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.21);
+  color: #fff;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -249,6 +255,7 @@
 }
 
 .journey-modal-assent-button {
+  color: #282828;
   background-color: transparent;
   border: 1px solid #754CF0;
 }
@@ -288,7 +295,7 @@
 }
 
 .text-h-32-700 {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -296,7 +303,7 @@
 }
 
 .text-h-20-700 {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -304,7 +311,7 @@
 }
 
 .text-h-32-700-opacity {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -316,7 +323,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff;
+  color: #282828;
   line-height: 126%;
 }
 
@@ -324,7 +331,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
+  color: #282828;
   line-height: 126%;
 }
 
@@ -332,7 +339,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 500;
-  color: #fff;
+  color: #282828;
   line-height: 126%;
 }
 
@@ -340,7 +347,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #fff;
+  color: #282828;
   line-height: 126%;
 }
 
@@ -348,7 +355,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #fff;
+  color: #282828;
   line-height: 116%;
 }
 
@@ -387,7 +394,7 @@
 }
 
 .journey-modal-text {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -413,12 +420,13 @@
   padding: 12px;
   flex-direction: column;
   gap: 8px;
-  border: 1px solid #3E3E3E;
-  background: #282828;
+  border-radius: 12px;
+  border: 1px solid var rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.80);
 }
 
 .journey-modal-fs-you-get {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -440,7 +448,7 @@
   gap: 6px;
   justify-content: center;
   border-right: none;
-  border-bottom: 1px solid #FFF;
+  border-bottom: 1px solid #04D4F9;
 }
 
 .journey-modal-fs-sb-1-top {
@@ -452,7 +460,7 @@
 }
 
 .journey-modal-fs-sb-1-top span {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 48px;
   font-weight: 700;
@@ -465,7 +473,7 @@
 }
 
 .journey-modal-fs-sb-1-top p {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -479,7 +487,7 @@
 }
 
 .journey-modal-fs-sb-1-bottom {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -497,7 +505,7 @@
 }
 
 .journey-modal-fs-sb-2 li {
-  color: #FFF;
+  color: #282828;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -597,7 +605,7 @@
 }
 
 .journey-confirm-label {
-  color: #fff;
+  color: #282828;
   font-size: 14px;
   line-height: 1.45;
   font-weight: 400;
