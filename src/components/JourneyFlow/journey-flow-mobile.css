@@ -62,7 +62,7 @@
 	border: 0;
 	border-radius: 8px;
 	background: linear-gradient(90deg, #6e44ff 0%, #8054ff 100%);
-	color: #282828;
+	color: #FFF;
 	cursor: pointer;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .journey-mobile-cta-title>span {
-	color: #282828;
+	color: #fff;
 	font-family: "Montserrat", sans-serif;
 	font-size: 18px;
 	font-weight: 500;
@@ -100,13 +100,17 @@
 }
 
 .journey-mobile-cta-meta {
-	color: #282828;
+	color: #fff;
 	font-family: "Montserrat", sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 102%;
 	white-space: nowrap;
+}
+
+.journey-mobile-cta-meta svg {
+	transform: rotate(180deg);
 }
 
 .journey-mobile-coming-soon {
