@@ -250,6 +250,7 @@ export const Animation = () => {
 
 					{mode && isJourneyVisible && (
 						<div className='journey-window-wrap'>
+							<div className='journey-overlay' />
 							<JourneyFlow
 								key={mode}
 								journeyKey={mode}

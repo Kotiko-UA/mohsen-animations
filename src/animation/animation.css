@@ -321,6 +321,19 @@ section {
   z-index: 20;
 }
 
+.journey-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  animation: overlayFadeIn 0.75s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .hidden {
   opacity: 0;
 }

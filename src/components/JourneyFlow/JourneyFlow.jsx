@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { JourneyStepProvider } from './JourneyStepControls'
 import './journey-flow.css'
 import GateClose from '../../assets/step-closed.avif'
@@ -118,6 +118,16 @@ function JourneyFlowContent({
 	const [activeIntroStepIndex, setActiveIntroStepIndex] = useState(
 		introSteps.length ? 0 : null,
 	)
+	const [nestedPopup, setNestedPopup] = useState(null)
+
+	// Track initial mount to use delayed animation on first popup open
+	const isFirstRenderRef = useRef(true)
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			isFirstRenderRef.current = false
+		}, 800)
+		return () => clearTimeout(timer)
+	}, [])
 
 	const selectedPoint = useMemo(() => {
 		if (!journey || !activePointId) return null
@@ -330,6 +340,14 @@ function JourneyFlowContent({
 		openLink(activeStep.link, activeStep.linkTarget ?? '_blank')
 	}
 
+	const openPopup = (content, title) => {
+		setNestedPopup({ content, title: title ?? null })
+	}
+
+	const closePopup = () => {
+		setNestedPopup(null)
+	}
+
 	if (!journey || !journey.points?.length) {
 		return null
 	}
@@ -342,6 +360,8 @@ function JourneyFlowContent({
 		openLink,
 		openCurrentStepLink,
 		unlockPointsOverview,
+		openPopup,
+		closePopup,
 		setActivePointId,
 		setActiveStepIndex,
 		setActiveIntroStepIndex,
@@ -427,10 +447,10 @@ function JourneyFlowContent({
 			)}
 
 			{!isOverviewMode && activeStep && (
-				<div
-					key={`${activePoint?.id ?? 'intro'}-${currentStepIndex}`}
-					className='journey-step-view  step-enter'>
-					<div className='journey-step-content'>
+				<div className='journey-step-view'>
+					<div
+						key={`${activePoint?.id ?? 'intro'}-${currentStepIndex}`}
+						className={`journey-step-content ${isFirstRenderRef.current ? 'step-enter-initial' : 'step-enter'}`}>
 						<JourneyStepProvider value={{ actions, state }}>
 							{getStepView({
 								step: activeStep,
@@ -442,6 +462,32 @@ function JourneyFlowContent({
 							})}
 						</JourneyStepProvider>
 					</div>
+
+					{nestedPopup && (
+						<div
+							className='journey-nested-popup-overlay'
+							onClick={closePopup}>
+							<div
+								className='journey-nested-popup'
+								onClick={e => e.stopPropagation()}>
+								<button
+									type='button'
+									className='journey-nested-popup-close'
+									onClick={closePopup}
+									aria-label='Close'>
+									×
+								</button>
+								{nestedPopup.title && (
+									<h3 className='journey-nested-popup-title'>
+										{nestedPopup.title}
+									</h3>
+								)}
+								<JourneyStepProvider value={{ actions, state }}>
+									{nestedPopup.content}
+								</JourneyStepProvider>
+							</div>
+						</div>
+					)}
 				</div>
 			)}
 		</div>

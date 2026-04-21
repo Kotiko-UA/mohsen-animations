@@ -174,6 +174,28 @@ export const JourneyMobileBackToPointsButton = ({
 		</button>
 	)
 }
+export const JourneyPopupButton = ({
+	children,
+	content,
+	title,
+	onClick,
+	...props
+}) => {
+	const { actions } = useJourneyStep()
+
+	const handleClick = event => {
+		onClick?.(event)
+		if (event.defaultPrevented) return
+		actions.openPopup?.(content, title)
+	}
+
+	return (
+		<button type='button' onClick={handleClick} {...props}>
+			{children}
+		</button>
+	)
+}
+
 export const JourneyMobileBackToHomeButton = ({
 	children,
 	className = '',
