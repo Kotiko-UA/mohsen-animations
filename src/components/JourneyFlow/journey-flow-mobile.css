@@ -334,6 +334,10 @@
 }
 
 @media screen and (min-width: 768px) {
+	.journey-mobile-step-view {
+		width: 848px;
+	}
+
 	.journey-mobile-selector-card {
 		display: flex;
 		justify-content: space-between;

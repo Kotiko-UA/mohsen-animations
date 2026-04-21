@@ -553,7 +553,7 @@
 
 .journey-confirm-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   cursor: pointer;
   user-select: none;
@@ -673,6 +673,22 @@
 }
 
 @media screen and (min-width: 768px) {
+  .journey-modal-wrap {
+    max-height: 500px;
+  }
+
+  .journey-modal-fs-sb-w {
+    flex-direction: row;
+    gap: 18px;
+    justify-content: space-between;
+  }
+
+  .journey-modal-fs-sb-1 {
+    padding-right: 12px;
+    padding-bottom: 0;
+    border-right: 1px solid #FFF;
+    border-bottom: none;
+  }
 
   .journey-point-button.crypto-point-1 {
     right: 507px;
@@ -872,17 +888,6 @@
     font-size: 20px;
   }
 
-  .journey-modal-fs-sb-w {
-    flex-direction: row;
-    gap: 18px;
-  }
-
-  .journey-modal-fs-sb-1 {
-    padding-right: 12px;
-    padding-bottom: 0;
-    border-right: 1px solid #FFF;
-    border-bottom: none;
-  }
 
   .journey-modal-fs-sb-1-top {
     justify-content: center;
