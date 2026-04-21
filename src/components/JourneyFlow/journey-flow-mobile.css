@@ -409,4 +409,8 @@
 		width: 588px;
 		height: 227px;
 	}
+
+	.journey-mobile-entry-button {
+		width: 100%;
+	}
 }

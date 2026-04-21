@@ -325,6 +325,27 @@ section {
   opacity: 0;
 }
 
+@media screen and (min-width: 768px) {
+  .eclipse-image.crypto {
+    top: 37%;
+    left: 51%;
+
+  }
+
+  .eclipse-image.forex {
+    top: auto;
+    left: 33%;
+    bottom: -70%;
+
+  }
+
+  .eclipse-image.stocks {
+    top: 28%;
+    left: 19%;
+
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .eclipse-image.crypto {
     top: 37%;

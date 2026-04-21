@@ -639,33 +639,27 @@
 }
 
 .f-a-play-wrap {
-  height: 124px;
   display: flex;
-  padding: 12px 24px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+  width: 308px;
   border-radius: 4px;
   border: 1px solid #754CF0;
   background: rgba(255, 255, 255, 0.02);
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
-  transition: background-color 0.3s linear, box-shadow 0.3s linear;
-}
-
-.f-a-play-wrap:hover {
-  background: rgba(30, 12, 55, 0.66);
-  box-shadow: 0 0 23.8px 0 rgba(134, 101, 255, 0.50);
+  overflow: hidden;
 }
 
 .f-a-play-img {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
+  width: 308px;
+  height: 172px;
+  display: block;
 }
 
 .f-a-play-text {
   text-align: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .journey-mobile-back-button {
@@ -717,7 +711,7 @@
 
   .journey-point-button.forex-point-1 {
     left: 336px;
-    bottom: 142px;
+    bottom: 196px;
   }
 
   .journey-point-button.forex-point-2 {
@@ -741,13 +735,13 @@
   }
 
   .journey-point-button.stocks-point-1 {
-    left: 234px;
-    bottom: 160px;
+    left: 272px;
+    bottom: 181px;
   }
 
   .journey-point-button.stocks-point-2 {
-    left: 419px;
-    bottom: 227px;
+    left: 451px;
+    bottom: 246px;
   }
 
   .journey-point-button.stocks-point-3 {
@@ -758,6 +752,12 @@
   .journey-point-button.stocks-point-4 {
     left: 563px;
     bottom: 398px;
+  }
+
+  .journey-modal-dis-sw {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -920,6 +920,7 @@
 
   .journey-modal-dis-sw {
     flex-direction: row;
+    flex-wrap: nowrap;
   }
 
   .journey-modal-dis-button {
@@ -932,5 +933,11 @@
 
   .journey-mobile-back-button {
     display: none;
+  }
+
+  .f-a-play-img {
+    width: 179px;
+    height: 102px;
+    display: block;
   }
 }
