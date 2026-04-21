@@ -1,6 +1,6 @@
 import { JourneyStepContext } from './JourneyStepContext'
 import { useJourneyStep } from './useJourneyStep'
-import ArrowBack from '../../assets/arrow-left.svg?react'
+import ArrowBack from '../../assets/arrow-purple.svg?react'
 
 export const JourneyStepProvider = ({ value, children }) => {
 	return (

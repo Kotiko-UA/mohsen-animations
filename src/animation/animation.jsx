@@ -9,7 +9,7 @@ import ForexActive from '../assets/river-2-click.avif'
 import StocksHover from '../assets/river-3-hover.avif'
 import StocksActive from '../assets/river-3-click.avif'
 import SyntheticsHover from '../assets/river-4-hover.avif'
-import ArrowBack from '../assets/arrow-left.svg?react'
+import ArrowBack from '../assets/arrow-purple.svg?react'
 import WoWPower from '../assets/wow_powers.webp'
 
 import Eclipse from '../components/Eclipse/Eclipse'

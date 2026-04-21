@@ -12,7 +12,7 @@ import ForexHoverTablet from '../assets/river-2-tablet.avif'
 import StocksHoverTablet from '../assets/river-3-tablet.avif'
 import SyntheticsHoverTablet from '../assets/river-4-tablet.avif'
 import WoWPower from '../assets/wow_powers.webp'
-import ArrowBack from '../assets/arrow-left.svg?react'
+import ArrowBack from '../assets/arrow-purple.svg?react'
 
 import ClickBanner from '../components/Click-banner/ClickBanner'
 import Timer from '../components/Timer/Timer'

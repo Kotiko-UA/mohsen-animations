@@ -38,14 +38,14 @@ section {
   left: 20px;
 
   display: flex;
-  width: 69px;
-  height: 69px;
+  width: 54px;
+  height: 54px;
   justify-content: center;
   align-items: center;
 
   border: none;
   border-radius: 999px;
-  background: rgba(40, 40, 40, 0.39);
+  background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(30px);
 
   opacity: 0;
@@ -343,5 +343,10 @@ section {
     top: 35%;
     left: -5%;
     transform: scale(0.50);
+  }
+
+  .back-button {
+    width: 69px;
+    height: 69px;
   }
 }
