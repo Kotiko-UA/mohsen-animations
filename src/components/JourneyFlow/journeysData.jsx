@@ -160,11 +160,11 @@ export const JOURNEYS = {
 				title: 'WES Crypto Advanced',
 				steps: [
 					{
-						id: 'crypto-point-4-step-1',
+						id: 'crypto-point-5-step-1',
 						component: CryptoAdvanced,
 						meta: {
 							sceneNode: 'crypto',
-							roadStep: 4,
+							roadStep: 5,
 						},
 					},
 				],

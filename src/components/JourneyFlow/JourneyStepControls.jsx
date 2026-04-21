@@ -121,6 +121,7 @@ export const JourneyGoToStepButton = ({
 	const isInvalidStep =
 		typeof stepNumber !== 'number' ||
 		stepIndex < 0 ||
+		!state.activePoint?.steps ||
 		stepIndex > state.activePoint.steps.length - 1
 
 	const handleClick = event => {
