@@ -22,12 +22,9 @@ const buildCommitments = () => {
 }
 
 export default function Commitments({ hidden }) {
-	const [isHidden, setIsHidden] = useState(hidden)
+	const [isCollapsed, setIsCollapsed] = useState(() => window.innerWidth <= 1280)
+	const isHidden = hidden || isCollapsed
 	const [commitments, setCommitments] = useState(buildCommitments)
-
-	useEffect(() => {
-		setIsHidden(hidden)
-	}, [hidden])
 
 	useEffect(() => {
 		const syncCommitments = () => {
@@ -46,7 +43,7 @@ export default function Commitments({ hidden }) {
 	}, [])
 
 	const handleClose = () => {
-		setIsHidden(!isHidden)
+		setIsCollapsed(!isCollapsed)
 	}
 
 	return (

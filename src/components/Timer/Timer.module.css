@@ -198,6 +198,7 @@
     top: 289px;
     width: 150px;
     height: 100px;
+    left: 50%;
     transform: translateX(-50%);
   }
 
