@@ -20,6 +20,7 @@ import Commitments from '../components/Commitments/Commitments'
 import JourneyFlow from '../components/JourneyFlow/JourneyFlow'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 
+// Design canvas dimensions — all positions and sizes in CSS are authored at this resolution
 const BASE_WIDTH = 1440
 const BASE_HEIGHT = 820
 
@@ -106,9 +107,11 @@ export const Animation = () => {
 		setIsJourneyVisible(false)
 		setMode(nextMode)
 
+		// rAF ensures the mode class is painted before zoom starts, preventing a flash
 		requestAnimationFrame(() => {
 			setIsZoomed(true)
 
+			// 400ms matches the CSS zoom transition duration (transform 0.6s — journey appears mid-animation for overlap)
 			openJourneyTimeoutRef.current = setTimeout(() => {
 				setIsJourneyVisible(true)
 			}, 400)
@@ -134,6 +137,7 @@ export const Animation = () => {
 		}
 	}, [])
 
+	// Clear mode only after the zoom-out transition finishes so CSS classes stay active during animation
 	const handleTransitionEnd = () => {
 		if (!isZoomed) {
 			setMode(null)
@@ -162,6 +166,7 @@ export const Animation = () => {
 	const stateClass =
 		`${mode ? `${mode}-mode` : ''} ${isZoomed ? 'zoomed' : ''}`.trim()
 
+	// Drives the 'journey-active' highlight on the eclipse overlay matching the current step's zone
 	const activeSceneNode = activeJourneyState?.step?.meta?.sceneNode || null
 
 	const getFeatureClasses = item =>

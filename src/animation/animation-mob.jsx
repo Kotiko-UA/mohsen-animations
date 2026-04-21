@@ -20,11 +20,13 @@ import Commitments from '../components/Commitments/Commitments'
 import JourneyFlowMobile from '../components/JourneyFlow/JourneyFlowMobile'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 
+// Mobile and tablet design canvas dimensions — CSS is authored at these resolutions
 const BASE_WIDTH = 375
 const BASE_HEIGHT = 812
 const BASE_WIDTH_TABLET = 1024
 const BASE_HEIGHT_TABLET = 576
 const TARGET_DATE = '01.05.2026'
+// Delay before showing journey UI — allows the CSS zoom transition to begin before content appears
 const JOURNEY_OPEN_DELAY = 400
 
 const ITEMS = [
@@ -85,6 +87,7 @@ export const AnimationMob = () => {
 	const [isJourneyVisible, setIsJourneyVisible] = useState(false)
 	const [showCommitments, setShowCommitments] = useState(false)
 	const [journeyScreen, setJourneyScreen] = useState(null)
+	// Incrementing this key forces JourneyFlowMobile to fully remount and reset its internal state
 	const [journeyResetKey, setJourneyResetKey] = useState(0)
 	const [isMobile, setIsMobile] = useState(true)
 
@@ -154,6 +157,7 @@ export const AnimationMob = () => {
 		return () => resizeObserver.disconnect()
 	}, [])
 
+	// Return the cleanup fn directly — clears any pending open-delay timeout on unmount
 	useEffect(() => clearOpenJourneyTimeout, [clearOpenJourneyTimeout])
 
 	const handleOpen = useCallback(() => {
@@ -172,6 +176,8 @@ export const AnimationMob = () => {
 		setShowCommitments(false)
 		setJourneyScreen('selector')
 		setIsJourneyVisible(false)
+		// Bump reset key to force JourneyFlowMobile remount — just resetting screen state isn't enough
+		// because the mobile journey keeps deep internal state (intro index, selections) that must be cleared
 		setJourneyResetKey(prev => prev + 1)
 
 		openJourneyWithDelay()

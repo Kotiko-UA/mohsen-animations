@@ -12,12 +12,14 @@ const createEmptyProgress = () => ({
 	arePointsUnlocked: false,
 })
 
+// Ensures external progress (from localStorage or parent) always has all required fields
 const normalizeProgress = progress => ({
 	completedPointIds: progress?.completedPointIds ?? [],
 	viewedStepIndexesByPointId: progress?.viewedStepIndexesByPointId ?? {},
 	arePointsUnlocked: progress?.arePointsUnlocked ?? false,
 })
 
+// Deep-clones progress before mutation so the JSON.stringify diff check below can detect changes
 const cloneProgress = progress => ({
 	completedPointIds: [...progress.completedPointIds],
 	viewedStepIndexesByPointId: Object.fromEntries(
@@ -31,6 +33,7 @@ const cloneProgress = progress => ({
 const isPointCompleted = (progress, pointId) =>
 	progress.completedPointIds.includes(pointId)
 
+// Only the first point is accessible until the user completes the intro and unlocks the overview
 const isPointUnlocked = (journey, pointIndex, progress) => {
 	if (progress.arePointsUnlocked) return true
 	return pointIndex === 0
@@ -44,6 +47,7 @@ const getPointById = (journey, pointId) => {
 	)
 }
 
+// Supports three authoring styles for steps: inline render fn, component class/fn, or raw JSX content
 const getStepView = ({
 	step,
 	point,
@@ -86,6 +90,7 @@ const openLink = (link, target = '_blank') => {
 	window.open(link, target, 'noopener,noreferrer')
 }
 
+// Wrapper that forces a full state reset when the journey structure changes (e.g. switching crypto → stocks)
 export default function JourneyFlow(props) {
 	const { journeyKey, journey } = props
 
@@ -120,7 +125,8 @@ function JourneyFlowContent({
 	)
 	const [nestedPopup, setNestedPopup] = useState(null)
 
-	// Track initial mount to use delayed animation on first popup open
+	// Distinguishes the initial popup open (float-in box → delayed content) from step navigation (immediate fade-in).
+	// 800ms covers the 0.75s float-in so any step change after that gets the faster navigation animation.
 	const isFirstRenderRef = useRef(true)
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -193,6 +199,7 @@ function JourneyFlowContent({
 			nextProgress.completedPointIds.push(selectedPoint.id)
 		}
 
+		// Avoid calling onProgressChange when nothing actually changed — prevents infinite update loops
 		const prevJson = JSON.stringify(safeProgress)
 		const nextJson = JSON.stringify(nextProgress)
 
@@ -447,6 +454,8 @@ function JourneyFlowContent({
 			)}
 
 			{!isOverviewMode && activeStep && (
+				// Outer box has no key so it mounts once and plays the float-in animation only on initial open.
+				// The key lives on the inner content div so only the content remounts on step navigation.
 				<div className='journey-step-view'>
 					<div
 						key={`${activePoint?.id ?? 'intro'}-${currentStepIndex}`}
