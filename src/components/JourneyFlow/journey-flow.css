@@ -671,6 +671,10 @@
     max-height: 500px;
   }
 
+  .journey-launchpad-w2 {
+    flex-direction: row;
+  }
+
   .journey-modal-fs-sb-w {
     flex-direction: row;
     gap: 18px;
@@ -682,6 +686,10 @@
     padding-bottom: 0;
     border-right: 1px solid #FFF;
     border-bottom: none;
+  }
+
+  .flex-col-24 {
+    gap: 24px;
   }
 
   .journey-point-button.crypto-point-1 {
@@ -875,9 +883,6 @@
     line-height: 126%;
   }
 
-  .flex-col-24 {
-    gap: 24px;
-  }
 
   .journey-modal-fs-subblock {
     padding: 24px;
@@ -914,9 +919,7 @@
     display: flex;
   }
 
-  .journey-launchpad-w2 {
-    flex-direction: row;
-  }
+
 
   .journey-modal-dis-sw {
     flex-direction: row;
