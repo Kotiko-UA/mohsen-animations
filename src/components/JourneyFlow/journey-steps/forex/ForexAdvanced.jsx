@@ -2,7 +2,7 @@ import {
 	JourneyMobileBackToPointsButton,
 	JourneyNextButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/forex-advanced-1.jpg'
+import Img from '../../../../assets/crypto-advanced-img-1.jpg'
 
 export default function ForexAdvanced() {
 	return (

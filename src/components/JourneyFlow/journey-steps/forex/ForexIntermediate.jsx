@@ -2,7 +2,7 @@ import {
 	JourneyLinkButton,
 	JourneyMobileBackToPointsButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/forex-intermediate-img-1.jpg'
+import Img from '../../../../assets/crypto-intermediate-img-1.jpg'
 export default function ForexIntermediate() {
 	return (
 		<div className='journey-modal-wrap'>

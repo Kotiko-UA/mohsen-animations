@@ -2,7 +2,7 @@ import {
 	JourneyLinkButton,
 	JourneyMobileBackToPointsButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/stock-intermediate-img.jpg'
+import Img from '../../../../assets/crypto-intermediate-img-1.jpg'
 
 export default function StocksIntermediate() {
 	return (

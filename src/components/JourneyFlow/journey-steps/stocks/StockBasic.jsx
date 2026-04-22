@@ -2,7 +2,7 @@ import {
 	JourneyLinkButton,
 	JourneyMobileBackToPointsButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/stock-base-img.jpg'
+import Img from '../../../../assets/stock-basic-img-1.jpg'
 
 export default function StockBasic() {
 	return (
