@@ -19,9 +19,6 @@ export default function ForexAdvanced2() {
 					</video>
 					<a
 						target='_blank'
-						noopener
-						noopener
-						nofollow
 						href='https://wowpowers.com/stream-player/nate/livestream/1e033a9f-1338-4b08-b22d-2a8a3fa64b4f?reference=TOP_EDUCATORS'
 						className='text-h-18-500 f-a-play-text'>
 						Confluence Strategy
@@ -36,9 +33,6 @@ export default function ForexAdvanced2() {
 					</video>
 					<a
 						target='_blank'
-						noopener
-						noopener
-						nofollow
 						href='https://wowpowers.com/stream-player/reynaldo/livestream/cdbd577d-5132-41d9-a188-845afef4f31e'
 						className='text-h-18-500 f-a-play-text'>
 						Precision Strategy
@@ -53,9 +47,6 @@ export default function ForexAdvanced2() {
 					</video>
 					<a
 						target='_blank'
-						noopener
-						noopener
-						nofollow
 						href='https://wowpowers.com/stream-player/giuliano/livestream/253eef6c-dff1-41cd-84aa-e32a1e6ac473'
 						className='text-h-18-500 f-a-play-text'>
 						Geometry Strategy
@@ -70,9 +61,6 @@ export default function ForexAdvanced2() {
 					className='journey-modal-main-button'>
 					Learning Path
 				</JourneyLinkButton>
-				{/* <JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
-					Live Sessions
-				</JourneyLinkButton> */}
 			</div>
 		</div>
 	)
