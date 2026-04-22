@@ -2,7 +2,7 @@ import {
 	JourneyGoToStepButton,
 	JourneyLinkButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/forex-mastery-1.jpg'
+import Img from '../../../../assets/forex-mastery-img-1.jpg'
 
 export default function ForexProductMasteryStep2() {
 	return (

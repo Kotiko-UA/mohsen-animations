@@ -2,6 +2,8 @@ import {
 	JourneyGoToStepButton,
 	JourneyMobileBackToPointsButton,
 } from '../../JourneyStepControls'
+import Img1 from '../../../../assets/forex-mastery-img-1.jpg'
+import Img2 from '../../../../assets/forex-mastery-img-2.jpg'
 
 export default function ForexProductMasteryStep1() {
 	return (
@@ -13,16 +15,22 @@ export default function ForexProductMasteryStep1() {
 			<div className='journey-launchpad-w1'>
 				<div className='text-h-20-700'>Choose one:</div>
 				<div className='journey-launchpad-w2'>
-					<JourneyGoToStepButton
-						className='journey-modal-assent-button'
-						stepNumber={2}>
-						Product Mastery
-					</JourneyGoToStepButton>
-					<JourneyGoToStepButton
-						className='journey-modal-assent-button'
-						stepNumber={3}>
-						Toolbox Education
-					</JourneyGoToStepButton>
+					<div className='flex-col-8'>
+						<img className='modal-img' src={Img1} alt='decorative' />
+						<JourneyGoToStepButton
+							className='journey-modal-assent-button'
+							stepNumber={2}>
+							Product Mastery
+						</JourneyGoToStepButton>
+					</div>
+					<div className='flex-col-8'>
+						<img className='modal-img' src={Img2} alt='decorative' />
+						<JourneyGoToStepButton
+							className='journey-modal-assent-button'
+							stepNumber={3}>
+							Toolbox Education
+						</JourneyGoToStepButton>
+					</div>
 				</div>
 			</div>
 		</div>
