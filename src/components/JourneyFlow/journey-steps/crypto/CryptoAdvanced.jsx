@@ -2,7 +2,7 @@ import {
 	JourneyLinkButton,
 	JourneyMobileBackToPointsButton,
 } from '../../JourneyStepControls'
-import Img from '../../../../assets/crypto-advanced.jpg'
+import Img from '../../../../assets/crypto-advanced-img-1.jpg'
 
 export default function CryptoAdvanced() {
 	return (
@@ -11,11 +11,13 @@ export default function CryptoAdvanced() {
 				<JourneyMobileBackToPointsButton />
 				<h2 className='text-h-32-700'>WOW Educaton System: Crypto Advanced</h2>
 			</div>
-			<div className='journey-modal-text'>
-				In the Advanced Level, you gain direct access to our professional
-				educators and analysts to explore advanced trading strategies, portfolio
-				management, real-world market scenarios, and emerging trends in the
-				crypto ecosystem.
+			<div className='flex-col-24-40'>
+				<div className='journey-modal-text'>
+					In the Advanced Level, you gain direct access to our professional
+					educators and analysts to explore advanced trading strategies,
+					portfolio management, real-world market scenarios, and emerging trends
+					in the crypto ecosystem.
+				</div>
 			</div>
 			<img src={Img} alt='decor' className='cpms-2-img' />
 			<div className='flex-col-24'>
