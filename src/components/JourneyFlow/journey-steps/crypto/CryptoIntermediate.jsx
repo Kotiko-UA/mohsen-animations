@@ -2,7 +2,7 @@ import {
 	JourneyLinkButton,
 	JourneyMobileBackToPointsButton,
 } from '../../JourneyStepControls'
-
+import Img from '../../../../assets/crypto-intermediate-img-1.jpg'
 export default function CryptoIntermediate() {
 	return (
 		<div className='journey-modal-wrap'>
@@ -12,11 +12,15 @@ export default function CryptoIntermediate() {
 					WOW Education System: Crypto Intermediate
 				</h2>
 			</div>
-			<p className='journey-modal-text'>
-				The Intermediate Level focuses on practical market knowledge, including
-				crypto market cycles, technical analysis, on-chain fundamentals, DeFi
-				concepts, and risk management strategies specific to digital assets.
-			</p>
+			<div className='flex-col-24-40'>
+				<p className='journey-modal-text'>
+					The Intermediate Level focuses on practical market knowledge,
+					including crypto market cycles, technical analysis, on-chain
+					fundamentals, DeFi concepts, and risk management strategies specific
+					to digital assets.
+				</p>
+				<img src={Img} alt='decorative' className='modal-img' />
+			</div>
 			<div className='flex-col-24'>
 				<JourneyLinkButton
 					link={

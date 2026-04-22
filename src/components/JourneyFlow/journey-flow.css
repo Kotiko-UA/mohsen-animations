@@ -651,6 +651,10 @@
   align-items: center;
 }
 
+.journey-launchpad-w2 div {
+  width: 100%;
+}
+
 /* ---------- Crypto ---------- */
 .journey-confirm-list {
   display: flex;
@@ -742,7 +746,7 @@
   max-width: 567px;
   width: 100%;
   height: auto;
-  border-radius: 42px;
+  border-radius: 16px;
   margin: 0 auto;
 }
 
