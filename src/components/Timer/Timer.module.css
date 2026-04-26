@@ -6,7 +6,7 @@
 
   width: 150px;
   height: 100px;
-  z-index: 11;
+  z-index: 12;
   opacity: 1;
   transition: opacity 0.1s linear;
 }

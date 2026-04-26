@@ -292,14 +292,21 @@ section {
 }
 
 /* ---------- extra decorative block ---------- */
-.wow-power {
+.wow-power-link {
   position: absolute;
   top: 18px;
   left: 50%;
+  z-index: 11;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.wow-power {
+  position: relative;
+
   width: 238px;
   height: 298px;
-  z-index: 5;
-  transform: translateX(-50%);
+
 }
 
 .can-click-image {

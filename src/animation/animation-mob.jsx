@@ -214,14 +214,11 @@ export const AnimationMob = () => {
 					<ClickBanner hidden={isOpened} />
 					<Commitments hidden={!showCommitments} />
 					<Timer targetDate={TARGET_DATE} hidden={isOpened} />
-
-					<img
-						className={`wow-power-mob ${
-							isWowPowerHidden ? 'wow-power-mob-hidden' : ''
-						}`}
-						src={WoWPower}
-						alt='WoWPower'
-					/>
+					<a
+						href='https://league.sagemaster.com/'
+						className={`wow-power-link-mob ${isWowPowerHidden ? 'wow-power-mob-hidden' : ''}`}>
+						<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
+					</a>
 
 					<img className={mainImageClassName} src={mainImgSrc} alt='Main' />
 

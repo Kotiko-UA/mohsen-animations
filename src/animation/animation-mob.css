@@ -82,14 +82,13 @@ section {
 }
 
 /* ---------- extra decorative block ---------- */
-.wow-power-mob {
+.wow-power-link-mob {
   position: absolute;
   top: 241px;
   left: 50%;
-  width: 108px;
-  height: 137px;
-  z-index: 5;
+  z-index: 21;
   transform: translateX(-50%);
+
   transition: opacity 2s linear;
 }
 
@@ -97,6 +96,15 @@ section {
   opacity: 0;
   transition: none;
 }
+
+.wow-power-mob {
+  position: relative;
+
+  width: 108px;
+  height: 137px;
+}
+
+
 
 .can-click-image-mob {
   position: absolute;
@@ -139,13 +147,17 @@ section {
     height: 576px;
   }
 
-  .wow-power-mob {
+  .wow-power-link-mob {
     position: absolute;
     top: 4px;
     left: 362px;
+    transform: translateX(0);
+  }
+
+  .wow-power-mob {
     width: 207px;
     height: 254px;
-    transform: translateX(0);
+
   }
 
   .hit-area-button-mob {

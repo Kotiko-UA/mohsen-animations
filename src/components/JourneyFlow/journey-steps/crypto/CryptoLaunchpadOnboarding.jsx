@@ -34,7 +34,7 @@ export default function CryptoLaunchpadOnboarding() {
 				</JourneyLinkButton>
 				<JourneyLinkButton
 					link={
-						'https://wowpowers.com/academy-player/ca217843-829e-44d7-ae3f-7c8a6e4e3147'
+						'https://augerafiles-my.sharepoint.com/personal/mohsenh_augmentedera_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fmohsenh_augmentedera_com%2FDocuments%2FL%20%26%20D%2F.story%20works%2FOnboarding%20videos%2FWow%20and%20SageMaster%20Welcome%20Tour_3.mp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp.Web&referrerScenario=AddressBarCopied.view.4a4d2935-c1ef-486f-82fc-b2ecad51447a'
 					}
 					className='journey-modal-assent-button'>
 					Welcome Tour

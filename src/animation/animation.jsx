@@ -202,7 +202,11 @@ export const Animation = () => {
 					<Commitments hidden={mode} />
 					<Timer targetDate='01.05.2026' hidden={mode} />
 
-					{!mode && <img className='wow-power' src={WoWPower} alt='WoWPower' />}
+					{!mode && (
+						<a href='https://league.sagemaster.com/' className='wow-power-link'>
+							<img className='wow-power' src={WoWPower} alt='WoWPower' />
+						</a>
+					)}
 
 					<img
 						className={`main-img ${stateClass}`}
