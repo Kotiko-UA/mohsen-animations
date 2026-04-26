@@ -1,5 +1,7 @@
 import { JourneyLinkButton, JourneyPrevButton } from '../../JourneyStepControls'
-import Img from '../../../../assets/poster.jpg'
+import Img from '../../../../assets/poster-1.jpg'
+import Img2 from '../../../../assets/poster-2.jpg'
+import Img3 from '../../../../assets/poster-3.jpg'
 export default function ForexAdvanced2() {
 	return (
 		<div className='journey-modal-wrap'>
@@ -25,7 +27,7 @@ export default function ForexAdvanced2() {
 					</a>
 				</div>
 				<div className='f-a-play-wrap'>
-					<video className='f-a-play-img' poster={Img} controls>
+					<video className='f-a-play-img' poster={Img2} controls>
 						<source
 							src='https://customer-53h132zv3w4ijpjn.cloudflarestream.com/c6f38777da322567d9479e976c8acf4e/manifest/video.m3u8'
 							type='video/mp4'
@@ -39,7 +41,7 @@ export default function ForexAdvanced2() {
 					</a>
 				</div>
 				<div className='f-a-play-wrap'>
-					<video className='f-a-play-img' poster={Img} controls>
+					<video className='f-a-play-img' poster={Img3} controls>
 						<source
 							src='https://customer-53h132zv3w4ijpjn.cloudflarestream.com/d2c2c6e9b82fa824e789ec7fbe88488d/manifest/video.m3u8'
 							type='video/mp4'
