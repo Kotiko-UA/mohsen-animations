@@ -22,7 +22,9 @@ const buildCommitments = () => {
 }
 
 export default function Commitments({ hidden }) {
-	const [isCollapsed, setIsCollapsed] = useState(() => window.innerWidth <= 1280)
+	const [isCollapsed, setIsCollapsed] = useState(
+		() => window.innerWidth <= 1023,
+	)
 	const isHidden = hidden || isCollapsed
 	const [commitments, setCommitments] = useState(buildCommitments)
 

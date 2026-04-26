@@ -193,7 +193,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
   .wrapper {
     top: 289px;
     width: 150px;

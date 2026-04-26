@@ -5,7 +5,7 @@ import { AnimationMob } from './animation/animation-mob'
 import './App.css'
 
 function App() {
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 1279)
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023)
 
 	useEffect(() => {
 		let rafId = null
@@ -13,7 +13,7 @@ function App() {
 		const handleResize = () => {
 			if (rafId) cancelAnimationFrame(rafId)
 			rafId = requestAnimationFrame(() => {
-				setIsMobile(window.innerWidth <= 1279)
+				setIsMobile(window.innerWidth <= 1023)
 			})
 		}
 

@@ -94,7 +94,7 @@
     linear-gradient(90deg, #ff8a3d 0%, #8b5cf6 50%, #00d5ff 100%) border-box;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1023px) {
 
   .wrapper {
     top: 24px;
