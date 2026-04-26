@@ -102,6 +102,9 @@ export const AnimationMob = () => {
 	const isWowPowerHidden =
 		journeyScreen === 'points' || journeyScreen === 'step'
 
+	const isWowPowerBehind =
+		isJourneyVisible && !!journeyScreen && journeyScreen !== 'selector'
+
 	const mainImageClassName = useMemo(
 		() =>
 			['main-img-mob', mode ? `${mode}-mode` : '', shouldZoom ? 'zoomed' : '']
@@ -216,7 +219,7 @@ export const AnimationMob = () => {
 					<Timer targetDate={TARGET_DATE} hidden={isOpened} />
 					<a
 						href='https://league.sagemaster.com/'
-						className={`wow-power-link-mob ${isWowPowerHidden ? 'wow-power-mob-hidden' : ''}`}>
+						className={`wow-power-link-mob ${isWowPowerHidden ? 'wow-power-mob-hidden' : ''} ${isWowPowerBehind ? 'wow-power-mob-behind' : ''}`}>
 						<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
 					</a>
 

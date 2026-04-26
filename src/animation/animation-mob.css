@@ -97,6 +97,10 @@ section {
   transition: none;
 }
 
+.wow-power-mob-behind {
+  z-index: 19;
+}
+
 .wow-power-mob {
   position: relative;
 
