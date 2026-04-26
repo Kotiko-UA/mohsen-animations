@@ -634,7 +634,7 @@ export default function JourneyFlowMobile({
 						const completed = isPointCompleted(safeProgress, point.id)
 						const isActive = point.id === selectedPoint?.id
 						const pointImageData = getPointImageData({ isActive, completed })
-						const pointLabel = isActive ? point.title : pointImageData.label
+						const pointLabel = isActive || completed ? point.title : ''
 
 						return (
 							<button
