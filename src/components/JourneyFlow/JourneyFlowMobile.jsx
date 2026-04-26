@@ -9,6 +9,7 @@ import ArrowWhite from '../../assets/arrow-left.svg?react'
 import Dot from '../../assets/white-dot.svg?react'
 import Lock from '../../assets/lock.svg?react'
 import WhiteDot from '../../assets/white-dot.svg?react'
+import CheckIcon from '../../assets/check-green.svg?react'
 import GateClose from '../../assets/step-closed.avif'
 import GateActive from '../../assets/step-active.avif'
 import GateCompleted from '../../assets/step-completed.avif'
@@ -660,6 +661,9 @@ export default function JourneyFlowMobile({
 											!isActive && completed ? 'done' : ''
 										}`}>
 										{isActive && <WhiteDot />}
+										{!isActive && completed && (
+											<CheckIcon className='journey-point-check-icon' />
+										)}
 										{pointLabel}
 									</div>
 								)}

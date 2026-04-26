@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { JourneyStepProvider } from './JourneyStepControls'
 import './journey-flow.css'
 import GateClose from '../../assets/step-closed.avif'
 import GateActive from '../../assets/step-active.avif'
 import GateCompleted from '../../assets/step-completed.avif'
 import WhiteDot from '../../assets/white-dot.svg?react'
+import CheckIcon from '../../assets/check-green.svg?react'
 
 const createEmptyProgress = () => ({
 	completedPointIds: [],
@@ -127,10 +128,10 @@ function JourneyFlowContent({
 
 	// Distinguishes the initial popup open (float-in box → delayed content) from step navigation (immediate fade-in).
 	// 800ms covers the 0.75s float-in so any step change after that gets the faster navigation animation.
-	const isFirstRenderRef = useRef(true)
+	const [isFirstRender, setIsFirstRender] = useState(true)
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			isFirstRenderRef.current = false
+			setIsFirstRender(false)
 		}, 800)
 		return () => clearTimeout(timer)
 	}, [])
@@ -417,7 +418,7 @@ function JourneyFlowContent({
 								? 'completed gate'
 								: 'closed gate'
 
-						const pointLabel = isActive ? point.title : completed ? 'Done' : ''
+						const pointLabel = isActive || completed ? point.title : ''
 
 						return (
 							<button
@@ -444,6 +445,9 @@ function JourneyFlowContent({
 											!isActive && completed ? 'done' : ''
 										}`}>
 										{isActive && <WhiteDot />}
+										{!isActive && completed && (
+											<CheckIcon className='journey-point-check-icon' />
+										)}
 										{pointLabel}
 									</div>
 								)}
@@ -459,7 +463,7 @@ function JourneyFlowContent({
 				<div className='journey-step-view'>
 					<div
 						key={`${activePoint?.id ?? 'intro'}-${currentStepIndex}`}
-						className={`journey-step-content ${isFirstRenderRef.current ? 'step-enter-initial' : 'step-enter'}`}>
+						className={`journey-step-content ${isFirstRender ? 'step-enter-initial' : 'step-enter'}`}>
 						<JourneyStepProvider value={{ actions, state }}>
 							{getStepView({
 								step: activeStep,
@@ -473,9 +477,7 @@ function JourneyFlowContent({
 					</div>
 
 					{nestedPopup && (
-						<div
-							className='journey-nested-popup-overlay'
-							onClick={closePopup}>
+						<div className='journey-nested-popup-overlay' onClick={closePopup}>
 							<div
 								className='journey-nested-popup'
 								onClick={e => e.stopPropagation()}>

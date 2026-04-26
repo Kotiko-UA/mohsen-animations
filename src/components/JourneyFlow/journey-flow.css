@@ -192,6 +192,13 @@
   flex-shrink: 0;
 }
 
+.journey-point-label.done svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+
 /* ---------- Mobile point positions ---------- */
 .crypto .journey-points,
 .forex .journey-points {
