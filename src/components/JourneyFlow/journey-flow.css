@@ -174,7 +174,7 @@
   backdrop-filter: blur(10px);
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 102%;
   white-space: nowrap;
@@ -319,7 +319,7 @@
   color: #fff;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 122%;
   cursor: pointer;
@@ -364,18 +364,33 @@
   cursor: not-allowed;
 }
 
+.journey-modal-main-button.how-much-b {
+  font-size: 18px;
+  height: 46px;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.journey-modal-assent-button.how-much-b {
+  font-size: 18px;
+  font-weight: 500;
+  height: 46px;
+  width: fit-content;
+  white-space: nowrap;
+}
+
 .journey-modal-main-button.h40,
 .journey-modal-assent-button.h40 {
   height: 40px;
   padding: 8px 24px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .journey-modal-main-button.h33,
 .journey-modal-assent-button.h33 {
   height: 33px;
   padding: 8px 16px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .journey-modal-flex-between {
@@ -385,7 +400,7 @@
 }
 
 .text-h-32-700 {
-  color: #282828;
+  color: #521280;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -395,15 +410,15 @@
 .text-h-20-700 {
   color: #282828;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 126%;
 }
 
 .text-h-32-700-opacity {
-  color: #282828;
+  color: #521280;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: normal;
   opacity: 0.7;
@@ -411,7 +426,7 @@
 
 .text-h-16-500 {
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #282828;
   line-height: 126%;
@@ -419,7 +434,7 @@
 
 .text-h-16-700 {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #282828;
   line-height: 126%;
@@ -435,7 +450,7 @@
 
 .text-h-24-500 {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   color: #282828;
   line-height: 126%;
@@ -443,7 +458,7 @@
 
 .text-p-14 {
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: #282828;
   line-height: 116%;
@@ -511,7 +526,7 @@
 .journey-modal-text {
   color: #282828;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 116%;
 }
@@ -532,18 +547,17 @@
 
 .journey-modal-fs-subblock {
   display: flex;
-  padding: 12px;
+  padding: 16px;
   flex-direction: column;
   gap: 8px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.80);
+  background: #FAFAFA;
 }
 
 .journey-modal-fs-you-get {
   color: #282828;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   line-height: normal;
 }
@@ -563,7 +577,7 @@
   gap: 6px;
   justify-content: center;
   border-right: none;
-  border-bottom: 1px solid #04D4F9;
+  border-bottom: 1px solid rgba(207, 207, 207, 0.40);
 }
 
 .journey-modal-fs-sb-1-top {
@@ -597,14 +611,14 @@
 
 .journey-modal-fs-sb-1-top>p {
   max-width: 122px;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Montserrat", sans-serif;
 }
 
 .journey-modal-fs-sb-1-bottom {
   color: #282828;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 116%;
 }
@@ -622,13 +636,13 @@
 .journey-modal-fs-sb-2 li {
   color: #282828;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: normal;
 }
 
 .journey-modal-fs-sb-2>li {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -725,7 +739,7 @@
 
 .journey-confirm-label {
   color: #282828;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.45;
   font-weight: 400;
   max-width: 430px;
@@ -776,7 +790,7 @@
 .f-a-play-text {
   text-align: center;
   padding: 8px 12px;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -812,7 +826,7 @@
   .journey-modal-fs-sb-1 {
     padding-right: 12px;
     padding-bottom: 0;
-    border-right: 1px solid #FFF;
+    border-right: 1px solid rgba(207, 207, 207, 0.40);
     border-bottom: none;
   }
 
@@ -906,7 +920,6 @@
 
 @media screen and (min-width: 1024px) {
   .journey-modal-wrap {
-    gap: 40px;
     max-height: none;
     overflow-y: visible;
   }
@@ -1009,7 +1022,7 @@
   }
 
   .text-h-16-500 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .text-h-24-500 {
@@ -1017,7 +1030,7 @@
   }
 
   .journey-modal-text {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 126%;
   }
 
@@ -1050,7 +1063,7 @@
   }
 
   .journey-modal-fs-sb-2>li {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .journey-modal-time-options {

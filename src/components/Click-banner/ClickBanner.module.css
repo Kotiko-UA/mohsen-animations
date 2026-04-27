@@ -60,7 +60,7 @@
 .text {
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 116%;
 }
 
@@ -102,7 +102,7 @@
   }
 
   .text {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 126%;
   }
 }
