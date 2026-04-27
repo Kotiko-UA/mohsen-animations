@@ -33,7 +33,7 @@ export default function ForexIntermediate() {
 				</JourneyLinkButton>
 				<JourneyLinkButton
 					link={
-						'https://wowpowers.com/schedule?subcategoryId=fcd36230-c623-4a51-b187-5f6dbd47c67b'
+						'https://wowpowers.com/schedule?subcategoryId=3a1f613e-0b36-4ecc-aa49-e45987c01cda'
 					}
 					className='journey-modal-assent-button'>
 					Live Sessions

@@ -203,7 +203,11 @@ export const Animation = () => {
 					<Timer targetDate='01.05.2026' hidden={mode} />
 
 					{!mode && (
-						<a href='https://league.sagemaster.com/' className='wow-power-link'>
+						<a
+							href='https://league.sagemaster.com/'
+							target='_blank'
+							rel='noopener noreferrer nofollow'
+							className='wow-power-link'>
 							<img className='wow-power' src={WoWPower} alt='WoWPower' />
 						</a>
 					)}

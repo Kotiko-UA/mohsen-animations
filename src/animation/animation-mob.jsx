@@ -219,6 +219,8 @@ export const AnimationMob = () => {
 					<Timer targetDate={TARGET_DATE} hidden={isOpened} />
 					<a
 						href='https://league.sagemaster.com/'
+						rel='noopener noreferrer nofollow'
+						target='_blank'
 						className={`wow-power-link-mob ${isWowPowerHidden ? 'wow-power-mob-hidden' : ''} ${isWowPowerBehind ? 'wow-power-mob-behind' : ''}`}>
 						<img className='wow-power-mob' src={WoWPower} alt='WoWPower' />
 					</a>
