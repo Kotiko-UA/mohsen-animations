@@ -418,8 +418,6 @@ function JourneyFlowContent({
 								? 'completed gate'
 								: 'closed gate'
 
-						const pointLabel = isActive || completed ? point.title : ''
-
 						return (
 							<button
 								key={point.id}
@@ -439,18 +437,13 @@ function JourneyFlowContent({
 									<img src={pointImage} alt={pointAlt} />
 								</div>
 
-								{pointLabel && (
-									<div
-										className={`journey-point-label ${
-											!isActive && completed ? 'done' : ''
-										}`}>
-										{isActive && <WhiteDot />}
-										{!isActive && completed && (
-											<CheckIcon className='journey-point-check-icon' />
-										)}
-										{pointLabel}
-									</div>
-								)}
+								<div className={`journey-point-label ${isActive && 'active'}`}>
+									{isActive && <WhiteDot />}
+									{!isActive && completed && (
+										<CheckIcon className='journey-point-check-icon' />
+									)}
+									{point.title}
+								</div>
 							</button>
 						)
 					})}

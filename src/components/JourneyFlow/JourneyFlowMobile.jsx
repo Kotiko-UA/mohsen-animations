@@ -634,7 +634,6 @@ export default function JourneyFlowMobile({
 						const completed = isPointCompleted(safeProgress, point.id)
 						const isActive = point.id === selectedPoint?.id
 						const pointImageData = getPointImageData({ isActive, completed })
-						const pointLabel = isActive || completed ? point.title : ''
 
 						return (
 							<button
@@ -654,19 +653,13 @@ export default function JourneyFlowMobile({
 								<div className='journey-point-image-wrap'>
 									<img src={pointImageData.image} alt={pointImageData.alt} />
 								</div>
-
-								{pointLabel && (
-									<div
-										className={`journey-point-label ${
-											!isActive && completed ? 'done' : ''
-										}`}>
-										{isActive && <WhiteDot />}
-										{!isActive && completed && (
-											<CheckIcon className='journey-point-check-icon' />
-										)}
-										{pointLabel}
-									</div>
-								)}
+								<div className={`journey-point-label ${isActive && 'active'}`}>
+									{isActive && <WhiteDot />}
+									{!isActive && completed && (
+										<CheckIcon className='journey-point-check-icon' />
+									)}
+									{point.title}
+								</div>
 							</button>
 						)
 					})}

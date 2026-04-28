@@ -169,7 +169,7 @@
   gap: 8px;
   padding: 4px 8px;
   border-radius: 60px;
-  background: #49ADDE;
+  background: rgba(158, 91, 249, 0.52);
   box-shadow: 8px 12px 26.5px 0 rgba(30, 12, 55, 0.66);
   backdrop-filter: blur(10px);
   color: #fff;
@@ -180,8 +180,9 @@
   white-space: nowrap;
 }
 
-.journey-point-label.done {
-  background: rgba(158, 91, 249, 0.52);
+
+.journey-point-label.active {
+  background: #49ADDE;
 }
 
 .journey-point-label svg {
@@ -231,13 +232,13 @@
 }
 
 .journey-point-button.crypto-point-4 {
-  right: 224px;
+  right: 200px;
   top: 249px;
 }
 
 .journey-point-button.crypto-point-5 {
-  right: 250px;
-  top: 181px;
+  right: 214px;
+  top: 156px;
 }
 
 .journey-point-button.forex-point-1 {
@@ -252,7 +253,7 @@
 
 .journey-point-button.forex-point-3 {
   left: 107px;
-  bottom: 428px;
+  bottom: 416px;
 }
 
 .journey-point-button.forex-point-4 {
@@ -261,8 +262,8 @@
 }
 
 .journey-point-button.forex-point-5 {
-  top: 158px;
-  left: 123px;
+  top: 136px;
+  left: 141px;
 }
 
 .journey-point-button.stocks-point-1 {
@@ -281,7 +282,7 @@
 }
 
 .journey-point-button.stocks-point-4 {
-  left: 246px;
+  left: 215px;
   bottom: 557px;
 }
 
