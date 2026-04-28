@@ -132,7 +132,7 @@ function JourneyFlowContent({
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setIsFirstRender(false)
-		}, 800)
+		}, 1200)
 		return () => clearTimeout(timer)
 	}, [])
 
