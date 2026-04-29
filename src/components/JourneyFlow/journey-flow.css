@@ -366,17 +366,20 @@
 }
 
 .journey-modal-main-button.how-much-b {
-  font-size: 18px;
+  width: 148px;
   height: 46px;
-  width: fit-content;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
   white-space: nowrap;
 }
 
 .journey-modal-assent-button.how-much-b {
-  font-size: 18px;
-  font-weight: 500;
+  width: 148px;
   height: 46px;
-  width: fit-content;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
   white-space: nowrap;
 }
 
@@ -435,7 +438,7 @@
 
 .text-h-16-700 {
   font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #282828;
   line-height: 126%;
@@ -546,15 +549,6 @@
   text-align: center;
 }
 
-.journey-modal-fs-subblock {
-  display: flex;
-  padding: 16px;
-  flex-direction: column;
-  gap: 8px;
-  border-radius: 12px;
-  background: #FAFAFA;
-}
-
 .journey-modal-fs-you-get {
   color: #282828;
   font-family: "Montserrat", sans-serif;
@@ -563,89 +557,7 @@
   line-height: normal;
 }
 
-.journey-modal-fs-sb-w {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-}
 
-.journey-modal-fs-sb-1 {
-  display: flex;
-  padding-right: 0;
-  padding-bottom: 12px;
-  flex-direction: column;
-  gap: 6px;
-  justify-content: center;
-  border-right: none;
-  border-bottom: 1px solid rgba(207, 207, 207, 0.40);
-}
-
-.journey-modal-fs-sb-1-top {
-  height: 58px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 6px;
-}
-
-.journey-modal-fs-sb-1-top span {
-  color: #282828;
-  font-family: "Montserrat", sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.journey-modal-fs-sb-1-top>span {
-  font-size: 44px;
-  font-family: "Montserrat", sans-serif;
-}
-
-.journey-modal-fs-sb-1-top p {
-  color: #282828;
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.journey-modal-fs-sb-1-top>p {
-  max-width: 122px;
-  font-size: 18px;
-  font-family: "Montserrat", sans-serif;
-}
-
-.journey-modal-fs-sb-1-bottom {
-  color: #282828;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 116%;
-}
-
-.journey-modal-fs-sb-2 {
-  width: 100%;
-  max-width: 301px;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  list-style: disc;
-}
-
-.journey-modal-fs-sb-2 li {
-  color: #282828;
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.journey-modal-fs-sb-2>li {
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-}
 
 .journey-modal-ht-subwrap {
   display: flex;
@@ -799,6 +711,40 @@
   display: flex;
 }
 
+.journey-modal-fs-sb {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 12px;
+  background: #FAFAFA;
+}
+
+.journey-modal-fs-sb-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 60px;
+  border-bottom: 1px solid rgba(207, 207, 207, 0.40);
+
+  text-align: center;
+
+}
+
+.journey-modal-fs-sb-1:last-child {
+  border-bottom: none;
+}
+
+.journey-modal-fs-sb-1-st {
+  color: #282828;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
 @media screen and (min-width: 768px) {
   .journey-modal-wrap {
     max-height: 500px;
@@ -816,19 +762,6 @@
 
   .modal-img-flex-wrap img {
     max-width: 249px;
-  }
-
-  .journey-modal-fs-sb-w {
-    flex-direction: row;
-    gap: 18px;
-    justify-content: space-between;
-  }
-
-  .journey-modal-fs-sb-1 {
-    padding-right: 12px;
-    padding-bottom: 0;
-    border-right: 1px solid rgba(207, 207, 207, 0.40);
-    border-bottom: none;
   }
 
   .flex-col-24 {
@@ -916,6 +849,32 @@
 
   .cr-l-dis-img {
     width: 266px;
+  }
+
+  .text-h-16-700 {
+    font-size: 18px;
+  }
+
+  .journey-modal-fs-sb {
+    flex-direction: row;
+  }
+
+  .journey-modal-fs-sb>div {
+    width: 100%;
+  }
+
+  .journey-modal-fs-sb>div:first-child {
+    border-right: 1px solid rgba(207, 207, 207, 0.40);
+  }
+
+  .journey-modal-fs-sb-1 {
+    height: 72px;
+    border-bottom: none;
+  }
+
+  .journey-modal-time-options {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -1036,41 +995,9 @@
   }
 
 
-  .journey-modal-fs-subblock {
-    padding: 24px;
-    gap: 12px;
-  }
-
   .journey-modal-fs-you-get {
     font-size: 20px;
   }
-
-
-  .journey-modal-fs-sb-1-top {
-    justify-content: center;
-  }
-
-  .journey-modal-fs-sb-1-top>span {
-    font-size: 48px;
-  }
-
-  .journey-modal-fs-sb-1-top>p {
-    max-width: none;
-    font-size: 20px;
-  }
-
-  .journey-modal-fs-sb-1-bottom {
-    line-height: normal;
-  }
-
-  .journey-modal-fs-sb-2>li {
-    font-size: 18px;
-  }
-
-  .journey-modal-time-options {
-    display: flex;
-  }
-
 
 
   .journey-modal-dis-sw {

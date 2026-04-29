@@ -33,23 +33,26 @@ export default function CryptoStartStep() {
 					<span>+2,500</span> already enrolled
 				</p>
 			</div>
-			<div className='journey-modal-fs-subblock'>
-				<div className='journey-modal-fs-you-get'>You get:</div>
-				<div className='journey-modal-fs-sb-w'>
+			<div className='journey-modal-fs-sb'>
+				<div>
 					<div className='journey-modal-fs-sb-1'>
-						<div className='journey-modal-fs-sb-1-top'>
-							<span>6</span>
-							<p>comprehensive sections</p>
+						<div className='text-h-16-700'>5 Comprehensive sections</div>
+						<div className='journey-modal-fs-sb-1-st'>
+							Learn Wall Street & Enter the market
 						</div>
-						<p className='journey-modal-fs-sb-1-bottom'>
-							Learn Cryptocurrencies & Enter the Market
-						</p>
 					</div>
-					<ul className='journey-modal-fs-sb-2'>
-						<li>6-12 months</li>
-						<li>Flexible schedule</li>
-						<li>Beginner | Intermediate | Advanced</li>
-					</ul>
+					<div className='journey-modal-fs-sb-1'>
+						<div className='text-h-16-700'>Levels</div>
+						<div className='journey-modal-fs-sb-1-st'>
+							Beginner | Intermediate | Advanced
+						</div>
+					</div>
+				</div>
+				<div>
+					<div className='journey-modal-fs-sb-1 text-h-16-700'>
+						Flexible schedule
+					</div>
+					<div className='journey-modal-fs-sb-1 text-h-16-700'>6-12 months</div>
 				</div>
 			</div>
 		</div>

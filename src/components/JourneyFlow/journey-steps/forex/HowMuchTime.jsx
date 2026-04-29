@@ -78,8 +78,8 @@ export default function HowMuchTime() {
 								type='button'
 								className={
 									isActive
-										? 'journey-modal-main-button h40'
-										: 'journey-modal-assent-button h40'
+										? 'journey-modal-main-button how-much-b'
+										: 'journey-modal-assent-button how-much-b'
 								}
 								onClick={() => handleCommitmentClick(option)}>
 								{option.label}
