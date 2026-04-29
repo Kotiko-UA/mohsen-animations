@@ -325,6 +325,7 @@
   line-height: 122%;
   cursor: pointer;
   transition: background-color 0.3s linear;
+  white-space: nowrap;
 }
 
 .journey-modal-main-button {
