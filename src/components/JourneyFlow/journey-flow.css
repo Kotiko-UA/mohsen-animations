@@ -365,6 +365,14 @@
   cursor: not-allowed;
 }
 
+.journey-modal-main-button>svg,
+.journey-modal-assent-button>svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.journey-modal-assent-button.how-much-b,
 .journey-modal-main-button.how-much-b {
   width: 148px;
   height: 46px;
@@ -374,14 +382,6 @@
   white-space: nowrap;
 }
 
-.journey-modal-assent-button.how-much-b {
-  width: 148px;
-  height: 46px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 120%;
-  white-space: nowrap;
-}
 
 .journey-modal-main-button.h40,
 .journey-modal-assent-button.h40 {
@@ -577,7 +577,8 @@
   gap: 24px;
 }
 
-.journey-launchpad-w2 {
+.journey-launchpad-w2,
+.journey-launchpad-w3 {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -585,7 +586,8 @@
   align-items: center;
 }
 
-.journey-launchpad-w2 div {
+.journey-launchpad-w2 div,
+.journey-launchpad-w3 div {
   width: 100%;
 }
 
@@ -628,8 +630,8 @@
 }
 
 .journey-confirm-checkbox:checked {
-  background: #7c4dff;
-  border-color: #7c4dff;
+  background: #521280;
+  border-color: #521280;
   box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.18);
 }
 
@@ -750,9 +752,14 @@
     max-height: 500px;
   }
 
-  .journey-launchpad-w2 {
+  .journey-launchpad-w2,
+  .journey-launchpad-w3 {
     gap: 12px;
     flex-direction: row;
+  }
+
+  .journey-launchpad-w3 div {
+    width: 200px;
   }
 
   .modal-img-flex-wrap {

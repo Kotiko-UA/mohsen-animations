@@ -4,6 +4,7 @@ import {
 } from '../../JourneyStepControls'
 import Img1 from '../../../../assets/crypto-mastery-img-1.jpg'
 import Img2 from '../../../../assets/crypto-mastery-img-2.jpg'
+import PlusIcon from '../../../../assets/button-plus-icon.svg?react'
 
 export default function CryptoProductMasteryStep1() {
 	return (
@@ -18,17 +19,19 @@ export default function CryptoProductMasteryStep1() {
 					<div className='flex-col-8'>
 						<img className='modal-img' src={Img1} alt='decorative' />
 						<JourneyGoToStepButton
-							className='journey-modal-assent-button'
+							className='journey-modal-main-button'
 							stepNumber={2}>
 							Product Mastery
+							<PlusIcon />
 						</JourneyGoToStepButton>
 					</div>
 					<div className='flex-col-8'>
 						<img className='modal-img' src={Img2} alt='decorative' />
 						<JourneyGoToStepButton
-							className='journey-modal-assent-button'
+							className='journey-modal-main-button'
 							stepNumber={3}>
 							Toolbox Education
+							<PlusIcon />
 						</JourneyGoToStepButton>
 					</div>
 				</div>
