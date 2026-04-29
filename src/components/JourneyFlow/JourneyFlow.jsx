@@ -437,7 +437,10 @@ function JourneyFlowContent({
 									<img src={pointImage} alt={pointAlt} />
 								</div>
 
-								<div className={`journey-point-label ${isActive && 'active'}`}>
+								<div
+									className={`journey-point-label ${isActive ? 'active' : ''} ${
+										!isActive && completed ? 'done' : ''
+									}`}>
 									{isActive && <WhiteDot />}
 									{!isActive && completed && (
 										<CheckIcon className='journey-point-check-icon' />

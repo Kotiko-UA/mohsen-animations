@@ -41,7 +41,11 @@ export default function ForexLaunchpadBroker1() {
 				<JourneyNextButton className='journey-modal-main-button'>
 					Continue
 				</JourneyNextButton>
-				<JourneyLinkButton link={'#'} className='journey-modal-assent-button'>
+				<JourneyLinkButton
+					link={
+						'https://wowpowers.com/path/665888cf-5eb8-4d65-91fc-52811b05614d'
+					}
+					className='journey-modal-assent-button'>
 					Tutorial
 				</JourneyLinkButton>
 			</div>
