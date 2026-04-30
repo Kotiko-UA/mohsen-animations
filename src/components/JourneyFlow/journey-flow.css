@@ -662,12 +662,6 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.journey-modal-dis-sw {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-self: stretch;
-}
 
 .journey-modal-dis-button {
   width: 64px;
@@ -687,19 +681,40 @@
   margin: 0 auto;
 }
 
+.journey-modal-dis-sw {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+}
+
 .f-a-play-wrap {
   display: flex;
   flex-direction: column;
-  width: 308px;
-  border-radius: 4px;
+  gap: 16px;
+  width: 100%;
+  height: auto;
+  padding: 10px 10px 12px 10px;
+
+  border-radius: 12px;
   border: 1px solid #521280;
-  background: rgba(255, 255, 255, 0.02);
+  background-color: #FFF;
+  box-shadow: 0 0 24px 0 rgba(134, 101, 255, 0.50);
   overflow: hidden;
 }
 
-.f-a-play-img {
-  width: 308px;
-  height: 172px;
+.f-a-play-wrap>p {
+  color: #282828;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 126%;
+}
+
+.f-a-play-video {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -883,6 +898,16 @@
   .journey-modal-time-options {
     display: flex;
     justify-content: center;
+  }
+
+  .f-a-play-wrap {
+    width: 200px;
+    height: 162px;
+  }
+
+  .f-a-play-video {
+    width: 180px;
+    height: 101px;
   }
 }
 
