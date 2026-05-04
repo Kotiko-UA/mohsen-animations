@@ -30,10 +30,9 @@ export default function CryptoIntermediate() {
 					Live Sessions
 				</JourneyLinkButton>
 				<JourneyLinkButton
-					disabled
-					link={'#'}
+					link={'https://wowpowers.com/catalog/paths/30c3ddc5-6b60-4356-922d-0166240dfafa'}
 					className='journey-modal-assent-button'>
-					Learning Path (Coming Soon)
+					Learning Path
 				</JourneyLinkButton>
 			</div>
 		</div>
