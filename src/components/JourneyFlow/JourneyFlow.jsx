@@ -127,12 +127,12 @@ function JourneyFlowContent({
 	const [nestedPopup, setNestedPopup] = useState(null)
 
 	// Distinguishes the initial popup open (float-in box → delayed content) from step navigation (immediate fade-in).
-	// 800ms covers the 0.75s float-in so any step change after that gets the faster navigation animation.
+	// 1400ms covers the 1.25s float-in so any step change after that gets the faster navigation animation.
 	const [isFirstRender, setIsFirstRender] = useState(true)
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setIsFirstRender(false)
-		}, 1200)
+		}, 1400)
 		return () => clearTimeout(timer)
 	}, [])
 

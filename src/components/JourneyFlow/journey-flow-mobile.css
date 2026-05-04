@@ -302,7 +302,7 @@
 .journey-mobile-river-image,
 .journey-mobile-points-view,
 .journey-mobile-step-view {
-	animation: journey-content-fade-in 0.35s linear;
+	animation: journey-content-fade-in 0.75s linear;
 }
 
 @keyframes journey-content-fade-in {

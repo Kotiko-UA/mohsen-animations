@@ -16,7 +16,7 @@
   border: 1px solid #434343;
   background: #FFF;
 
-  animation: popupFloatIn 0.75s ease forwards;
+  animation: popupFloatIn 1.25s ease forwards;
   will-change: opacity, transform;
 }
 
@@ -35,14 +35,14 @@
 /* Initial popup open: content fades in after box appears */
 .step-enter-initial {
   opacity: 0;
-  animation: contentFadeIn 0.75s ease forwards;
-  animation-delay: 0.75s;
+  animation: contentFadeIn 1.25s ease forwards;
+  animation-delay: 1.25s;
   will-change: opacity;
 }
 
 /* Step navigation: content fades in immediately */
 .step-enter {
-  animation: contentFadeIn 0.75s ease forwards;
+  animation: contentFadeIn 1.25s ease forwards;
   will-change: opacity;
 }
 
@@ -58,7 +58,7 @@
 
 /* Nested popup: everything fades in simultaneously */
 .popup-fade-enter {
-  animation: contentFadeIn 0.75s ease forwards;
+  animation: contentFadeIn 1.25s ease forwards;
   will-change: opacity;
 }
 
@@ -77,7 +77,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: contentFadeIn 0.75s ease forwards;
+  animation: contentFadeIn 1.25s ease forwards;
 }
 
 .journey-nested-popup {
@@ -91,7 +91,7 @@
   width: 90%;
   max-height: 80%;
   overflow-y: auto;
-  animation: contentFadeIn 0.75s ease forwards;
+  animation: contentFadeIn 1.25s ease forwards;
 }
 
 .journey-nested-popup-close {
