@@ -52,7 +52,7 @@ export default function ForexAdvanced2() {
 					<div className='flex-col-12'>
 						<JourneyLinkButton
 							link={
-								'https://wowpowers.com/catalog/paths/025efd7c-1c3c-4eb2-93e1-a618c2eacef8'
+								'https://wowpowers.com/path/2c15befe-1e41-48dd-9d18-b25b56895913'
 							}
 							className='journey-modal-main-button'>
 							Learning Path
@@ -79,7 +79,7 @@ export default function ForexAdvanced2() {
 					<div className='flex-col-12'>
 						<JourneyLinkButton
 							link={
-								'https://wowpowers.com/catalog/paths/025efd7c-1c3c-4eb2-93e1-a618c2eacef8'
+								'https://wowpowers.com/path/49e824ef-c2d5-414c-88e4-bcb7b8d42375'
 							}
 							className='journey-modal-main-button'>
 							Learning Path

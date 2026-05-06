@@ -108,7 +108,7 @@ export default function CryptoLaunchpadBroker2() {
 			<div className='flex-col-24'>
 				<JourneyLinkButton
 					disabled={!isConfirmed}
-					link='#'
+					link='https://xconnectly.com/'
 					className='journey-modal-main-button'>
 					Take me there!
 				</JourneyLinkButton>
