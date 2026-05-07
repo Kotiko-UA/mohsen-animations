@@ -58,10 +58,10 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 12px;
-	padding: 16px 18px;
+	padding: 12px;
 	border: 0;
 	border-radius: 8px;
-	background: linear-gradient(90deg, #6e44ff 0%, #8054ff 100%);
+	background: #521280;
 	color: #FFF;
 	cursor: pointer;
 }
@@ -85,6 +85,7 @@
 	font-size: 18px;
 	font-weight: 500;
 	line-height: normal;
+	white-space: nowrap;
 }
 
 .journey-mobile-cta-dot {
@@ -365,6 +366,7 @@
 		padding: 4px 8px;
 		height: 38px;
 	}
+
 
 	.journey-mobile-river-image.crypto {
 		left: 27px;

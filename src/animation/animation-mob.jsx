@@ -66,6 +66,15 @@ const ITEMS = [
 		alt: 'Synthetics',
 		type: 'locked',
 	},
+	{
+		key: 'finance',
+		// hoverSrc: {
+		// 	mobile: SyntheticsHoverMobile,
+		// 	tablet: SyntheticsHoverTablet,
+		// },
+		alt: 'Financial Literacy',
+		type: 'locked',
+	},
 ]
 
 const isMobileViewport = width => width < 768

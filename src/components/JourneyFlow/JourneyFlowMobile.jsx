@@ -577,7 +577,7 @@ export default function JourneyFlowMobile({
 								<span>{currentSlide.alt ?? journey?.title ?? 'Journey'}</span>
 							</div>
 
-							<div className='journey-mobile-cta-meta'>
+							<div className='journey-mobile-cta-meta '>
 								{isLockedJourney ? (
 									<span className='journey-mobile-coming-soon'>
 										Coming soon!
