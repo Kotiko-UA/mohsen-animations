@@ -1,0 +1,17 @@
+.fin-lit-button {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: fit-content;
+  cursor: not-allowed;
+}
+
+.fin-lit-coming {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}

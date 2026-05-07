@@ -19,6 +19,7 @@ import Commitments from '../components/Commitments/Commitments'
 
 import JourneyFlow from '../components/JourneyFlow/JourneyFlow'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
+import FinancialLiteracy from '../components/FinancialLiteracy/FinancialLiteracy'
 
 // Design canvas dimensions — all positions and sizes in CSS are authored at this resolution
 const BASE_WIDTH = 1440
@@ -279,6 +280,7 @@ export const Animation = () => {
 							/>
 						</div>
 					)}
+					<FinancialLiteracy />
 				</div>
 			</div>
 		</div>

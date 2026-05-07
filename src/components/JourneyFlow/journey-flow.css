@@ -308,6 +308,7 @@
 
 .journey-modal-main-button,
 .journey-modal-assent-button {
+  position: relative;
   height: 40px;
   display: flex;
   width: 100%;
