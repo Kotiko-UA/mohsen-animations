@@ -19,6 +19,7 @@ import Timer from '../components/Timer/Timer'
 import Commitments from '../components/Commitments/Commitments'
 import JourneyFlowMobile from '../components/JourneyFlow/JourneyFlowMobile'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
+import HelloModal from '../components/HelloModal/HelloModal'
 
 // Mobile and tablet design canvas dimensions — CSS is authored at these resolutions
 const BASE_WIDTH = 375
@@ -255,6 +256,7 @@ export const AnimationMob = () => {
 							/>
 						</div>
 					)}
+					<HelloModal />
 				</div>
 			</div>
 		</div>

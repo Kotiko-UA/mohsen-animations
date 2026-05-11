@@ -1,0 +1,37 @@
+.hello-modal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+}
+
+.hello-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 100%;
+  max-height: 800px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+
+  border-radius: 16px;
+  border: 1px solid #434343;
+  background: #FFF;
+}
+
+.hello-modal-video {
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .hello-modal-content {
+    width: 745px;
+    padding: 40px;
+  }
+
+}

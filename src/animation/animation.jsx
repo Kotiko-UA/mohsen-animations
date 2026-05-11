@@ -20,6 +20,7 @@ import Commitments from '../components/Commitments/Commitments'
 import JourneyFlow from '../components/JourneyFlow/JourneyFlow'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 import FinancialLiteracy from '../components/FinancialLiteracy/FinancialLiteracy'
+import HelloModal from '../components/HelloModal/HelloModal'
 
 // Design canvas dimensions — all positions and sizes in CSS are authored at this resolution
 const BASE_WIDTH = 1440
@@ -281,6 +282,7 @@ export const Animation = () => {
 						</div>
 					)}
 					{!mode && <FinancialLiteracy />}
+					<HelloModal />
 				</div>
 			</div>
 		</div>
