@@ -31,6 +31,11 @@ const JOURNEY_OPEN_DELAY = 400
 
 const ITEMS = [
 	{
+		key: 'finance',
+		alt: 'Financial Literacy',
+		type: 'locked',
+	},
+	{
 		key: 'crypto',
 		hoverSrc: {
 			mobile: CryptoHoverMobile,
@@ -64,15 +69,6 @@ const ITEMS = [
 			tablet: SyntheticsHoverTablet,
 		},
 		alt: 'Synthetics',
-		type: 'locked',
-	},
-	{
-		key: 'finance',
-		// hoverSrc: {
-		// 	mobile: SyntheticsHoverMobile,
-		// 	tablet: SyntheticsHoverTablet,
-		// },
-		alt: 'Financial Literacy',
 		type: 'locked',
 	},
 ]
@@ -177,7 +173,7 @@ export const AnimationMob = () => {
 
 		setIsJourneyVisible(false)
 		setShowCommitments(false)
-		setMode('crypto')
+		setMode('finance')
 
 		openJourneyWithDelay()
 	}, [clearOpenJourneyTimeout, openJourneyWithDelay])
