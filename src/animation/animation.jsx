@@ -280,7 +280,7 @@ export const Animation = () => {
 							/>
 						</div>
 					)}
-					<FinancialLiteracy />
+					{!mode && <FinancialLiteracy />}
 				</div>
 			</div>
 		</div>
