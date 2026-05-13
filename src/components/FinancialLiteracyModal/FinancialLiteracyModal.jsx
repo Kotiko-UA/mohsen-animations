@@ -36,7 +36,7 @@ export default function FinancialLiteracyModal({ onClose }) {
 					<div className='fl-modal-actions'>
 						<a
 							rel='noopener noreferrer nofollow'
-							href='#'
+							href='https://wowpowers.com/it/catalog/paths/484d128f-c7ae-4940-bb77-aeb98a765321'
 							className='journey-modal-main-button'>
 							Learning Path
 						</a>
