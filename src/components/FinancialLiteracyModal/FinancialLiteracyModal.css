@@ -1,5 +1,48 @@
 /* ---- Shared ---- */
 
+.fl-modal-wrap {
+	position: absolute;
+	inset: 0;
+	z-index: 30;
+}
+
+.fl-modal-backdrop {
+	position: absolute;
+	inset: 0;
+}
+
+/* Centered card — mobile first, mirrors journey-mobile-step-view */
+.fl-modal-card {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 343px;
+	max-height: 780px; /* mobile canvas 812 − 32 */
+	padding: 24px 16px;
+	border-radius: 16px;
+	border: 1px solid #434343;
+	background: rgba(255, 255, 255, 0.90);
+	backdrop-filter: blur(28px);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	animation: fl-fade-in 0.75s linear;
+}
+
+.fl-modal-card > .fl-modal-back {
+	margin-bottom: 12px;
+	flex-shrink: 0;
+}
+
+.fl-modal-body {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	overflow-y: auto;
+	flex: 1;
+}
+
 .fl-modal-back {
 	padding: 0;
 	width: 32px;
@@ -9,7 +52,6 @@
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	flex-shrink: 0;
 }
 
 .fl-modal-back svg {
@@ -19,14 +61,14 @@
 
 .fl-modal-title {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 28px;
+	font-size: 22px;
 	font-weight: 700;
 	color: #521280;
 }
 
 .fl-modal-desc {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 400;
 	line-height: 150%;
 	color: #282828;
@@ -44,44 +86,53 @@
 	gap: 12px;
 }
 
-.fl-modal-body {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
+@keyframes fl-fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 
-/* ---- Desktop ---- */
+/* ---- Tablet: canvas 576px ---- */
+@media screen and (min-width: 768px) {
+	.fl-modal-card {
+		width: 745px;
+		max-height: 544px; /* tablet canvas 576 − 32 */
+		padding: 24px 32px;
+	}
 
-.fl-modal {
-	display: flex;
-	flex-direction: column;
+	.fl-modal-title {
+		font-size: 28px;
+	}
+
+	.fl-modal-desc {
+		font-size: 16px;
+	}
 }
 
-.fl-modal>.fl-modal-back {
-	margin-left: 60px;
-	margin-bottom: 8px;
-}
+/* ---- Desktop: canvas 820px ---- */
+@media screen and (min-width: 1024px) {
+	.fl-modal-card {
+		top: 50%;
+		left: auto;
+		right: 40px;
+		transform: translateY(-50%);
+		width: 745px;
+		max-height: 800px; /* desktop canvas 820 − 20 */
+		padding: 40px 0 60px;
+		background: #fff;
+		backdrop-filter: none;
+	}
 
-/* ---- Mobile ---- */
+	.fl-modal-card > .fl-modal-back {
+		margin-left: 60px;
+		margin-bottom: 8px;
+	}
 
-.fl-modal-overlay {
-	position: absolute;
-	inset: 0;
-	z-index: 30;
-	background: #fff;
-	display: flex;
-	flex-direction: column;
-	padding: 20px 24px 0;
-	overflow: hidden;
-}
-
-.fl-modal-overlay>.fl-modal-back {
-	flex-shrink: 0;
-	margin-bottom: 16px;
-}
-
-.fl-modal-body--mobile {
-	overflow-y: auto;
-	flex: 1;
-	padding-bottom: 24px;
+	.fl-modal-body {
+		padding: 0 60px;
+	}
 }

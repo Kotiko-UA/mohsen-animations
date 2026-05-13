@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './animation-mob.css'
 
 import MainImg from '../assets/main-mob.jpg'
@@ -22,13 +22,13 @@ import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 import HelloModal from '../components/HelloModal/HelloModal'
 import FinancialLiteracyModal from '../components/FinancialLiteracyModal/FinancialLiteracyModal'
 
-// Mobile and tablet design canvas dimensions — CSS is authored at these resolutions
+// Mobile and tablet design canvas dimensions - CSS is authored at these resolutions
 const BASE_WIDTH = 375
 const BASE_HEIGHT = 812
 const BASE_WIDTH_TABLET = 1024
 const BASE_HEIGHT_TABLET = 576
 const TARGET_DATE = '01.05.2026'
-// Delay before showing journey UI — allows the CSS zoom transition to begin before content appears
+// Delay before showing journey UI - allows the CSS zoom transition to begin before content appears
 const JOURNEY_OPEN_DELAY = 400
 
 const ITEMS = [
@@ -168,7 +168,7 @@ export const AnimationMob = () => {
 		return () => resizeObserver.disconnect()
 	}, [])
 
-	// Return the cleanup fn directly — clears any pending open-delay timeout on unmount
+	// Return the cleanup fn directly - clears any pending open-delay timeout on unmount
 	useEffect(() => clearOpenJourneyTimeout, [clearOpenJourneyTimeout])
 
 	const handleOpen = useCallback(() => {
@@ -187,7 +187,7 @@ export const AnimationMob = () => {
 		setShowCommitments(false)
 		setJourneyScreen('selector')
 		setIsJourneyVisible(false)
-		// Bump reset key to force JourneyFlowMobile remount — just resetting screen state isn't enough
+		// Bump reset key to force JourneyFlowMobile remount - just resetting screen state isn't enough
 		// because the mobile journey keeps deep internal state (intro index, selections) that must be cleared
 		setJourneyResetKey(prev => prev + 1)
 
@@ -248,7 +248,6 @@ export const AnimationMob = () => {
 								journeyKey={mode}
 								journey={JOURNEYS[mode] ?? null}
 								items={ITEMS}
-								isMobile={isMobile}
 								progress={journeyProgress[mode]}
 								onJourneyChange={setMode}
 								onCommitmentsToggle={setShowCommitments}
@@ -260,10 +259,7 @@ export const AnimationMob = () => {
 						</div>
 					)}
 					{finLitModalOpen && (
-						<FinancialLiteracyModal
-							isMobile={isMobile}
-							onClose={() => setFinLitModalOpen(false)}
-						/>
+						<FinancialLiteracyModal onClose={() => setFinLitModalOpen(false)} />
 					)}
 					<HelloModal />
 				</div>
