@@ -20,6 +20,7 @@ import Commitments from '../components/Commitments/Commitments'
 import JourneyFlowMobile from '../components/JourneyFlow/JourneyFlowMobile'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 import HelloModal from '../components/HelloModal/HelloModal'
+import FinancialLiteracyModal from '../components/FinancialLiteracyModal/FinancialLiteracyModal'
 
 // Mobile and tablet design canvas dimensions — CSS is authored at these resolutions
 const BASE_WIDTH = 375
@@ -34,7 +35,7 @@ const ITEMS = [
 	{
 		key: 'finance',
 		alt: 'Financial Literacy',
-		type: 'locked',
+		type: 'normal',
 	},
 	{
 		key: 'crypto',
@@ -87,6 +88,7 @@ const getScale = ({ width, height }) => {
 
 export const AnimationMob = () => {
 	const [mode, setMode] = useState(null)
+	const [finLitModalOpen, setFinLitModalOpen] = useState(false)
 	const [isZoomed, setIsZoomed] = useState(false)
 	const [scale, setScale] = useState(1)
 	const [journeyProgress, setJourneyProgress] = useState({})
@@ -253,8 +255,15 @@ export const AnimationMob = () => {
 								onStateChange={handleJourneyStateChange}
 								onProgressChange={handleProgressChange}
 								handleBackToCurrentJourney={handleBackToCurrentJourney}
+								onFinanceClick={() => setFinLitModalOpen(true)}
 							/>
 						</div>
+					)}
+					{finLitModalOpen && (
+						<FinancialLiteracyModal
+							isMobile={isMobile}
+							onClose={() => setFinLitModalOpen(false)}
+						/>
 					)}
 					<HelloModal />
 				</div>

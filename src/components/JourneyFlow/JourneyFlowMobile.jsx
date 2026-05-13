@@ -167,6 +167,7 @@ export default function JourneyFlowMobile({
 	onStateChange,
 	onJourneyChange,
 	onCommitmentsToggle,
+	onFinanceClick,
 }) {
 	const safeProgress = useMemo(
 		() => normalizeProgress(progress ?? EMPTY_PROGRESS),
@@ -213,6 +214,7 @@ export default function JourneyFlowMobile({
 
 	const currentSlide = items[slideIndex] ?? null
 	const isLockedJourney = currentSlide?.type === 'locked'
+	const isFinanceItem = currentSlide?.key === 'finance'
 
 	const selectedPoint = useMemo(() => {
 		if (!journey || !activePointId) return null
@@ -566,8 +568,8 @@ export default function JourneyFlowMobile({
 						<button
 							type='button'
 							className='journey-mobile-cta'
-							onClick={openIntro}
-							disabled={isLockedJourney}>
+							onClick={isFinanceItem ? onFinanceClick : openIntro}
+							disabled={isLockedJourney && !isFinanceItem}>
 							<div className='journey-mobile-cta-title'>
 								{isLockedJourney ? (
 									<Lock className='journey-mobile-cta-lock' />
@@ -578,7 +580,7 @@ export default function JourneyFlowMobile({
 							</div>
 
 							<div className='journey-mobile-cta-meta '>
-								{isLockedJourney ? (
+								{isLockedJourney && !isFinanceItem ? (
 									<span className='journey-mobile-coming-soon'>
 										Coming soon!
 									</span>

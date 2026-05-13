@@ -1,0 +1,87 @@
+/* ---- Shared ---- */
+
+.fl-modal-back {
+	padding: 0;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+.fl-modal-back svg {
+	width: 32px;
+	height: 32px;
+}
+
+.fl-modal-title {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 28px;
+	font-weight: 700;
+	color: #521280;
+}
+
+.fl-modal-desc {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 150%;
+	color: #282828;
+}
+
+.fl-modal-img {
+	width: 100%;
+	border-radius: 8px;
+	display: block;
+}
+
+.fl-modal-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.fl-modal-body {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/* ---- Desktop ---- */
+
+.fl-modal {
+	display: flex;
+	flex-direction: column;
+}
+
+.fl-modal>.fl-modal-back {
+	margin-left: 60px;
+	margin-bottom: 8px;
+}
+
+/* ---- Mobile ---- */
+
+.fl-modal-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 30;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 20px 24px 0;
+	overflow: hidden;
+}
+
+.fl-modal-overlay>.fl-modal-back {
+	flex-shrink: 0;
+	margin-bottom: 16px;
+}
+
+.fl-modal-body--mobile {
+	overflow-y: auto;
+	flex: 1;
+	padding-bottom: 24px;
+}

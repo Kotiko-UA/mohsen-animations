@@ -20,6 +20,7 @@ import Commitments from '../components/Commitments/Commitments'
 import JourneyFlow from '../components/JourneyFlow/JourneyFlow'
 import { JOURNEYS } from '../components/JourneyFlow/journeysData'
 import FinancialLiteracy from '../components/FinancialLiteracy/FinancialLiteracy'
+import FinancialLiteracyModal from '../components/FinancialLiteracyModal/FinancialLiteracyModal'
 import HelloModal from '../components/HelloModal/HelloModal'
 
 // Design canvas dimensions — all positions and sizes in CSS are authored at this resolution
@@ -59,6 +60,7 @@ const ITEMS = [
 
 export const Animation = () => {
 	const [mode, setMode] = useState(null)
+	const [finLitModalOpen, setFinLitModalOpen] = useState(false)
 	const [isZoomed, setIsZoomed] = useState(false)
 	const [scale, setScale] = useState(1)
 	const [hoveredKey, setHoveredKey] = useState(null)
@@ -281,7 +283,10 @@ export const Animation = () => {
 							/>
 						</div>
 					)}
-					{!mode && <FinancialLiteracy />}
+					{!mode && <FinancialLiteracy onClick={() => setFinLitModalOpen(true)} />}
+					{finLitModalOpen && (
+						<FinancialLiteracyModal onClose={() => setFinLitModalOpen(false)} />
+					)}
 					<HelloModal />
 				</div>
 			</div>

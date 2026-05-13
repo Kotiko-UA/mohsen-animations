@@ -15,8 +15,10 @@
   line-height: normal;
   transform: translateX(-50%);
   z-index: 10;
-  pointer-events: none;
   overflow: hidden;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .fin-lit-coming {
