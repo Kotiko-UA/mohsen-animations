@@ -17,16 +17,19 @@ export default function FinancialLiteracyModal({ onClose }) {
 				<div className='fl-modal-body'>
 					<h2 className='fl-modal-title'>Financial Literacy</h2>
 					<p className='fl-modal-desc'>
-						In this course, you will develop one of the most valuable yet
-						overlooked life skills available to you. You will learn how to
-						budget, save, invest, and manage debt — giving you the tools to
-						make informed financial decisions that shape your long-term
-						well-being. By the end of this course, you&apos;ll be equipped to
-						navigate rising costs, complex financial products, and the everyday
-						money challenges that affect nearly every aspect of life.
-						Understanding and managing your finances isn&apos;t just a personal
-						advantage — it&apos;s a necessity, and this course will show you
-						how.
+						Most people earn, spend, and hope for the best, never learning how
+						money actually works. Knowing how to budget, save, and manage debt
+						isn't reserved for finance professionals. It's a foundation everyone
+						needs. Without these basics, even good investment opportunities
+						become risks. Trading without a budget, an emergency fund, or an
+						understanding of debt can leave you worse off than when you started.
+						That's why this course comes first. Before you place a single trade,
+						you need to know exactly where your money stands, what you can
+						afford to risk, what you need to protect, and how to make decisions
+						that serve your long-term well-being. This course will give you that
+						clarity. Complete this course before moving on to trading. It's not
+						a formality, it's the difference between building wealth and losing
+						it.
 					</p>
 					<img
 						className='fl-modal-img'
